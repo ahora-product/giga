@@ -1,0 +1,15 @@
+---
+description: Stack y principios globales de la landing estática boutique
+alwaysApply: true
+---
+
+# Landing boutique — reglas globales
+
+- Solo **HTML + CSS + JavaScript** plano. Sin frameworks, sin bundler obligatorio.
+- Una página: navegación por **anclas** `#id`, scroll suave, `header`/`main`/`section`/`footer` semánticos.
+- Toda decisión de producto detallada vive en **`VISION.md`**; no contradecirla.
+- **Tipografía de tamaño fijo**: no usar `clamp()` para tamaños de texto ni cambiar `font-size` en `@media` por viewport. La adaptación es por layout, grid, wraps y espaciado.
+- Respetar **`prefers-reduced-motion`**: menos o cero parallax/stagger agresivo; sin cursor custom forzado.
+- **Accesibilidad**: foco visible, teclado, contraste AA sobre fondo oscuro; marquee solo decorativo (no única fuente de información crítica).
+- Imágenes: `loading="lazy"` fuera del hero; hero/LCP **sin** lazy, con dimensiones y prioridad adecuadas cuando aplique.
+- Contenido y marcas: placeholders **originales**; no copiar textos ni assets de sitios de referencia.

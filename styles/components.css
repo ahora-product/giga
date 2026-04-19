@@ -1,0 +1,279 @@
+.btn {
+  --btn-bg: var(--surface-2);
+  --btn-fg: var(--text);
+  --btn-border: var(--border-strong);
+  --mx: 0px;
+  --my: 0px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.85rem 1.35rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-size: var(--text-sm);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform var(--dur-1) var(--ease-soft),
+    box-shadow var(--dur-1) var(--ease-soft),
+    border-color var(--dur-1) var(--ease-soft),
+    background var(--dur-1) var(--ease-soft);
+}
+
+.btn--primary {
+  --btn-bg: var(--accent);
+  --btn-fg: #0b0b0c;
+  --btn-border: rgba(0, 0, 0, 0.12);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-border: var(--border);
+}
+
+.btn--nav-pill {
+  --btn-bg: #f4f4f4;
+  --btn-fg: #0a0a0a;
+  --btn-border: transparent;
+  padding: 0.55rem 1.35rem;
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.btn--hero-call {
+  --btn-bg: #ececec;
+  --btn-fg: #0a0a0a;
+  --btn-border: transparent;
+  gap: 0.65rem;
+  padding: 0.45rem 1.35rem 0.45rem 0.45rem;
+  border-radius: 999px;
+  font-size: var(--text-base);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.btn--hero-call__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.btn--tarifa {
+  --btn-bg: #1d7bff;
+  --btn-fg: #ffffff;
+  --btn-border: transparent;
+  width: 100%;
+  padding-block: 0.7rem;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+}
+
+.btn--tarifa:hover {
+  box-shadow: 0 10px 28px rgba(29, 123, 255, 0.32);
+}
+
+.btn--studio-outline {
+  --btn-bg: transparent;
+  --btn-fg: #f4f1ea;
+  --btn-border: rgba(255, 255, 255, 0.78);
+  padding: 0.65rem 1.2rem;
+  border-radius: 0.35rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.btn--studio-outline:hover {
+  --btn-border: rgba(255, 255, 255, 0.95);
+  --btn-bg: rgba(255, 255, 255, 0.04);
+}
+
+.btn:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.btn--magnetic {
+  transform: translate3d(var(--mx), var(--my), 0);
+}
+
+.btn--magnetic:hover {
+  transform: translate3d(var(--mx), calc(var(--my) - 2px), 0);
+}
+
+.btn:not(.btn--magnetic):hover {
+  transform: translateY(-2px);
+}
+
+.btn:not(.btn--magnetic):active {
+  transform: translateY(0);
+}
+
+.btn--magnetic:active {
+  transform: translate3d(var(--mx), var(--my), 0);
+}
+
+.btn__ripple {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.btn__ripple::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: var(--ripple-x, 50%);
+  top: var(--ripple-y, 50%);
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  opacity: 0;
+}
+
+.btn.is-rippling .btn__ripple::after {
+  animation: ripple 640ms var(--ease-out-expo) forwards;
+}
+
+.link-line {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size var(--dur-2) var(--ease-out-expo);
+}
+
+.link-line:hover,
+.link-line:focus-visible {
+  background-size: 100% 1px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  font-size: var(--text-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.icon-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(201, 169, 98, 0.55);
+}
+
+.cursor {
+  --dot-x: -100px;
+  --dot-y: -100px;
+  --ring-x: -100px;
+  --ring-y: -100px;
+  --lab-x: -100px;
+  --lab-y: -100px;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  display: none;
+}
+
+html.is-cursor-on .cursor {
+  display: block;
+}
+
+.cursor__dot,
+.cursor__ring,
+.cursor__label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.cursor__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--text);
+  mix-blend-mode: difference;
+  opacity: 0;
+  transform: translate3d(var(--dot-x), var(--dot-y), 0);
+  transition: opacity var(--dur-1) var(--ease-soft);
+}
+
+.cursor.is-active .cursor__dot {
+  opacity: 1;
+}
+
+.cursor__ring {
+  --ring-scale: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(244, 241, 234, 0.35);
+  transform: translate3d(var(--ring-x), var(--ring-y), 0) scale(var(--ring-scale));
+  transform-origin: center center;
+  transition:
+    border-color var(--dur-1) var(--ease-soft),
+    background var(--dur-1) var(--ease-soft),
+    border-radius var(--dur-1) var(--ease-soft),
+    width var(--dur-1) var(--ease-soft),
+    height var(--dur-1) var(--ease-soft),
+    margin var(--dur-1) var(--ease-soft);
+}
+
+.cursor.is-hover-link .cursor__ring {
+  --ring-scale: 1.45;
+  border-color: rgba(201, 169, 98, 0.65);
+  background: rgba(201, 169, 98, 0.06);
+}
+
+.cursor.is-hover-image .cursor__ring {
+  --ring-scale: 1.12;
+  width: 46px;
+  height: 46px;
+  border-radius: 6px;
+  border-color: rgba(244, 241, 234, 0.55);
+}
+
+.cursor__label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0;
+  transform: translate3d(var(--lab-x), var(--lab-y), 0);
+  transition: opacity var(--dur-1) var(--ease-soft);
+}
+
+.cursor.is-hover-image .cursor__label {
+  opacity: 1;
+}

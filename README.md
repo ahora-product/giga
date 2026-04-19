@@ -1,73 +1,36 @@
-# React + TypeScript + Vite
+# Kern Atelier — landing estática
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Landing one-page (HTML + CSS + JS) para un estudio boutique ficticio. Sin build: sirve la carpeta con HTTP (los módulos ES `import` no funcionan con `file://` en la mayoría de navegadores).
 
-Currently, two official plugins are available:
+## Ver en local
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npx --yes serve .
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+O usa la extensión **Live Server** en el editor.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Desactivar el cursor personalizado
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+El cursor custom solo se activa en puntero fino (`pointer: fine`) y cuando **no** está activo `prefers-reduced-motion: reduce`.
+
+Para forzar el cursor del sistema en cualquier caso:
+
+1. En [js/main.js](js/main.js), comenta la línea `initCursor();`.
+2. Opcional: en [styles/components.css](styles/components.css), elimina o comenta el bloque `html.is-cursor-on .cursor { display: block; }` y la regla `body.is-cursor-custom { cursor: none; }` si quieres evitar estilos huérfanos.
+
+## Cómo se respeta “reduced motion”
+
+- `html` recibe la clase `motion-safe` solo si el usuario **no** ha pedido reducir movimiento en el sistema. Si lo ha pedido, esa clase no se aplica.
+- **CSS**: las animaciones de entrada del hero, los reveals al scroll y el parallax ligero están condicionados a `motion-safe` o se desactivan en `@media (prefers-reduced-motion: reduce)` para carruseles decorativos.
+- **JS**: el cursor custom no se inicializa con `prefers-reduced-motion: reduce` ni en dispositivos táctiles; el acordeón y el slider siguen siendo usables.
+
+## Imágenes y LCP
+
+El hero usa `<picture>` con **WebP** (y puedes añadir AVIF) más un JPEG de respaldo. El resto de imágenes usa `loading="lazy"`. Sustituye URLs de Unsplash por assets propios en producción.
+
+## Documentación de producto
+
+- [VISION.md](VISION.md) — brief y criterios.
+- [AGENTS.md](AGENTS.md) — convenciones del repo.
+- Reglas Cursor en [.cursor/rules/](.cursor/rules/).

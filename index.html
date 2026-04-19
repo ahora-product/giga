@@ -1,524 +1,498 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hanzo — Design for Solid Startups</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Giga109 — identidad, interfaces y web con criterio de producto para startups que necesitan credibilidad sin quemar runway."
+    />
+    <title>Giga109 — Estudio boutique de identidad y web</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200..900;1,9..144,200..900&family=Manrope:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/hanzo.css" />
+    <link rel="stylesheet" href="styles/main.css" />
   </head>
   <body>
-    <div class="hanzo">
-      <div class="hanzo-top">
-        <div class="hanzo__inner hanzo-top__row">
-          <a href="#templates">New template</a>
-          <span class="hanzo-pill hanzo-pill--dark">New</span>
-          <a href="#remix">Remix for free</a>
-          <span class="hanzo-stars" aria-label="4 de 5">★★★★☆</span>
-          <span class="hanzo-pill">Booking Open — 2 Spots Left</span>
+    <a class="skip-link" href="#home">Saltar al contenido</a>
+
+    <header class="site-header" id="site-header">
+      <div class="shell site-header__inner">
+        <a class="brand" href="#home">
+          <img
+            class="brand__logo"
+            src="assets/brand/giga109.svg"
+            alt="Giga109"
+            width="140"
+            height="42"
+            decoding="async"
+          />
+        </a>
+
+        <nav class="nav" aria-label="Principal">
+          <ul class="nav__links">
+            <li><a class="nav__link" href="#home" data-nav-link>Inicio</a></li>
+            <li><a class="nav__link" href="#tarifas" data-nav-link>Tarifas</a></li>
+            <li><a class="nav__link" href="#contact" data-nav-link>Contacto</a></li>
+          </ul>
+
+          <details class="mobile-nav">
+            <summary class="mobile-nav__summary">Menú</summary>
+            <div class="mobile-nav__panel">
+              <a class="mobile-nav__link" href="#home">Inicio</a>
+              <a class="mobile-nav__link" href="#tarifas">Tarifas</a>
+              <a class="mobile-nav__link" href="#contact">Contacto</a>
+              <a class="btn btn--nav-pill btn--magnetic" href="#contact" data-magnetic>
+                <span class="btn__ripple" aria-hidden="true"></span>
+                Solicitar propuesta
+              </a>
+            </div>
+          </details>
+        </nav>
+
+        <div class="site-header__end">
+          <a class="btn btn--nav-pill btn--magnetic" href="#contact" data-magnetic>
+            <span class="btn__ripple" aria-hidden="true"></span>
+            Solicitar propuesta
+          </a>
         </div>
       </div>
+    </header>
 
-      <header class="hanzo-header" id="site-header">
-        <div class="hanzo__inner hanzo-header__row">
-          <a class="hanzo-logo" href="#top">Hanzo</a>
-          <nav class="hanzo-nav" aria-label="Principal">
-            <a href="#work">Work</a>
-            <a href="#process">Process</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#faq">FAQ</a>
-            <a class="hanzo-nav__cta" href="#connect">Book a call</a>
-          </nav>
+    <main>
+      <section class="hero section section--airy" id="home" aria-labelledby="hero-title">
+        <div class="shell hero__inner">
+          <div class="hero__copy">
+            <h1 class="hero__title" id="hero-title">
+              <span class="hero__motion">
+                <span class="hero__line">Partner de marca y web</span>
+                <span class="hero__line">para startups ambiciosas</span>
+              </span>
+            </h1>
+            <p class="hero__sub">
+              Llevamos tu pitch a una experiencia que se siente premium en producto: identidad, interfaz y web en un
+              solo flujo, lista para crecer cuando aún no puedes fichar a un equipo completo.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--hero-call btn--magnetic" href="#contact" data-magnetic>
+                <span class="btn__ripple" aria-hidden="true"></span>
+                <img
+                  class="btn--hero-call__avatar"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=96&h=96&q=80"
+                  alt=""
+                  width="40"
+                  height="40"
+                  decoding="async"
+                  aria-hidden="true"
+                />
+                Diagnóstico 30 min
+              </a>
+            </div>
+          </div>
         </div>
-      </header>
+      </section>
 
-      <main id="top">
-        <section class="hanzo-hero">
-          <div class="hanzo__inner">
-            <div class="hanzo-hero__head">
-              <div class="hanzo-hero__carousel">
-                <span class="hanzo-hero__word-slot" aria-live="polite">
-                  <span id="hero-word" class="hanzo-hero__word">Unlimited</span>
-                </span>
-              </div>
-              <div class="hanzo-hero__line hanzo-hero__head-anim" data-anim-order="1">Design</div>
-              <div class="hanzo-hero__line hanzo-hero__head-anim" data-anim-order="2">for</div>
-              <div class="hanzo-hero__line hanzo-hero__head-anim" data-anim-order="3">
-                <strong>Solid Startups</strong>
-              </div>
-            </div>
-
-            <p class="hanzo-hero__sub hanzo-hero__sub-anim">
-              We help startups and brands create beautiful, functional products — fast and
-              hassle-free.
-            </p>
-
-            <div class="hanzo-hero__cta-wrap hanzo-hero__cta-anim">
-              <a class="hanzo-btn" href="#pricing">Choose your plan</a>
-            </div>
-
-            <div class="hanzo-hero__arrows">
-              <button type="button" class="hanzo-arrow" id="hero-prev" aria-label="Palabra anterior">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path
-                    d="M15 6l-6 6 6 6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+      <section class="project-carousel section section--tight" id="proyectos" aria-label="Proyectos destacados">
+        <div class="shell">
+          <div class="project-carousel__viewport" data-project-carousel>
+            <ul class="project-carousel__track">
+              <li class="project-carousel__slide">
+                <a class="project-carousel__card" href="#" aria-label="Proyecto: campaña en calle">
+                  <img
+                    class="project-carousel__img"
+                    src="https://images.unsplash.com/photo-1547891654-e66ed7bef116?auto=format&amp;fit=crop&amp;w=1200&amp;h=750&amp;q=80"
+                    alt=""
+                    width="1200"
+                    height="750"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
                   />
-                </svg>
-              </button>
-              <button type="button" class="hanzo-arrow" id="hero-next" aria-label="Palabra siguiente">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path
-                    d="M9 6l6 6-6 6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                </a>
+              </li>
+              <li class="project-carousel__slide">
+                <a class="project-carousel__card" href="#" aria-label="Proyecto: packaging y producto">
+                  <img
+                    class="project-carousel__img"
+                    src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&amp;fit=crop&amp;w=1200&amp;h=750&amp;q=80"
+                    alt=""
+                    width="1200"
+                    height="750"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
                   />
-                </svg>
-              </button>
-            </div>
+                </a>
+              </li>
+              <li class="project-carousel__slide">
+                <a class="project-carousel__card" href="#" aria-label="Proyecto: identidad editorial">
+                  <img
+                    class="project-carousel__img"
+                    src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&amp;fit=crop&amp;w=1200&amp;h=750&amp;q=80"
+                    alt=""
+                    width="1200"
+                    height="750"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  />
+                </a>
+              </li>
+              <li class="project-carousel__slide">
+                <a class="project-carousel__card" href="#" aria-label="Proyecto: espacio retail">
+                  <img
+                    class="project-carousel__img"
+                    src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=1200&amp;h=750&amp;q=80"
+                    alt=""
+                    width="1200"
+                    height="750"
+                    loading="lazy"
+                    decoding="async"
+                    draggable="false"
+                  />
+                </a>
+              </li>
+            </ul>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section class="hanzo-trusted" aria-label="Marcas">
-          <div class="hanzo__inner">
-            <p class="hanzo-trusted__label">Trusted by Leaders</p>
-            <div class="hanzo-marquee" aria-hidden="true">
-              <div class="hanzo-marquee__track">
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-                <span class="hanzo-logo-placeholder"></span>
-              </div>
-            </div>
-            <a class="hanzo-link-center" href="#work">See Recent Work</a>
-          </div>
-        </section>
-
-        <section class="hanzo-section" id="hello">
-          <div class="hanzo__inner">
-            <div class="hanzo-reveal" data-reveal>
-              <p class="hanzo-section__eyebrow hanzo-reveal__item" data-reveal-child style="--d: 0ms">
-                Hello!
-              </p>
-              <p class="hanzo-lead hanzo-reveal__item" data-reveal-child style="--d: 80ms">
-                We help startups and enterprise to establish an emotional connection between their
-                products and happy engaged customers
-              </p>
-              <div class="hanzo-services hanzo-reveal__item" data-reveal-child style="--d: 160ms">
-                <span class="hanzo-chip">Strategy</span>
-                <span class="hanzo-chip">UI/UX</span>
-                <span class="hanzo-chip">Prototyping</span>
-                <span class="hanzo-chip">Animation</span>
-                <span class="hanzo-chip">Research</span>
-                <span class="hanzo-chip">Design systems</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="hanzo-section" id="process">
-          <div class="hanzo__inner">
-            <div class="hanzo-reveal" data-reveal>
-              <p class="hanzo-section__eyebrow hanzo-reveal__item" data-reveal-child style="--d: 0ms">
-                Our Process, Explained
-              </p>
-              <h2 class="hanzo-section__title hanzo-reveal__item" data-reveal-child style="--d: 80ms">
-                Here's how it works
-              </h2>
-            </div>
-            <div class="hanzo-process-grid">
-              <article class="hanzo-process-card" data-reveal data-reveal-delay="0">
-                <div class="hanzo-process-num">1</div>
-                <h3>Subscribe</h3>
-                <p>Choose a plan and request as many designs as you need.</p>
-              </article>
-              <article class="hanzo-process-card" data-reveal data-reveal-delay="120">
-                <div class="hanzo-process-num">2</div>
-                <h3>Request</h3>
-                <p>Choose a plan and request as many designs as you need.</p>
-              </article>
-              <article class="hanzo-process-card" data-reveal data-reveal-delay="240">
-                <div class="hanzo-process-num">3</div>
-                <h3>Get Your Designs</h3>
-                <p>Choose a plan and request as many designs as you need.</p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="hanzo-section">
-          <div class="hanzo__inner">
-            <div class="hanzo-testimonials">
-              <article class="hanzo-quote" data-reveal>
-                <span class="hanzo-quote__mark" aria-hidden="true">&ldquo;</span>
-                <p>
-                  Working with Joris was a game-changer. He instantly understood our vision and
-                  translated it into a sleek, intuitive product. The process felt effortless, and
-                  the results exceeded our expectations.
+      <div class="studio-sheet">
+        <section class="studio-panel" id="clientes" aria-labelledby="studio-lbl-clientes">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-clientes">Clientes</p>
+              <div class="studio-row__main">
+                <p class="studio-lead">
+                  Equipos que compiten con marcas más grandes y necesitan credibilidad desde el primer scroll: orden
+                  visual, mensaje claro y una web que convierte sin parecer plantilla.
                 </p>
-                <div class="hanzo-person">
-                  <div class="hanzo-avatar" aria-hidden="true"></div>
-                  <div>
-                    <strong>Sophie Lemaire</strong>
-                    <span>Product Lead at Loomi</span>
-                  </div>
+                <div class="studio-clients" aria-label="Marcas colaboradoras (marcas de ejemplo)">
+                  <span class="studio-client">Orbe</span>
+                  <span class="studio-client">Costera</span>
+                  <span class="studio-client studio-client--framed">Nexo</span>
+                  <span class="studio-client">Bruma</span>
                 </div>
-              </article>
-              <article class="hanzo-quote" data-reveal data-reveal-delay="100">
-                <span class="hanzo-quote__mark" aria-hidden="true">&ldquo;</span>
-                <p>
-                  Joris brings clarity to chaos. His design work is not only beautiful but deeply
-                  strategic. He helped us rebrand from the ground up, and our audience response has
-                  been incredible.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="studio-panel" id="quienes-somos" aria-labelledby="studio-lbl-quienes">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-quienes">Quiénes somos</p>
+              <div class="studio-row__main">
+                <p class="studio-prose">
+                  Giga109 es un estudio boutique enfocado en identidad, interfaces y web para marcas en fase de
+                  crecimiento. Pocos proyectos a la vez, mucha coherencia entre lo que prometes y lo que se ve.
                 </p>
-                <div class="hanzo-person">
-                  <div class="hanzo-avatar" aria-hidden="true"></div>
-                  <div>
-                    <strong>Milan Bakker</strong>
-                    <span>Founder of Drifted Studio</span>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section class="hanzo-section" id="work">
-          <div class="hanzo__inner">
-            <div class="hanzo-reveal" data-reveal>
-              <p class="hanzo-section__eyebrow hanzo-reveal__item" data-reveal-child style="--d: 0ms">
-                Our Projects
-              </p>
-              <h2 class="hanzo-section__title hanzo-reveal__item" data-reveal-child style="--d: 80ms">
-                Recent Case Studies
-              </h2>
-            </div>
-            <div class="hanzo-work-grid">
-              <a class="hanzo-work-card" href="#case-strida" data-reveal>
-                <div class="hanzo-work-card__media" aria-hidden="true"></div>
-                <div class="hanzo-work-card__body">
-                  <span class="hanzo-work-card__kicker">portfolio · sidebar</span>
-                  <h3 class="hanzo-work-card__title">Strida</h3>
-                </div>
-              </a>
-              <a class="hanzo-work-card" href="#case-bravo" data-reveal data-reveal-delay="80">
-                <div class="hanzo-work-card__media" aria-hidden="true"></div>
-                <div class="hanzo-work-card__body">
-                  <span class="hanzo-work-card__kicker">UI/UX · App</span>
-                  <h3 class="hanzo-work-card__title">Bravo</h3>
-                </div>
-              </a>
-              <a class="hanzo-work-card" href="#case-nitro" data-reveal data-reveal-delay="160">
-                <div class="hanzo-work-card__media" aria-hidden="true"></div>
-                <div class="hanzo-work-card__body">
-                  <span class="hanzo-work-card__kicker">Design System · Web</span>
-                  <h3 class="hanzo-work-card__title">Nitro</h3>
-                </div>
-              </a>
-              <a class="hanzo-work-card" href="#case-fargo" data-reveal data-reveal-delay="240">
-                <div class="hanzo-work-card__media" aria-hidden="true"></div>
-                <div class="hanzo-work-card__body">
-                  <span class="hanzo-work-card__kicker">SaaS · Web</span>
-                  <h3 class="hanzo-work-card__title">Fargo</h3>
-                </div>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section class="hanzo-section">
-          <div class="hanzo__inner">
-            <div class="hanzo-reveal" data-reveal>
-              <p class="hanzo-section__eyebrow hanzo-reveal__item" data-reveal-child style="--d: 0ms">
-                Our Projects
-              </p>
-              <h2 class="hanzo-section__title hanzo-reveal__item" data-reveal-child style="--d: 80ms">
-                Pushing boundaries since 2011
-              </h2>
-            </div>
-            <div class="hanzo-about">
-              <div class="hanzo-about__photo" data-reveal aria-hidden="true"></div>
-              <div>
-                <div class="hanzo-reveal" data-reveal>
-                  <h3 class="hanzo-about__name hanzo-reveal__item" data-reveal-child style="--d: 0ms">
-                    Joris van Dijk
-                  </h3>
-                  <p class="hanzo-about__role hanzo-reveal__item" data-reveal-child style="--d: 60ms">
-                    Hanzo Studio, Founder
-                  </p>
-                  <p class="hanzo-lead hanzo-reveal__item" data-reveal-child style="--d: 120ms">
-                    Joris van Dijk is a Dutch designer known for his minimalist, expressive digital
-                    work. He helps startups and studios create clean interfaces and strong branding.
-                    Based in Utrecht, he blends function with emotion — and often spends his free
-                    time cycling or exploring generative art.
-                  </p>
-                </div>
-                <div class="hanzo-timeline">
-                  <div class="hanzo-timeline__item">
-                    <div>
-                      <div class="hanzo-timeline__role">Freelance Practice</div>
-                      <div class="hanzo-timeline__co">Hanzo Co.</div>
-                    </div>
-                    <div class="hanzo-timeline__years">2011 → Now</div>
-                  </div>
-                  <div class="hanzo-timeline__item">
-                    <div>
-                      <div class="hanzo-timeline__role">Design Lead</div>
-                      <div class="hanzo-timeline__co">Google</div>
-                    </div>
-                    <div class="hanzo-timeline__years">2024 → Now</div>
-                  </div>
-                  <div class="hanzo-timeline__item">
-                    <div>
-                      <div class="hanzo-timeline__role">Senior Designer</div>
-                      <div class="hanzo-timeline__co">PayPal</div>
-                    </div>
-                    <div class="hanzo-timeline__years">2019 → 2024</div>
-                  </div>
-                  <div class="hanzo-timeline__item">
-                    <div>
-                      <div class="hanzo-timeline__role">Product Designer</div>
-                      <div class="hanzo-timeline__co">Meta</div>
-                    </div>
-                    <div class="hanzo-timeline__years">2016 → 2019</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="hanzo-section" id="pricing">
-          <div class="hanzo__inner">
-            <div class="hanzo-reveal" data-reveal>
-              <p class="hanzo-section__eyebrow hanzo-reveal__item" data-reveal-child style="--d: 0ms">
-                Pricing
-              </p>
-              <h2 class="hanzo-section__title hanzo-reveal__item" data-reveal-child style="--d: 80ms">
-                Fixed Price, Zero Limits
-              </h2>
-            </div>
-            <div class="hanzo-pricing-wrap">
-              <div class="hanzo-price-card" data-reveal>
-                <div class="hanzo-price-row">
-                  <span class="hanzo-pill">Monthly</span>
-                  <span class="hanzo-pill">Custom</span>
-                </div>
-                <div class="hanzo-price-row">
-                  <span class="hanzo-price">$7,500</span>
-                  <span class="hanzo-price-suffix">/mo</span>
-                </div>
-                <p class="hanzo-price-note">Booking Open — only 2 Spots Left</p>
-                <a class="hanzo-btn" href="#connect">Book Free Discovery Call</a>
-                <div class="hanzo-includes">
-                  <h4>What's included</h4>
-                  <ul>
-                    <li>Unlimited design requests</li>
-                    <li>Fast turnaround</li>
-                    <li>Fixed monthly rate</li>
-                    <li>Async communication</li>
-                    <li>Flexible scope</li>
-                    <li>Pause anytime</li>
-                  </ul>
-                </div>
-              </div>
-              <aside class="hanzo-side-quote" data-reveal data-reveal-delay="100">
-                <div class="hanzo-person">
-                  <div class="hanzo-avatar" aria-hidden="true"></div>
-                  <div>
-                    <strong>Helena Moreau</strong>
-                    <span>Creative Director at Studio Novo</span>
-                  </div>
-                </div>
-                <p class="hanzo-side-quote__text">
-                  <span class="hanzo-quote__mark" aria-hidden="true">&ldquo;</span>
-                  Astrid's minimalist design approach transformed our brand. The simplicity and
-                  clarity she brought to our identity made us stand out in a crowded market. Our
-                  customers immediately noticed the difference.
+                <p class="studio-prose">
+                  No vendemos páginas bonitas sueltas: diseñamos sistemas visuales que sostienen producto, marketing y
+                  ventas, con legibilidad, rendimiento y detalle en cada interacción.
                 </p>
-              </aside>
+              </div>
             </div>
-            <div class="hanzo-tags-marquee">
-              <div class="hanzo-marquee" aria-hidden="true">
-                <div class="hanzo-marquee__track hanzo-marquee__track--tags">
-                  <span class="hanzo-tag">Senior-level quality</span>
-                  <span class="hanzo-tag">Systems thinking</span>
-                  <span class="hanzo-tag">Developer-friendly</span>
-                  <span class="hanzo-tag">Clear process</span>
-                  <span class="hanzo-tag">On-brand, every time</span>
-                  <span class="hanzo-tag">Reliable partner</span>
-                  <span class="hanzo-tag">Fast execution</span>
-                  <span class="hanzo-tag">Thoughtful feedback</span>
-                  <span class="hanzo-tag">Smooth handoff</span>
-                  <span class="hanzo-tag">Senior-level quality</span>
-                  <span class="hanzo-tag">Systems thinking</span>
-                  <span class="hanzo-tag">Developer-friendly</span>
-                  <span class="hanzo-tag">Clear process</span>
-                  <span class="hanzo-tag">On-brand, every time</span>
-                  <span class="hanzo-tag">Reliable partner</span>
-                  <span class="hanzo-tag">Fast execution</span>
-                  <span class="hanzo-tag">Thoughtful feedback</span>
-                  <span class="hanzo-tag">Smooth handoff</span>
+          </div>
+        </section>
+
+        <section class="studio-panel" id="por-que" aria-labelledby="studio-lbl-porque">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-porque">Por qué con nosotros</p>
+              <div class="studio-row__main">
+                <p class="studio-statement">
+                  Contratar un estudio grande cuesta como contratar un estudio grande. Giga109 cubre el tramo intermedio:
+                  presentación de agencia y operación de startup. Priorizamos lo que multiplica percepción de calidad —
+                  jerarquía, motion con intención, consistencia del sistema — antes que adornos que no convierten.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="studio-panel" id="servicios" aria-labelledby="studio-lbl-servicios">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-servicios">Servicios</p>
+              <div class="studio-row__main">
+                <div class="studio-services">
+                  <article class="studio-service">
+                    <header class="studio-service__head">
+                      <h3 class="studio-service__title">Landing de alto impacto</h3>
+                    </header>
+                    <ul class="studio-service__list">
+                      <li>Propuesta, prueba social y CTA en una sola página</li>
+                      <li>Ideal para validar mercado o reforzar una ronda</li>
+                      <li>Diseño y front listos para publicar</li>
+                    </ul>
+                  </article>
+                  <article class="studio-service">
+                    <header class="studio-service__head">
+                      <h3 class="studio-service__title">Web corporativa / producto</h3>
+                    </header>
+                    <ul class="studio-service__list">
+                      <li>Arquitectura de contenidos e interfaz</li>
+                      <li>Implementación con foco en rendimiento</li>
+                      <li>Accesibilidad y SEO técnico razonables, sin humo</li>
+                    </ul>
+                  </article>
+                  <article class="studio-service">
+                    <header class="studio-service__head">
+                      <h3 class="studio-service__title">Identidad + web (bundle founder)</h3>
+                    </header>
+                    <ul class="studio-service__list">
+                      <li>Logo, color, tipografía y componentes mínimos</li>
+                      <li>Mismo lenguaje visual en producto y web</li>
+                      <li>Manual breve para que el equipo lo aplique</li>
+                    </ul>
+                  </article>
+                  <article class="studio-service">
+                    <header class="studio-service__head">
+                      <h3 class="studio-service__title">E-commerce esencial</h3>
+                    </header>
+                    <ul class="studio-service__list">
+                      <li>Catálogo, checkout y flujo de confianza</li>
+                      <li>Pasarelas y panel sin monstruo innecesario</li>
+                      <li>Formación para gestionar pedidos y stock</li>
+                    </ul>
+                  </article>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="hanzo-section" id="faq">
-          <div class="hanzo__inner">
-            <div class="hanzo-reveal" data-reveal>
-              <p class="hanzo-section__eyebrow hanzo-reveal__item" data-reveal-child style="--d: 0ms">
-                FAQ
-              </p>
-              <h2 class="hanzo-section__title hanzo-reveal__item" data-reveal-child style="--d: 80ms">
-                Your Questions, Answered
-              </h2>
-            </div>
-            <div class="hanzo-faq">
-              <div class="hanzo-faq__cta-block hanzo-faq__intro">
-                <h3 class="hanzo-faq__cta-title">Have more questions? Book a free discovery call</h3>
-                <p>Or, email me at <a href="mailto:joris@hanzo.com">joris@hanzo.com</a></p>
-                <a class="hanzo-btn" href="#connect">Book a Discovery Call</a>
-              </div>
-
-              <div class="hanzo-faq__item is-open" data-faq-item>
-                <button type="button" class="hanzo-faq__q" aria-expanded="true" data-faq-btn>
-                  What’s the difference between a subscription and a custom project?
-                  <span class="hanzo-faq__icon" aria-hidden="true"></span>
-                </button>
-                <div class="hanzo-faq__a">
-                  <div class="hanzo-faq__a-inner">
-                    The subscription is ongoing and flexible — ideal for continuous design needs.
-                    Custom projects are one-time, fixed-scope engagements for larger goals like a
-                    rebrand or product launch.
-                  </div>
-                </div>
-              </div>
-
-              <div class="hanzo-faq__item" data-faq-item>
-                <button type="button" class="hanzo-faq__q" aria-expanded="false" data-faq-btn>
-                  How fast is the turnaround?
-                  <span class="hanzo-faq__icon" aria-hidden="true"></span>
-                </button>
-                <div class="hanzo-faq__a">
-                  <div class="hanzo-faq__a-inner">
-                    Most requests are delivered within 1–2 business days. Larger tasks may take
-                    longer, but you’ll always be kept in the loop.
-                  </div>
-                </div>
-              </div>
-
-              <div class="hanzo-faq__item" data-faq-item>
-                <button type="button" class="hanzo-faq__q" aria-expanded="false" data-faq-btn>
-                  How many requests can I make?
-                  <span class="hanzo-faq__icon" aria-hidden="true"></span>
-                </button>
-                <div class="hanzo-faq__a">
-                  <div class="hanzo-faq__a-inner">
-                    As many as you like — with a subscription, you can queue unlimited requests,
-                    and they’ll be handled one at a time in priority order.
-                  </div>
-                </div>
-              </div>
-
-              <div class="hanzo-faq__item" data-faq-item>
-                <button type="button" class="hanzo-faq__q" aria-expanded="false" data-faq-btn>
-                  What types of design do you handle?
-                  <span class="hanzo-faq__icon" aria-hidden="true"></span>
-                </button>
-                <div class="hanzo-faq__a">
-                  <div class="hanzo-faq__a-inner">
-                    Websites, product UI, landing pages, brand assets, decks, social media visuals —
-                    anything digital that needs to look and feel sharp.
-                  </div>
-                </div>
-              </div>
-
-              <div class="hanzo-faq__item" data-faq-item>
-                <button type="button" class="hanzo-faq__q" aria-expanded="false" data-faq-btn>
-                  What tools do you use?
-                  <span class="hanzo-faq__icon" aria-hidden="true"></span>
-                </button>
-                <div class="hanzo-faq__a">
-                  <div class="hanzo-faq__a-inner">
-                    Figma for design, Notion for task management, and Slack or email for async
-                    communication.
-                  </div>
-                </div>
-              </div>
-
-              <div class="hanzo-faq__item" data-faq-item>
-                <button type="button" class="hanzo-faq__q" aria-expanded="false" data-faq-btn>
-                  Can I pause the subscription?
-                  <span class="hanzo-faq__icon" aria-hidden="true"></span>
-                </button>
-                <div class="hanzo-faq__a">
-                  <div class="hanzo-faq__a-inner">
-                    Yes — you can pause anytime and resume when you’re ready. Unused days roll over.
-                  </div>
-                </div>
-              </div>
-
-              <div class="hanzo-faq__item" data-faq-item>
-                <button type="button" class="hanzo-faq__q" aria-expanded="false" data-faq-btn>
-                  Do you offer development too?
-                  <span class="hanzo-faq__icon" aria-hidden="true"></span>
-                </button>
-                <div class="hanzo-faq__a">
-                  <div class="hanzo-faq__a-inner">
-                    Joris focuses on design only, but all deliverables are dev-ready. He can also
-                    recommend trusted no-code or Webflow/Framer developers if needed.
-                  </div>
-                </div>
+        <section class="studio-panel studio-panel--cta" id="empezar" aria-labelledby="studio-lbl-empezar">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-empezar">Empezar proyecto</p>
+              <div class="studio-row__main">
+                <p class="studio-prose studio-prose--compact">
+                  Cuéntanos etapa, sector y enlace a lo que tengáis (web, deck o Figma). Respondemos con alcance,
+                  presupuesto alineado a prioridades y siguiente paso —sin spam.
+                </p>
+                <a class="btn btn--studio-outline btn--magnetic" href="#contact" data-magnetic>
+                  <span class="btn__ripple" aria-hidden="true"></span>
+                  Solicitar propuesta
+                </a>
               </div>
             </div>
           </div>
         </section>
+      </div>
 
-        <section class="hanzo-footer-cta" id="connect">
-          <div class="hanzo__inner">
-            <p class="hanzo-section__eyebrow">2 spots available</p>
-            <h2>Let's Connect</h2>
-            <p class="hanzo-lead">
-              Feel free to contact me if having any questions. I'm available for new projects or just
-              for chatting.
+      <section class="tarifas" id="tarifas" aria-labelledby="tarifas-title">
+        <div class="shell stack-lg">
+          <header class="tarifas__intro">
+            <p class="tarifas__kicker">Tarifas</p>
+            <h2 class="tarifas__title" id="tarifas-title">Transparencia sin teatro</h2>
+            <p class="tarifas__lead">
+              Paquetes con alcance cerrado y entregables listados: desde landing hasta tienda. Si el alcance crece, lo
+              vemos en la propuesta antes de facturar sorpresas. Precios orientativos; el detalle se cierra por escrito.
             </p>
-            <a class="hanzo-btn hanzo-footer-cta__btn" href="mailto:hello@example.com"
-              >Book a free intro call</a
-            >
-          </div>
-        </section>
-      </main>
+          </header>
 
-      <footer class="hanzo-footer-bar">
-        <div class="hanzo__inner">© Hanzo Studio, 2026</div>
-      </footer>
+          <div class="tarifas__grid">
+            <article class="tarifa-card">
+              <div class="tarifa-card__inner">
+                <h3 class="tarifa-card__name">Landing page</h3>
+                <p class="tarifa-card__desc">
+                  Una página que concentra propuesta, prueba social y conversión: ideal para campañas, lanzamiento o
+                  validar mercado con tono premium.
+                </p>
+                <p class="tarifa-card__price">Desde <strong>249€</strong></p>
+                <a class="btn btn--tarifa btn--magnetic" href="#contact" data-magnetic>
+                  <span class="btn__ripple" aria-hidden="true"></span>
+                  Solicitar propuesta
+                </a>
+                <ul class="tarifa-card__list">
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Tiempo de entrega</span>
+                      <span class="tarifa-card__value">Desde 10 días laborables</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Incluye</span>
+                      <span class="tarifa-card__value">Hosting, correo profesional, home y legales</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Diseño</span>
+                      <span class="tarifa-card__value">Único y 100% responsive</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">SEO</span>
+                      <span class="tarifa-card__value">Estructura friendly</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Blog</span>
+                      <span class="tarifa-card__value">Opcional (+15€)</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="tarifa-card">
+              <div class="tarifa-card__inner">
+                <h3 class="tarifa-card__name">Web corporativa</h3>
+                <p class="tarifa-card__desc">
+                  Multipágina para servicios, casos y contacto: estructura que escala con el equipo sin rediseño
+                  encubierto cada trimestre.
+                </p>
+                <p class="tarifa-card__price">Desde <strong>390€</strong></p>
+                <a class="btn btn--tarifa btn--magnetic" href="#contact" data-magnetic>
+                  <span class="btn__ripple" aria-hidden="true"></span>
+                  Solicitar propuesta
+                </a>
+                <ul class="tarifa-card__list">
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Tiempo de entrega</span>
+                      <span class="tarifa-card__value">2–4 semanas</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Incluye</span>
+                      <span class="tarifa-card__value">Hasta 5 páginas principales y piezas clave</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Diseño</span>
+                      <span class="tarifa-card__value">Único y 100% responsive</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">SEO</span>
+                      <span class="tarifa-card__value">Estructura friendly</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Blog</span>
+                      <span class="tarifa-card__value">Opcional (+15€)</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </article>
+
+            <article class="tarifa-card">
+              <div class="tarifa-card__inner">
+                <h3 class="tarifa-card__name">Tienda online</h3>
+                <p class="tarifa-card__desc">
+                  Lo necesario para vender y cobrar con confianza: catálogo, pasarelas y formación para no depender de
+                  terceros en cada cambio pequeño.
+                </p>
+                <p class="tarifa-card__price">Desde <strong>490€</strong></p>
+                <a class="btn btn--tarifa btn--magnetic" href="#contact" data-magnetic>
+                  <span class="btn__ripple" aria-hidden="true"></span>
+                  Solicitar propuesta
+                </a>
+                <ul class="tarifa-card__list">
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Tiempo de entrega</span>
+                      <span class="tarifa-card__value">3–6 semanas</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Incluye</span>
+                      <span class="tarifa-card__value">Catálogo, pasarelas de pago y hosting</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Diseño</span>
+                      <span class="tarifa-card__value">UX orientada a conversión</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">Formación</span>
+                      <span class="tarifa-card__value">Uso del panel incluido</span>
+                    </div>
+                  </li>
+                  <li class="tarifa-card__item">
+                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <div class="tarifa-card__feature">
+                      <span class="tarifa-card__label">SEO</span>
+                      <span class="tarifa-card__value">Estructura friendly</span>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer site-footer--light" id="contact">
+      <div class="shell">
+        <div class="site-footer__bottom">
+          <div class="site-footer__col">
+            <p class="site-footer__col-head site-footer__col-head--stack-clock">
+              <span class="site-footer__utc" data-footer-clock-offset aria-live="polite"></span>
+              <span class="site-footer__clock" data-footer-clock aria-live="polite">--:--:--</span>
+            </p>
+            <p class="site-footer__col-line">Con base en Valencia</p>
+            <p class="site-footer__col-line">Trabajando para toda España</p>
+          </div>
+          <div class="site-footer__col">
+            <p class="site-footer__col-head">
+              <a class="site-footer__mailto" href="mailto:giga109@gmail.com">giga109@gmail.com</a>
+            </p>
+            <p class="site-footer__col-line">
+              <a class="site-footer__action" href="mailto:giga109@gmail.com">Solicitar propuesta</a>
+            </p>
+          </div>
+          <div class="site-footer__col">
+            <p class="site-footer__col-head">© <span id="year"></span> Giga109</p>
+            <p class="site-footer__col-line">
+              <a class="site-footer__action" href="#privacidad">Política de privacidad</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cursor" aria-hidden="true" data-cursor>
+      <div class="cursor__ring"></div>
+      <div class="cursor__dot"></div>
+      <div class="cursor__label">ver</div>
     </div>
 
-    <script defer src="js/hanzo.js"></script>
+    <script src="js/footer-clock.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>

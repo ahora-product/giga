@@ -1,0 +1,14 @@
+---
+description: Convenciones CSS, tokens y motion para la landing
+globs: styles/**/*.css
+alwaysApply: false
+---
+
+# CSS — tokens y modularidad
+
+- Variables en **`:root`**: espaciado (`--space-*`), radios (`--radius-*`), color (`--bg`, `--surface`, `--border`, `--text`, `--muted`, `--accent`), tipografía por **tokens de tamaño fijos** (no fluid typography).
+- Organizar por archivos: tokens → base → layout → componentes → secciones → motion. `main.css` solo importa en orden.
+- **Prohibido** para tamaños de texto: `clamp()` en `font-size`, y reglas `@media` que cambien `font-size` entre breakpoints. Sí se permite ajustar columnas, gaps, padding, `max-width`, `display`, etc.
+- Fondo oscuro constante; **un acento** controlado; bordes sutiles; sombras suaves.
+- Marquee / carruseles: animaciones con **`transform`** y **`will-change` moderado**; revisar overflow en móvil (sin scroll horizontal).
+- `prefers-reduced-motion`: acortar o desactivar animaciones decorativas; no romper acordeón/estados si se usan transiciones — preferir clases específicas (p. ej. `.motion-safe`) en lugar de anular todas las transiciones globalmente de forma ciega.

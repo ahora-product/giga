@@ -1,0 +1,56 @@
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(18);
+    opacity: 0;
+  }
+}
+
+.hero__motion .hero__line {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+html.motion-safe .hero.is-booted .hero__motion .hero__line {
+  animation: fade-up var(--dur-3) var(--ease-out-expo) forwards;
+}
+
+html.motion-safe .hero.is-booted .hero__line:nth-child(1) {
+  animation-delay: 80ms;
+}
+
+html.motion-safe .hero.is-booted .hero__line:nth-child(2) {
+  animation-delay: 180ms;
+}
+
+html.motion-safe .hero.is-booted .hero__sub {
+  animation: fade-up var(--dur-3) var(--ease-out-expo) 280ms forwards;
+  opacity: 0;
+}
+
+html.motion-safe .hero.is-booted .hero__actions {
+  animation: fade-up var(--dur-3) var(--ease-out-expo) 400ms forwards;
+  opacity: 0;
+}
+
+html:not(.motion-safe) .hero__motion .hero__line,
+html:not(.motion-safe) .hero__sub,
+html:not(.motion-safe) .hero__actions {
+  opacity: 1;
+  transform: none;
+  animation: none;
+}
