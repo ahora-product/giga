@@ -10,19 +10,24 @@
 
   --surface-2: #121212;
 
+  --surface-slate: #16171a;
+
   --border: rgba(255, 255, 255, 0.08);
 
   --border-strong: rgba(255, 255, 255, 0.14);
 
-  --text: #f4f1ea;
+  --text: #ffffff;
 
-  --muted: #a39e93;
+  --muted: #a3a3a3;
 
-  --accent: #c9a962;
+  --accent: #ffffff;
 
-  --accent-soft: rgba(201, 169, 98, 0.18);
+  /* Lima / verde corporativo (CTA, precios, acentos) */
+  --brand-lime: #b6ee69;
 
-  --danger: #ff6b6b;
+  --accent-soft: rgba(255, 255, 255, 0.14);
+
+  --danger: #737373;
 
 
 

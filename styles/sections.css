@@ -83,37 +83,34 @@
 
 .project-carousel {
   --project-carousel-gap: var(--space-3);
+  /* Un ciclo completo del bucle; muy largo = casi imperceptible pero no se detiene */
+  --project-marquee-dur: 55s;
+  /* 4:3 (alto ≈ 3/4 del ancho); ancho máx. ~534px → alto ~400px como antes */
+  --project-slide-w: min(534px, calc((100vw - var(--project-carousel-gap)) / 2));
 
   background: var(--bg);
   color: var(--text);
 }
 
 .project-carousel__viewport {
-  container-type: inline-size;
-  container-name: project-carousel;
-  overflow-x: auto;
+  width: 100vw;
+  max-width: 100%;
+  margin-inline: calc(50% - 50vw);
+  overflow-x: hidden;
   overflow-y: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  cursor: grab;
 }
 
-.project-carousel__viewport::-webkit-scrollbar {
-  display: none;
-}
-
-.project-carousel__viewport.is-dragging {
-  cursor: grabbing;
-  scroll-snap-type: none;
-  scroll-behavior: auto;
+.project-carousel__strip {
+  display: flex;
+  flex-wrap: nowrap;
+  width: max-content;
 }
 
 .project-carousel__track {
   display: flex;
+  flex: 0 0 auto;
+  flex-wrap: nowrap;
   gap: var(--project-carousel-gap);
-  width: max-content;
   margin: 0;
   padding: 0 0 2px;
   list-style: none;
@@ -121,13 +118,12 @@
 
 .project-carousel__slide {
   flex: 0 0 auto;
-  width: calc((100cqi - var(--project-carousel-gap)) / 2);
-  scroll-snap-align: start;
+  width: var(--project-slide-w);
 }
 
 .project-carousel__card {
   display: block;
-  aspect-ratio: 5 / 3;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--radius-md);
   border: 1px solid var(--border-strong);
@@ -149,34 +145,41 @@
   object-fit: cover;
 }
 
-@container project-carousel (max-width: 40rem) {
-  .project-carousel__slide {
-    width: min(100cqi, 100%);
+@media (max-width: 40rem) {
+  .project-carousel {
+    --project-slide-w: calc((100vw - var(--project-carousel-gap)) / 2);
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .project-carousel__viewport {
+    overflow-x: auto;
     scroll-behavior: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .project-carousel__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .project-carousel__strip {
+    transform: none;
+  }
+
+  .project-carousel__slide {
+    scroll-snap-align: start;
   }
 }
 
 .studio-sheet {
   background: #000000;
-  color: #f4f1ea;
+  color: #ffffff;
 }
 
 .studio-panel {
   padding-block: var(--space-10);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.studio-sheet .studio-panel:first-child {
-  border-top: none;
-}
-
-.studio-panel--cta {
-  padding-bottom: calc(var(--space-10) + var(--space-2));
 }
 
 .studio-row {
@@ -193,7 +196,7 @@
   font-weight: var(--fw-medium);
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.42);
+  color: #9a9a9a;
 }
 
 .studio-row__main {
@@ -208,16 +211,65 @@
   font-weight: var(--fw-regular);
   line-height: 1.65;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.72);
+  color: #ffffff;
 }
 
 .studio-prose:last-child {
   margin-bottom: 0;
 }
 
-.studio-prose--compact {
-  margin-bottom: var(--space-6);
-  max-width: 32rem;
+.studio-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-6) var(--space-7);
+  margin-top: var(--space-8);
+  padding-top: var(--space-7);
+  max-width: 48rem;
+}
+
+.studio-stat {
+  margin: 0;
+  min-width: 0;
+}
+
+.studio-stat__value {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: var(--type-lg);
+  font-weight: var(--fw-medium);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--brand-lime);
+  font-variant-numeric: tabular-nums;
+}
+
+.studio-stat__affix {
+  color: var(--brand-lime);
+  font-weight: var(--fw-medium);
+}
+
+.studio-stat__affix--suffix {
+  margin-inline-start: 0.02em;
+}
+
+.studio-stat__num {
+  display: inline-block;
+  min-width: 1ch;
+}
+
+.studio-stat__label {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.35;
 }
 
 .studio-statement {
@@ -253,8 +305,8 @@
   min-height: 4rem;
   padding: var(--space-2) var(--space-3);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.05);
+  border: 0;
+  background: var(--surface-slate);
 }
 
 .client-logo-grid__img {
@@ -275,26 +327,17 @@
 .studio-services {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 2px;
-  overflow: hidden;
+  gap: var(--space-6) var(--space-7);
+  border: none;
+  border-radius: 0;
+  overflow: visible;
   background: #000000;
 }
 
 .studio-service {
   margin: 0;
   padding: var(--space-6) var(--space-5);
-  border-right: 1px solid rgba(255, 255, 255, 0.14);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   min-width: 0;
-}
-
-.studio-service:nth-child(2n) {
-  border-right: none;
-}
-
-.studio-service:nth-child(n + 3) {
-  border-bottom: none;
 }
 
 .studio-service__head {
@@ -326,7 +369,7 @@
   font-weight: var(--fw-regular);
   line-height: 1.45;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.52);
+  color: #ffffff;
 }
 
 @media (max-width: 48rem) {
@@ -339,48 +382,25 @@
     margin-top: 0;
   }
 
+  .studio-stats {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
   .studio-services {
     grid-template-columns: 1fr;
-  }
-
-  .studio-service {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  }
-
-  .studio-service:nth-child(2n) {
-    border-right: none;
-  }
-
-  .studio-service:nth-child(n + 3) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-  }
-
-  .studio-service:last-child {
-    border-bottom: none;
+    gap: var(--space-7);
   }
 }
 
 .tarifas {
   position: relative;
-  padding-block: clamp(3.5rem, 8vw, 5.5rem);
-  background: #000000;
   color: #ffffff;
 }
 
 .tarifas__intro {
   max-width: 36rem;
   margin-bottom: clamp(2rem, 5vw, 3rem);
-}
-
-.tarifas__kicker {
-  margin: 0 0 0.65rem;
-  font-family: var(--font-body);
-  font-size: var(--type-sm);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.42);
 }
 
 .tarifas__title {
@@ -400,7 +420,7 @@
   font-weight: var(--fw-regular);
   line-height: 1.65;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.52);
+  color: #ffffff;
 }
 
 .tarifas__grid {
@@ -428,7 +448,7 @@
 
 .tarifa-card__inner {
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto auto auto;
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
   row-gap: 0.85rem;
   height: 100%;
   min-height: 0;
@@ -438,9 +458,9 @@
 .tarifa-card__name {
   margin: 0;
   font-family: var(--font-display);
-  font-size: var(--type-md);
+  font-size: calc(var(--type-md) * 1.5);
   font-weight: var(--fw-medium);
-  line-height: 1.25;
+  line-height: 1.2;
   letter-spacing: -0.015em;
   text-transform: none;
   color: #ffffff;
@@ -448,28 +468,37 @@
 
 .tarifa-card__desc {
   margin: 0;
+  padding-bottom: var(--space-5);
   font-family: var(--font-body);
-  font-size: var(--type-md);
+  font-size: var(--type-sm);
   font-weight: var(--fw-regular);
   line-height: 1.55;
-  letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.02em;
+  color: var(--muted);
   align-self: start;
   min-height: 0;
 }
 
 .tarifa-card__price {
   margin: 0;
+  align-self: stretch;
+  text-align: right;
   font-family: var(--font-display);
-  font-size: var(--type-md);
+  font-size: var(--type-sm);
   font-weight: var(--fw-regular);
-  letter-spacing: 0;
-  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: var(--muted);
 }
 
 .tarifa-card__price strong {
-  letter-spacing: -0.02em;
-  color: #ffffff;
+  display: block;
+  margin-top: 0.2rem;
+  font-size: calc(var(--type-md) * 2.35);
+  font-weight: var(--fw-medium);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--brand-lime);
 }
 
 .tarifa-card .btn--tarifa {
@@ -485,6 +514,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
+  min-height: 0;
 }
 
 .tarifa-card__item {
@@ -507,7 +537,7 @@
   line-height: 1.35;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.42);
+  color: var(--muted);
 }
 
 .tarifa-card__value {
@@ -516,7 +546,7 @@
   font-weight: var(--fw-regular);
   line-height: 1.45;
   letter-spacing: 0.01em;
-  color: rgba(255, 255, 255, 0.88);
+  color: #ffffff;
 }
 
 .tarifa-card__check {
@@ -525,7 +555,7 @@
   margin-top: 0.12rem;
   font-size: var(--type-md);
   line-height: 1;
-  color: rgba(110, 200, 140, 0.92);
+  color: var(--brand-lime);
 }
 
 @media (max-width: 60rem) {
@@ -537,17 +567,21 @@
 }
 
 .site-footer.site-footer--light {
-  --footer-bg: #f7f7f5;
-  --footer-fg: #0e0e0e;
-  --footer-muted: #9a9a9a;
-  --footer-soft: #efefec;
-  --footer-border: rgba(14, 14, 14, 0.08);
+  /* Panel: mismo gris que celdas de logos; franja exterior negra para que la tarjeta se lea */
+  --footer-bg: var(--surface-slate);
+  --footer-fg: #ffffff;
+  --footer-muted: rgba(255, 255, 255, 0.52);
+  --footer-soft: rgba(255, 255, 255, 0.08);
 
   margin-top: var(--space-10);
   padding-block: var(--space-8);
   padding-inline: var(--gutter);
   background: var(--bg);
   color: var(--footer-fg);
+}
+
+.site-footer.site-footer--light :is(a, button):focus-visible {
+  outline-color: #ffffff;
 }
 
 .site-footer__shell {
@@ -561,10 +595,9 @@
   gap: var(--space-6);
   padding: 1.125rem 1.125rem 1rem;
   border-radius: 0.75rem;
-  border: 1px solid var(--footer-border);
+  border: 0;
   background: var(--footer-bg);
   color: var(--footer-fg);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45);
 }
 
 .site-footer__top {
@@ -649,7 +682,7 @@
   margin-top: 0.1rem;
   padding: 0.6rem 0.95rem;
   border-radius: 0.6rem;
-  border: 1px solid var(--footer-border);
+  border: 0;
   background: var(--footer-soft);
   font-family: var(--font-body);
   font-size: var(--type-md);
@@ -662,7 +695,7 @@
 
 .site-footer__mailpill:hover,
 .site-footer__mailpill:focus-visible {
-  background: #ecece9;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .site-footer__bottom {
@@ -685,18 +718,18 @@
   font-weight: var(--fw-regular);
   line-height: 1.35;
   letter-spacing: 0.01em;
-  color: #1b1b1b;
+  color: var(--footer-fg);
 }
 
 .site-footer__legal-link {
   font-weight: var(--fw-medium);
-  color: #4b4b4b;
+  color: var(--footer-muted);
   text-decoration: none;
 }
 
 .site-footer__legal-link:hover,
 .site-footer__legal-link:focus-visible {
-  color: #141414;
+  color: var(--footer-fg);
 }
 
 .site-footer__socials {
@@ -712,7 +745,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 0.48rem;
-  border: 1px solid var(--footer-border);
+  border: 0;
   background: var(--footer-soft);
   font-family: var(--font-body);
   font-size: var(--type-md);
@@ -725,7 +758,7 @@
 
 .site-footer__social:hover,
 .site-footer__social:focus-visible {
-  background: #ecece9;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .site-footer__social .ph {

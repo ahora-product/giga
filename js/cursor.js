@@ -6,16 +6,20 @@ export function initCursor() {
   const root = document.querySelector("[data-cursor]");
   if (!root) return;
 
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const reduceMotionMq = window.matchMedia("(prefers-reduced-motion: reduce)");
   const fine = window.matchMedia("(pointer: fine)").matches;
-  if (reduce || !fine) return;
+  /* Táctil / puntero grueso: sin cursor custom (VISION). */
+  if (!fine) return;
 
-  const html = document.documentElement;
-  if (!html.classList.contains("motion-safe")) return;
-
+  document.documentElement.classList.add("is-cursor-on");
   const body = document.body;
-  html.classList.add("is-cursor-on");
   body.classList.add("is-cursor-custom");
+
+  const syncReducedMotion = () => {
+    root.classList.toggle("cursor--reduced", reduceMotionMq.matches);
+  };
+  syncReducedMotion();
+  reduceMotionMq.addEventListener("change", syncReducedMotion);
 
   let mx = -100;
   let my = -100;
@@ -46,11 +50,13 @@ export function initCursor() {
   };
 
   const tick = () => {
-    rx = lerp(rx, mx, 0.16);
-    ry = lerp(ry, my, 0.16);
+    const ringLag = root.classList.contains("cursor--reduced") ? 1 : 0.16;
+    rx = lerp(rx, mx, ringLag);
+    ry = lerp(ry, my, ringLag);
 
-    const dotX = mx - 3;
-    const dotY = my - 3;
+    const dotR = 4;
+    const dotX = mx - dotR;
+    const dotY = my - dotR;
     const ringSize = root.classList.contains("is-hover-image") ? 46 : 40;
     const ringOffset = ringSize / 2;
     const ringX = rx - ringOffset;

@@ -54,3 +54,30 @@ html:not(.motion-safe) .hero__actions {
   transform: none;
   animation: none;
 }
+
+@keyframes project-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* El carrusel no depende de `html.motion-safe` (solo la pone main.js al cargar):
+   sin servidor o con JS tardío, antes quedaba congelado. */
+@media (prefers-reduced-motion: no-preference) {
+  .project-carousel__strip {
+    animation: project-marquee var(--project-marquee-dur) linear infinite;
+    will-change: transform;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-carousel__strip {
+    animation: none;
+    will-change: auto;
+    transform: none;
+  }
+}

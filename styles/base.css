@@ -34,8 +34,11 @@ strong {
   font-weight: var(--fw-strong);
 }
 
-body.is-cursor-custom {
-  cursor: none;
+/* El cursor del sistema debe ocultarse en todo el documento: los .btn y enlaces
+   llevan cursor: pointer y anularían solo el cursor: none del body. */
+html.is-cursor-on,
+html.is-cursor-on * {
+  cursor: none !important;
 }
 
 img,
@@ -54,7 +57,7 @@ a {
 
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid #ffffff;
   outline-offset: 3px;
 }
 

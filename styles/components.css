@@ -29,8 +29,15 @@
 }
 
 .btn--primary {
-  --btn-bg: var(--accent);
-  --btn-fg: #0b0b0c;
+  --btn-bg: #ffffff;
+  --btn-fg: #000000;
+  --btn-border: rgba(0, 0, 0, 0.14);
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  --btn-bg: var(--brand-lime);
+  --btn-fg: #000000;
   --btn-border: rgba(0, 0, 0, 0.12);
 }
 
@@ -39,9 +46,16 @@
   --btn-border: var(--border);
 }
 
+.btn--ghost:hover,
+.btn--ghost:focus-visible {
+  --btn-bg: color-mix(in srgb, var(--brand-lime) 14%, transparent);
+  --btn-fg: var(--text);
+  --btn-border: color-mix(in srgb, var(--brand-lime) 55%, transparent);
+}
+
 .btn--nav-pill {
-  --btn-bg: #f4f4f4;
-  --btn-fg: #0a0a0a;
+  --btn-bg: #ffffff;
+  --btn-fg: #000000;
   --btn-border: transparent;
   padding: 0.55rem 1.35rem;
   border-radius: 999px;
@@ -66,15 +80,23 @@
 
 .btn--header-cta:hover,
 .btn--header-cta:focus-visible {
-  --btn-bg: #0a0a0a;
-  --btn-fg: #ffffff;
-  --btn-border: #ffffff;
+  --btn-bg: var(--brand-lime);
+  --btn-fg: #000000;
+  --btn-border: var(--brand-lime);
+}
+
+.btn--nav-pill:hover,
+.btn--nav-pill:focus-visible {
+  --btn-bg: var(--brand-lime);
+  --btn-fg: #000000;
+  --btn-border: transparent;
+  outline-color: #000000;
 }
 
 .btn--tarifa {
-  --btn-bg: #1d7bff;
-  --btn-fg: #ffffff;
-  --btn-border: transparent;
+  --btn-bg: var(--brand-lime);
+  --btn-fg: #000000;
+  --btn-border: rgba(0, 0, 0, 0.12);
   width: 100%;
   padding-block: 0.7rem;
   border-radius: 999px;
@@ -86,29 +108,25 @@
 }
 
 .btn--tarifa:hover {
-  box-shadow: 0 10px 28px rgba(29, 123, 255, 0.32);
+  --btn-bg: color-mix(in srgb, var(--brand-lime) 88%, #000000);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.22),
+    0 0 0 1px color-mix(in srgb, var(--brand-lime) 35%, transparent);
 }
 
-.btn--studio-outline {
-  --btn-bg: transparent;
-  --btn-fg: #f4f1ea;
-  --btn-border: rgba(255, 255, 255, 0.78);
-  padding: 0.65rem 1.2rem;
-  border-radius: 0.35rem;
-  font-family: var(--font-body);
-  font-size: var(--type-md);
-  font-weight: var(--fw-medium);
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-.btn--studio-outline:hover {
-  --btn-border: rgba(255, 255, 255, 0.95);
-  --btn-bg: rgba(255, 255, 255, 0.04);
+.btn--tarifa:focus-visible {
+  outline-color: #0d0d0d;
 }
 
 .btn:hover {
   box-shadow: var(--shadow-sm);
+}
+
+/* Botón base (sin variante): acento lima en borde y fondo al pasar */
+.btn:not(.btn--primary):not(.btn--ghost):not(.btn--nav-pill):not(.btn--header-cta):not(.btn--tarifa):hover,
+.btn:not(.btn--primary):not(.btn--ghost):not(.btn--nav-pill):not(.btn--header-cta):not(.btn--tarifa):focus-visible {
+  --btn-bg: color-mix(in srgb, var(--brand-lime) 12%, var(--surface-2));
+  --btn-border: color-mix(in srgb, var(--brand-lime) 50%, transparent);
 }
 
 .btn--magnetic {
@@ -187,8 +205,8 @@
   width: 0.45rem;
   height: 0.45rem;
   border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 12px rgba(201, 169, 98, 0.55);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.35);
 }
 
 .cursor {
@@ -220,11 +238,13 @@ html.is-cursor-on .cursor {
 }
 
 .cursor__dot {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border-radius: 999px;
-  background: var(--text);
-  mix-blend-mode: difference;
+  background: var(--brand-lime);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.2),
+    0 0 14px rgba(182, 238, 105, 0.45);
   opacity: 0;
   transform: translate3d(var(--dot-x), var(--dot-y), 0);
   transition: opacity var(--dur-1) var(--ease-soft);
@@ -234,12 +254,18 @@ html.is-cursor-on .cursor {
   opacity: 1;
 }
 
+.cursor--reduced .cursor__ring,
+.cursor--reduced .cursor__label {
+  opacity: 0 !important;
+  visibility: hidden;
+}
+
 .cursor__ring {
   --ring-scale: 1;
   width: 40px;
   height: 40px;
   border-radius: 999px;
-  border: 1px solid rgba(244, 241, 234, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   transform: translate3d(var(--ring-x), var(--ring-y), 0) scale(var(--ring-scale));
   transform-origin: center center;
   transition:
@@ -253,8 +279,8 @@ html.is-cursor-on .cursor {
 
 .cursor.is-hover-link .cursor__ring {
   --ring-scale: 1.45;
-  border-color: rgba(201, 169, 98, 0.65);
-  background: rgba(201, 169, 98, 0.06);
+  border-color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .cursor.is-hover-image .cursor__ring {
@@ -262,7 +288,7 @@ html.is-cursor-on .cursor {
   width: 46px;
   height: 46px;
   border-radius: 6px;
-  border-color: rgba(244, 241, 234, 0.55);
+  border-color: rgba(255, 255, 255, 0.55);
 }
 
 .cursor__label {

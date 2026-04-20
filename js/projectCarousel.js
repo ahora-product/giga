@@ -1,57 +1,22 @@
-const DRAG_THRESHOLD = 8;
-
 export function initProjectCarousel() {
   const viewport = document.querySelector("[data-project-carousel]");
   if (!viewport) return;
 
-  let pointerDown = false;
-  let startX = 0;
-  let startScroll = 0;
-  let dragDistance = 0;
-  let activePointerId = null;
+  const strip = viewport.querySelector(".project-carousel__strip");
+  const track = strip?.querySelector(".project-carousel__track");
+  if (!strip || !track) return;
 
-  viewport.addEventListener("pointerdown", (e) => {
-    if (e.button !== 0) return;
-    pointerDown = true;
-    dragDistance = 0;
-    startX = e.clientX;
-    startScroll = viewport.scrollLeft;
-    activePointerId = e.pointerId;
-    viewport.setPointerCapture(e.pointerId);
-    viewport.classList.add("is-dragging");
+  const slides = track.querySelectorAll(".project-carousel__slide");
+  /* Si ya hay 10 ítems (5 + copia en un solo ul), el bucle ya está en el HTML. */
+  if (slides.length > 5) return;
+
+  slides.forEach((slide) => {
+    const node = slide.cloneNode(true);
+    node.setAttribute("aria-hidden", "true");
+    node.querySelectorAll("a").forEach((a) => {
+      a.setAttribute("tabindex", "-1");
+      a.removeAttribute("aria-label");
+    });
+    track.appendChild(node);
   });
-
-  viewport.addEventListener("pointermove", (e) => {
-    if (!pointerDown || e.pointerId !== activePointerId) return;
-    const dx = e.clientX - startX;
-    dragDistance = Math.max(dragDistance, Math.abs(dx));
-    viewport.scrollLeft = startScroll - dx;
-  });
-
-  const endDrag = (e) => {
-    if (e.pointerId !== activePointerId) return;
-    pointerDown = false;
-    activePointerId = null;
-    viewport.classList.remove("is-dragging");
-    try {
-      viewport.releasePointerCapture(e.pointerId);
-    } catch {
-      /* */
-    }
-  };
-
-  viewport.addEventListener("pointerup", endDrag);
-  viewport.addEventListener("pointercancel", endDrag);
-
-  viewport.addEventListener(
-    "click",
-    (e) => {
-      if (dragDistance > DRAG_THRESHOLD) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-      dragDistance = 0;
-    },
-    true,
-  );
 }
