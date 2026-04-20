@@ -14,8 +14,9 @@
   border: 1px solid var(--btn-border);
   background: var(--btn-bg);
   color: var(--btn-fg);
-  font-size: var(--text-sm);
-  letter-spacing: 0.08em;
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
@@ -44,31 +45,30 @@
   --btn-border: transparent;
   padding: 0.55rem 1.35rem;
   border-radius: 999px;
-  font-size: var(--text-sm);
-  font-weight: 500;
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
   letter-spacing: 0;
   text-transform: none;
 }
 
-.btn--hero-call {
-  --btn-bg: #ececec;
-  --btn-fg: #0a0a0a;
-  --btn-border: transparent;
-  gap: 0.65rem;
-  padding: 0.45rem 1.35rem 0.45rem 0.45rem;
+.btn--header-cta {
+  --btn-bg: #000000;
+  --btn-fg: #ffffff;
+  --btn-border: #ffffff;
+  padding: 0.55rem 1.35rem;
   border-radius: 999px;
-  font-size: var(--text-base);
-  font-weight: 500;
-  letter-spacing: -0.01em;
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0;
   text-transform: none;
+  border-width: 1px;
 }
 
-.btn--hero-call__avatar {
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  object-fit: cover;
-  flex-shrink: 0;
+.btn--header-cta:hover,
+.btn--header-cta:focus-visible {
+  --btn-bg: #0a0a0a;
+  --btn-fg: #ffffff;
+  --btn-border: #ffffff;
 }
 
 .btn--tarifa {
@@ -79,9 +79,9 @@
   padding-block: 0.7rem;
   border-radius: 999px;
   font-family: var(--font-body);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.02em;
   text-transform: none;
 }
 
@@ -96,8 +96,8 @@
   padding: 0.65rem 1.2rem;
   border-radius: 0.35rem;
   font-family: var(--font-body);
-  font-size: var(--text-sm);
-  font-weight: 500;
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
   letter-spacing: 0;
   text-transform: none;
 }
@@ -176,8 +176,9 @@
   border-radius: 999px;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.02);
-  font-size: var(--text-xs);
-  letter-spacing: 0.16em;
+  font-size: var(--type-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
 }
@@ -265,8 +266,9 @@ html.is-cursor-on .cursor {
 }
 
 .cursor__label {
-  font-size: var(--text-xs);
-  letter-spacing: 0.18em;
+  font-size: var(--type-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
   opacity: 0;

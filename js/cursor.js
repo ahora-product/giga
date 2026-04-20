@@ -25,7 +25,7 @@ export function initCursor() {
 
   const classify = (el) => {
     if (!el) return { link: false, image: false };
-    const interactive = el.closest("a, button, [data-magnetic], .nav__link, .mobile-nav__link");
+    const interactive = el.closest("a, button, [data-magnetic]");
     return { link: Boolean(interactive), image: false };
   };
 

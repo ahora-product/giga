@@ -10,7 +10,6 @@ function setActiveLink(id) {
 
 export function initNav() {
   const header = document.getElementById("site-header");
-  const details = document.querySelector(".mobile-nav");
 
   window.addEventListener(
     "scroll",
@@ -21,11 +20,7 @@ export function initNav() {
     { passive: true },
   );
 
-  document.querySelectorAll(".mobile-nav__link").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (details) details.open = false;
-    });
-  });
+  if (!document.querySelector("[data-nav-link]")) return;
 
   const sections = SECTION_IDS.map((id) => document.getElementById(id)).filter(Boolean);
   if (!sections.length) return;

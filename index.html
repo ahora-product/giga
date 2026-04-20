@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Giga109 — identidad, interfaces y web con criterio de producto para startups que necesitan credibilidad sin quemar runway."
+      content="Giga109 — estudio de diseño y desarrollo de webs y apps. Herramientas digitales pensadas para funcionar y durar. Valencia y toda España."
     />
-    <title>Giga109 — Estudio boutique de identidad y web</title>
+    <title>Giga109 — Diseño y desarrollo de webs y apps</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+      crossorigin="anonymous"
     />
     <link rel="stylesheet" href="styles/main.css" />
   </head>
@@ -32,33 +37,10 @@
           />
         </a>
 
-        <nav class="nav" aria-label="Principal">
-          <ul class="nav__links">
-            <li><a class="nav__link" href="#home" data-nav-link>Inicio</a></li>
-            <li><a class="nav__link" href="#tarifas" data-nav-link>Tarifas</a></li>
-            <li><a class="nav__link" href="#contact" data-nav-link>Contacto</a></li>
-          </ul>
-
-          <details class="mobile-nav">
-            <summary class="mobile-nav__summary">Menú</summary>
-            <div class="mobile-nav__panel">
-              <a class="mobile-nav__link" href="#home">Inicio</a>
-              <a class="mobile-nav__link" href="#tarifas">Tarifas</a>
-              <a class="mobile-nav__link" href="#contact">Contacto</a>
-              <a class="btn btn--nav-pill btn--magnetic" href="#contact" data-magnetic>
-                <span class="btn__ripple" aria-hidden="true"></span>
-                Solicitar propuesta
-              </a>
-            </div>
-          </details>
-        </nav>
-
-        <div class="site-header__end">
-          <a class="btn btn--nav-pill btn--magnetic" href="#contact" data-magnetic>
-            <span class="btn__ripple" aria-hidden="true"></span>
-            Solicitar propuesta
-          </a>
-        </div>
+        <a class="btn btn--header-cta btn--magnetic" href="#contact" data-magnetic>
+          <span class="btn__ripple" aria-hidden="true"></span>
+          Cuéntanos tu idea
+        </a>
       </div>
     </header>
 
@@ -68,39 +50,29 @@
           <div class="hero__copy">
             <h1 class="hero__title" id="hero-title">
               <span class="hero__motion">
-                <span class="hero__line">Partner de marca y web</span>
-                <span class="hero__line">para startups ambiciosas</span>
+                <span class="hero__line">Diseño y desarrollo de webs y apps.</span>
+                <span class="hero__line">Bien hechas, fáciles de usar.</span>
               </span>
             </h1>
             <p class="hero__sub">
-              Llevamos tu pitch a una experiencia que se siente premium en producto: identidad, interfaz y web en un
-              solo flujo, lista para crecer cuando aún no puedes fichar a un equipo completo.
+              Creamos herramientas digitales pensadas para tu negocio y para las personas que lo usan.
             </p>
             <div class="hero__actions">
-              <a class="btn btn--hero-call btn--magnetic" href="#contact" data-magnetic>
+              <a class="btn btn--nav-pill btn--magnetic" href="#contact" data-magnetic>
                 <span class="btn__ripple" aria-hidden="true"></span>
-                <img
-                  class="btn--hero-call__avatar"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=96&h=96&q=80"
-                  alt=""
-                  width="40"
-                  height="40"
-                  decoding="async"
-                  aria-hidden="true"
-                />
-                Diagnóstico 30 min
+                Cuéntanos tu idea
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section class="project-carousel section section--tight" id="proyectos" aria-label="Proyectos destacados">
+      <section class="project-carousel section section--tight" id="proyectos" aria-label="Selección de trabajos">
         <div class="shell">
           <div class="project-carousel__viewport" data-project-carousel>
             <ul class="project-carousel__track">
               <li class="project-carousel__slide">
-                <a class="project-carousel__card" href="#" aria-label="Proyecto: campaña en calle">
+                <a class="project-carousel__card" href="#" aria-label="Proyecto: imagen de marca en calle">
                   <img
                     class="project-carousel__img"
                     src="https://images.unsplash.com/photo-1547891654-e66ed7bef116?auto=format&amp;fit=crop&amp;w=1200&amp;h=750&amp;q=80"
@@ -114,7 +86,7 @@
                 </a>
               </li>
               <li class="project-carousel__slide">
-                <a class="project-carousel__card" href="#" aria-label="Proyecto: packaging y producto">
+                <a class="project-carousel__card" href="#" aria-label="Proyecto: packaging y detalle de producto">
                   <img
                     class="project-carousel__img"
                     src="https://images.unsplash.com/photo-1612817288484-6f916006741a?auto=format&amp;fit=crop&amp;w=1200&amp;h=750&amp;q=80"
@@ -128,7 +100,7 @@
                 </a>
               </li>
               <li class="project-carousel__slide">
-                <a class="project-carousel__card" href="#" aria-label="Proyecto: identidad editorial">
+                <a class="project-carousel__card" href="#" aria-label="Proyecto: piezas editoriales">
                   <img
                     class="project-carousel__img"
                     src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&amp;fit=crop&amp;w=1200&amp;h=750&amp;q=80"
@@ -142,7 +114,7 @@
                 </a>
               </li>
               <li class="project-carousel__slide">
-                <a class="project-carousel__card" href="#" aria-label="Proyecto: espacio retail">
+                <a class="project-carousel__card" href="#" aria-label="Proyecto: espacio comercial">
                   <img
                     class="project-carousel__img"
                     src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&amp;fit=crop&amp;w=1200&amp;h=750&amp;q=80"
@@ -161,53 +133,154 @@
       </section>
 
       <div class="studio-sheet">
-        <section class="studio-panel" id="clientes" aria-labelledby="studio-lbl-clientes">
+        <section class="studio-panel" id="confianza" aria-labelledby="studio-lbl-confianza">
           <div class="shell">
             <div class="studio-row">
-              <p class="studio-row__label" id="studio-lbl-clientes">Clientes</p>
+              <p class="studio-row__label" id="studio-lbl-confianza">Confianza</p>
               <div class="studio-row__main">
-                <p class="studio-lead">
-                  Equipos que compiten con marcas más grandes y necesitan credibilidad desde el primer scroll: orden
-                  visual, mensaje claro y una web que convierte sin parecer plantilla.
+                <p class="studio-prose">
+                  Giga109 es un estudio de diseño y desarrollo web y apps: cercano, con criterio, y pensado para
+                  personas y negocios que no tienen por qué hablar en jerga técnica.
                 </p>
-                <div class="studio-clients" aria-label="Marcas colaboradoras (marcas de ejemplo)">
-                  <span class="studio-client">Orbe</span>
-                  <span class="studio-client">Costera</span>
-                  <span class="studio-client studio-client--framed">Nexo</span>
-                  <span class="studio-client">Bruma</span>
-                </div>
+                <p class="studio-prose">
+                  Diseño y desarrollo digital bien hecho, pensado para funcionar y durar.
+                </p>
+                <ul class="client-logo-grid" aria-label="Marcas y proyectos recientes">
+                  <li class="client-logo-grid__item">
+                    <div class="client-logo-grid__tile">
+                      <img
+                        class="client-logo-grid__img"
+                        src="assets/clients/logo-beeme.png"
+                        alt="Beeme"
+                        width="200"
+                        height="80"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </li>
+                  <li class="client-logo-grid__item">
+                    <div class="client-logo-grid__tile">
+                      <img
+                        class="client-logo-grid__img"
+                        src="assets/clients/logo-binoovo.png"
+                        alt="Binoovo"
+                        width="200"
+                        height="80"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </li>
+                  <li class="client-logo-grid__item">
+                    <div class="client-logo-grid__tile">
+                      <img
+                        class="client-logo-grid__img"
+                        src="assets/clients/logo-donut.png"
+                        alt="Donut"
+                        width="200"
+                        height="80"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </li>
+                  <li class="client-logo-grid__item">
+                    <div class="client-logo-grid__tile">
+                      <img
+                        class="client-logo-grid__img"
+                        src="assets/clients/logo-kasa.png"
+                        alt="Kasa"
+                        width="200"
+                        height="80"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </li>
+                  <li class="client-logo-grid__item">
+                    <div class="client-logo-grid__tile">
+                      <img
+                        class="client-logo-grid__img"
+                        src="assets/clients/logo-kira&amp;gara.png"
+                        alt="Kira y Gara"
+                        width="200"
+                        height="80"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </li>
+                  <li class="client-logo-grid__item">
+                    <div class="client-logo-grid__tile">
+                      <img
+                        class="client-logo-grid__img"
+                        src="assets/clients/logo-streamion.png"
+                        alt="Streamion"
+                        width="200"
+                        height="80"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </li>
+                  <li class="client-logo-grid__item">
+                    <div class="client-logo-grid__tile">
+                      <img
+                        class="client-logo-grid__img"
+                        src="assets/clients/logo-streamion-1.png"
+                        alt="Streamion"
+                        width="200"
+                        height="80"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </li>
+                  <li class="client-logo-grid__item">
+                    <div class="client-logo-grid__tile">
+                      <img
+                        class="client-logo-grid__img"
+                        src="assets/clients/logo-time_eat.png"
+                        alt="Time Eat"
+                        width="200"
+                        height="80"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="studio-panel" id="quienes-somos" aria-labelledby="studio-lbl-quienes">
+        <section class="studio-panel" id="estudio" aria-labelledby="studio-lbl-estudio">
           <div class="shell">
             <div class="studio-row">
-              <p class="studio-row__label" id="studio-lbl-quienes">Quiénes somos</p>
+              <p class="studio-row__label" id="studio-lbl-estudio">El estudio</p>
               <div class="studio-row__main">
                 <p class="studio-prose">
-                  Giga109 es un estudio boutique enfocado en identidad, interfaces y web para marcas en fase de
-                  crecimiento. Pocos proyectos a la vez, mucha coherencia entre lo que prometes y lo que se ve.
+                  Giga109 es un estudio de diseño y desarrollo web y apps: cercano, con criterio, y pensado para
+                  personas y negocios que no tienen por qué hablar en jerga técnica.
                 </p>
                 <p class="studio-prose">
-                  No vendemos páginas bonitas sueltas: diseñamos sistemas visuales que sostienen producto, marketing y
-                  ventas, con legibilidad, rendimiento y detalle en cada interacción.
+                  Diseño y desarrollo digital bien hecho, pensado para funcionar y durar.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <section class="studio-panel" id="por-que" aria-labelledby="studio-lbl-porque">
+        <section class="studio-panel" id="diferencial" aria-labelledby="studio-lbl-diferencial">
           <div class="shell">
             <div class="studio-row">
-              <p class="studio-row__label" id="studio-lbl-porque">Por qué con nosotros</p>
+              <p class="studio-row__label" id="studio-lbl-diferencial">Qué nos importa</p>
               <div class="studio-row__main">
                 <p class="studio-statement">
-                  Contratar un estudio grande cuesta como contratar un estudio grande. Giga109 cubre el tramo intermedio:
-                  presentación de agencia y operación de startup. Priorizamos lo que multiplica percepción de calidad —
-                  jerarquía, motion con intención, consistencia del sistema — antes que adornos que no convierten.
+                  Cuidamos el diseño, pero también lo que no se ve. Cada decisión tiene un sentido, y se nota en el
+                  resultado.
                 </p>
               </div>
             </div>
@@ -222,42 +295,82 @@
                 <div class="studio-services">
                   <article class="studio-service">
                     <header class="studio-service__head">
-                      <h3 class="studio-service__title">Landing de alto impacto</h3>
+                      <h3 class="studio-service__title">Webs</h3>
                     </header>
                     <ul class="studio-service__list">
-                      <li>Propuesta, prueba social y CTA en una sola página</li>
-                      <li>Ideal para validar mercado o reforzar una ronda</li>
-                      <li>Diseño y front listos para publicar</li>
+                      <li>Diseñadas con intención</li>
+                      <li>Para que se entiendan y funcionen</li>
                     </ul>
                   </article>
                   <article class="studio-service">
                     <header class="studio-service__head">
-                      <h3 class="studio-service__title">Web corporativa / producto</h3>
+                      <h3 class="studio-service__title">Tiendas online</h3>
                     </header>
                     <ul class="studio-service__list">
-                      <li>Arquitectura de contenidos e interfaz</li>
-                      <li>Implementación con foco en rendimiento</li>
-                      <li>Accesibilidad y SEO técnico razonables, sin humo</li>
+                      <li>Pensadas para vender sin complicaciones</li>
+                      <li>Todo claro, todo en su sitio</li>
                     </ul>
                   </article>
                   <article class="studio-service">
                     <header class="studio-service__head">
-                      <h3 class="studio-service__title">Identidad + web (bundle founder)</h3>
+                      <h3 class="studio-service__title">Apps</h3>
                     </header>
                     <ul class="studio-service__list">
-                      <li>Logo, color, tipografía y componentes mínimos</li>
-                      <li>Mismo lenguaje visual en producto y web</li>
-                      <li>Manual breve para que el equipo lo aplique</li>
+                      <li>Cuando necesitas algo más específico</li>
+                      <li>Desarrollamos a medida</li>
                     </ul>
                   </article>
                   <article class="studio-service">
                     <header class="studio-service__head">
-                      <h3 class="studio-service__title">E-commerce esencial</h3>
+                      <h3 class="studio-service__title">Mantenimiento</h3>
                     </header>
                     <ul class="studio-service__list">
-                      <li>Catálogo, checkout y flujo de confianza</li>
-                      <li>Pasarelas y panel sin monstruo innecesario</li>
-                      <li>Formación para gestionar pedidos y stock</li>
+                      <li>Seguimos contigo después del lanzamiento</li>
+                      <li>Para que todo siga como debe</li>
+                    </ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="studio-panel" id="proceso" aria-labelledby="studio-lbl-proceso">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-proceso">Proceso</p>
+              <div class="studio-row__main">
+                <div class="studio-services">
+                  <article class="studio-service">
+                    <header class="studio-service__head">
+                      <h3 class="studio-service__title">1. Hablamos</h3>
+                    </header>
+                    <ul class="studio-service__list">
+                      <li>Nos cuentas qué necesitas</li>
+                    </ul>
+                  </article>
+                  <article class="studio-service">
+                    <header class="studio-service__head">
+                      <h3 class="studio-service__title">2. Definimos</h3>
+                    </header>
+                    <ul class="studio-service__list">
+                      <li>Le damos forma contigo</li>
+                    </ul>
+                  </article>
+                  <article class="studio-service">
+                    <header class="studio-service__head">
+                      <h3 class="studio-service__title">3. Diseñamos y desarrollamos</h3>
+                    </header>
+                    <ul class="studio-service__list">
+                      <li>Con calma y atención al detalle</li>
+                    </ul>
+                  </article>
+                  <article class="studio-service">
+                    <header class="studio-service__head">
+                      <h3 class="studio-service__title">4. Lanzamos</h3>
+                    </header>
+                    <ul class="studio-service__list">
+                      <li>Y seguimos ahí si hace falta</li>
                     </ul>
                   </article>
                 </div>
@@ -272,12 +385,11 @@
               <p class="studio-row__label" id="studio-lbl-empezar">Empezar proyecto</p>
               <div class="studio-row__main">
                 <p class="studio-prose studio-prose--compact">
-                  Cuéntanos etapa, sector y enlace a lo que tengáis (web, deck o Figma). Respondemos con alcance,
-                  presupuesto alineado a prioridades y siguiente paso —sin spam.
+                  Si tienes una idea, podemos trabajarla contigo. Y si no, empezamos desde cero.
                 </p>
                 <a class="btn btn--studio-outline btn--magnetic" href="#contact" data-magnetic>
                   <span class="btn__ripple" aria-hidden="true"></span>
-                  Solicitar propuesta
+                  Empezar proyecto
                 </a>
               </div>
             </div>
@@ -289,10 +401,10 @@
         <div class="shell stack-lg">
           <header class="tarifas__intro">
             <p class="tarifas__kicker">Tarifas</p>
-            <h2 class="tarifas__title" id="tarifas-title">Transparencia sin teatro</h2>
+            <h2 class="tarifas__title" id="tarifas-title">Precios claros, sin sorpresas</h2>
             <p class="tarifas__lead">
-              Paquetes con alcance cerrado y entregables listados: desde landing hasta tienda. Si el alcance crece, lo
-              vemos en la propuesta antes de facturar sorpresas. Precios orientativos; el detalle se cierra por escrito.
+              Tres referencias con lo que suele incluirse cada una. Si tu caso necesita algo distinto, lo vemos juntos
+              y te lo dejamos por escrito antes de empezar. Los importes son orientativos.
             </p>
           </header>
 
@@ -301,45 +413,45 @@
               <div class="tarifa-card__inner">
                 <h3 class="tarifa-card__name">Landing page</h3>
                 <p class="tarifa-card__desc">
-                  Una página que concentra propuesta, prueba social y conversión: ideal para campañas, lanzamiento o
-                  validar mercado con tono premium.
+                  Una sola página, bien ordenada: tu mensaje, lo esencial y un siguiente paso claro para quien entra.
+                  Ideal si quieres presentarte o lanzar algo concreto.
                 </p>
                 <p class="tarifa-card__price">Desde <strong>249€</strong></p>
                 <a class="btn btn--tarifa btn--magnetic" href="#contact" data-magnetic>
                   <span class="btn__ripple" aria-hidden="true"></span>
-                  Solicitar propuesta
+                  Cuéntanos tu idea
                 </a>
                 <ul class="tarifa-card__list">
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Tiempo de entrega</span>
                       <span class="tarifa-card__value">Desde 10 días laborables</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Incluye</span>
                       <span class="tarifa-card__value">Hosting, correo profesional, home y legales</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Diseño</span>
-                      <span class="tarifa-card__value">Único y 100% responsive</span>
+                      <span class="tarifa-card__value">A medida y adaptable al móvil</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
-                      <span class="tarifa-card__label">SEO</span>
-                      <span class="tarifa-card__value">Estructura friendly</span>
+                      <span class="tarifa-card__label">Buscadores</span>
+                      <span class="tarifa-card__value">Estructura pensada para encontrarte</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Blog</span>
                       <span class="tarifa-card__value">Opcional (+15€)</span>
@@ -353,45 +465,45 @@
               <div class="tarifa-card__inner">
                 <h3 class="tarifa-card__name">Web corporativa</h3>
                 <p class="tarifa-card__desc">
-                  Multipágina para servicios, casos y contacto: estructura que escala con el equipo sin rediseño
-                  encubierto cada trimestre.
+                  Varias páginas para contar servicios, casos y contacto: ordenado, fácil de ampliar cuando tu negocio
+                  crece.
                 </p>
                 <p class="tarifa-card__price">Desde <strong>390€</strong></p>
                 <a class="btn btn--tarifa btn--magnetic" href="#contact" data-magnetic>
                   <span class="btn__ripple" aria-hidden="true"></span>
-                  Solicitar propuesta
+                  Cuéntanos tu idea
                 </a>
                 <ul class="tarifa-card__list">
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Tiempo de entrega</span>
                       <span class="tarifa-card__value">2–4 semanas</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Incluye</span>
                       <span class="tarifa-card__value">Hasta 5 páginas principales y piezas clave</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Diseño</span>
-                      <span class="tarifa-card__value">Único y 100% responsive</span>
+                      <span class="tarifa-card__value">A medida y adaptable al móvil</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
-                      <span class="tarifa-card__label">SEO</span>
-                      <span class="tarifa-card__value">Estructura friendly</span>
+                      <span class="tarifa-card__label">Buscadores</span>
+                      <span class="tarifa-card__value">Estructura pensada para encontrarte</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Blog</span>
                       <span class="tarifa-card__value">Opcional (+15€)</span>
@@ -405,48 +517,48 @@
               <div class="tarifa-card__inner">
                 <h3 class="tarifa-card__name">Tienda online</h3>
                 <p class="tarifa-card__desc">
-                  Lo necesario para vender y cobrar con confianza: catálogo, pasarelas y formación para no depender de
-                  terceros en cada cambio pequeño.
+                  Catálogo, pagos y panel sencillo: para vender con tranquilidad y saber qué tocar cuando quieras
+                  cambiar algo.
                 </p>
                 <p class="tarifa-card__price">Desde <strong>490€</strong></p>
                 <a class="btn btn--tarifa btn--magnetic" href="#contact" data-magnetic>
                   <span class="btn__ripple" aria-hidden="true"></span>
-                  Solicitar propuesta
+                  Cuéntanos tu idea
                 </a>
                 <ul class="tarifa-card__list">
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Tiempo de entrega</span>
                       <span class="tarifa-card__value">3–6 semanas</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Incluye</span>
                       <span class="tarifa-card__value">Catálogo, pasarelas de pago y hosting</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Diseño</span>
-                      <span class="tarifa-card__value">UX orientada a conversión</span>
+                      <span class="tarifa-card__value">Claro para comprar sin fricción</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
                       <span class="tarifa-card__label">Formación</span>
-                      <span class="tarifa-card__value">Uso del panel incluido</span>
+                      <span class="tarifa-card__value">Te enseñamos a usar el panel</span>
                     </div>
                   </li>
                   <li class="tarifa-card__item">
-                    <span class="tarifa-card__check" aria-hidden="true"></span>
+                    <i class="ph ph-check tarifa-card__check" aria-hidden="true"></i>
                     <div class="tarifa-card__feature">
-                      <span class="tarifa-card__label">SEO</span>
-                      <span class="tarifa-card__value">Estructura friendly</span>
+                      <span class="tarifa-card__label">Buscadores</span>
+                      <span class="tarifa-card__value">Estructura pensada para encontrarte</span>
                     </div>
                   </li>
                 </ul>
@@ -458,29 +570,59 @@
     </main>
 
     <footer class="site-footer site-footer--light" id="contact">
-      <div class="shell">
-        <div class="site-footer__bottom">
-          <div class="site-footer__col">
-            <p class="site-footer__col-head site-footer__col-head--stack-clock">
-              <span class="site-footer__utc" data-footer-clock-offset aria-live="polite"></span>
-              <span class="site-footer__clock" data-footer-clock aria-live="polite">--:--:--</span>
-            </p>
-            <p class="site-footer__col-line">Con base en Valencia</p>
-            <p class="site-footer__col-line">Trabajando para toda España</p>
+      <div class="shell site-footer__shell">
+        <div class="site-footer__panel">
+          <div class="site-footer__top">
+            <article class="site-footer__col">
+              <p class="site-footer__label">Ubicación</p>
+              <p class="site-footer__line">Con sede en Valencia</p>
+              <p class="site-footer__line">Trabajando para toda España</p>
+              <p class="site-footer__clock" data-footer-clock aria-live="polite">--:--:--</p>
+            </article>
+
+            <article class="site-footer__col">
+              <p class="site-footer__label">También somos</p>
+              <a class="site-footer__link" href="#" aria-label="Ver Vravo">
+                Vravo
+                <i class="ph ph-arrow-square-out site-footer__icon" aria-hidden="true"></i>
+              </a>
+            </article>
+
+            <article class="site-footer__col">
+              <p class="site-footer__label">Última actualización</p>
+              <p class="site-footer__line">20/04/26</p>
+            </article>
+
+            <article class="site-footer__col site-footer__col--contact">
+              <p class="site-footer__label">¿Hablamos?</p>
+              <a class="site-footer__mailpill" href="mailto:giga109@gmail.com">
+                giga109@gmail.com
+                <i class="ph ph-arrow-square-out site-footer__icon" aria-hidden="true"></i>
+              </a>
+            </article>
           </div>
-          <div class="site-footer__col">
-            <p class="site-footer__col-head">
-              <a class="site-footer__mailto" href="mailto:giga109@gmail.com">giga109@gmail.com</a>
-            </p>
-            <p class="site-footer__col-line">
-              <a class="site-footer__action" href="mailto:giga109@gmail.com">Solicitar propuesta</a>
-            </p>
-          </div>
-          <div class="site-footer__col">
-            <p class="site-footer__col-head">© <span id="year"></span> Giga109</p>
-            <p class="site-footer__col-line">
-              <a class="site-footer__action" href="#privacidad">Política de privacidad</a>
-            </p>
+
+          <div class="site-footer__bottom">
+            <div class="site-footer__legal">
+              <p class="site-footer__legal-item">GIGA109 © <span id="year"></span></p>
+              <a class="site-footer__legal-item site-footer__legal-link" href="#legal">Legal y cookies</a>
+              <a class="site-footer__legal-item site-footer__legal-link" href="#privacidad">Privacidad</a>
+            </div>
+
+            <div class="site-footer__socials" aria-label="Redes sociales">
+              <a class="site-footer__social" href="#" aria-label="LinkedIn">
+                <i class="ph ph-linkedin-logo" aria-hidden="true"></i>
+              </a>
+              <a class="site-footer__social" href="#" aria-label="Instagram">
+                <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+              </a>
+              <a class="site-footer__social" href="#" aria-label="Twitter">
+                <i class="ph ph-twitter-logo" aria-hidden="true"></i>
+              </a>
+              <a class="site-footer__social" href="#" aria-label="Behance">
+                <i class="ph ph-behance-logo" aria-hidden="true"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
