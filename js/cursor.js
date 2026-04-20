@@ -7,9 +7,13 @@ export function initCursor() {
   if (!root) return;
 
   const reduceMotionMq = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const fine = window.matchMedia("(pointer: fine)").matches;
-  /* Táctil / puntero grueso: sin cursor custom (VISION). */
-  if (!fine) return;
+  /* En portátiles táctiles (p. ej. Windows) el puntero *principal* suele ser
+     `coarse` aunque exista ratón/trackpad; `any-pointer: fine` detecta ese caso. */
+  const hasFinePointer =
+    window.matchMedia("(pointer: fine)").matches ||
+    window.matchMedia("(any-pointer: fine)").matches;
+  /* Solo táctil / sin puntero fino: sin cursor custom (VISION). */
+  if (!hasFinePointer) return;
 
   document.documentElement.classList.add("is-cursor-on");
   const body = document.body;

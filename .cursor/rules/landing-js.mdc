@@ -7,7 +7,7 @@ alwaysApply: false
 # JavaScript — módulos y UX
 
 - **`main.js`** importa e inicializa módulos (nav, magnetic, ripple, cursor). Sin dependencias externas.
-- **Cursor custom** solo si `matchMedia('(pointer: fine)').matches` y **no** `prefers-reduced-motion: reduce`. En caso contrario: no añadir `cursor: none` ni capturar movimiento para lag.
+- **Cursor custom** solo si hay puntero fino: `matchMedia('(pointer: fine)').matches` **o** `matchMedia('(any-pointer: fine)').matches` (híbridos Windows con táctil suelen necesitar `any-pointer`), y **no** `prefers-reduced-motion: reduce`. En caso contrario: no añadir `cursor: none` ni capturar movimiento para lag.
 - Usar **`requestAnimationFrame`** para el loop del cursor; guardar `id` y cancelar en teardown si hace falta (navegación SPA no aplica aquí, pero evitar fugas en re-hidrates).
 - **IntersectionObserver** en `nav.js` para la sección activa al scroll; umbral razonable y `rootMargin` si mejora la sensación.
 - No introducir frameworks ni CDNs de runtime salvo que el proyecto ya los use (fuentes/imágenes externas OK si documentado).
