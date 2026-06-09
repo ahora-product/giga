@@ -223,8 +223,11 @@
     margin-left: 0;
   }
 
-  /* Sin giros ni desplazamientos en móvil: columna limpia. */
-  .work__item[class][class] .work__card {
+  /* Sin giros ni desplazamientos en móvil: columna limpia. El texto también
+     pierde su desplazamiento para quedar totalmente pegado a la imagen y que
+     el degradado sea una continuación directa de ella. */
+  .work__item[class][class] .work__card,
+  .work__item[class][class] .work__caption {
     transform: none;
   }
 
