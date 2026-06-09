@@ -4,7 +4,7 @@
     {
       "name": "giga",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4321"],
+      "runtimeArgs": ["scripts/devserver.py"],
       "port": 4321
     }
   ]

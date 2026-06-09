@@ -39,12 +39,13 @@ export function initProjectScatter() {
   let ticking = false;
 
   function measure() {
-    const header = document.querySelector(".site-header");
-    const headerH = header ? header.getBoundingClientRect().height : 0;
-    /* Debe coincidir con el "top" del sticky en CSS: header + 4% de pantalla. */
-    stickyTop = headerH + window.innerHeight * 0.04;
+    /* Leemos directamente el "top" del sticky que define el CSS (ahora hacia la
+       mitad de la pantalla). Así el efecto de profundidad queda coordinado con
+       la posición de pegado sin tener que duplicar el cálculo aquí. */
+    const cssTop = parseFloat(window.getComputedStyle(nodes[0]).top);
+    stickyTop = Number.isFinite(cssTop) ? cssTop : window.innerHeight * 0.5;
     /* La capa "entra" de forma suave a lo largo de un tercio de pantalla justo
-       antes de que la imagen llegue a pegarse arriba. */
+       antes de que la imagen llegue a pegarse. */
     approach = Math.max(1, window.innerHeight * 0.33);
   }
 
