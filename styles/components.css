@@ -352,9 +352,9 @@ html.is-cursor-on .cursor {
 }
 
 .to-top:hover {
-  background: #ffffff;
+  background: var(--brand-lime);
   color: #000000;
-  border-color: #ffffff;
+  border-color: var(--brand-lime);
 }
 
 .to-top:focus-visible {

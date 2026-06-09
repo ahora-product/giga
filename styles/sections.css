@@ -132,19 +132,22 @@
 .work__item:nth-child(12) { margin-left: min(36vw, calc(100% - var(--w))); }
 
 /* Desorden del montón: cada imagen se sube/baja un poco respecto a las demás,
-   así no forman una línea recta y unas sobresalen sobre otras. */
-.work__item:nth-child(1) .work__card  { transform: translateY(1.5rem); }
-.work__item:nth-child(2) .work__card  { transform: translateY(-2rem); }
-.work__item:nth-child(3) .work__card  { transform: translateY(3rem); }
-.work__item:nth-child(4) .work__card  { transform: translateY(-1rem); }
-.work__item:nth-child(5) .work__card  { transform: translateY(2.5rem); }
-.work__item:nth-child(6) .work__card  { transform: translateY(-3rem); }
-.work__item:nth-child(7) .work__card  { transform: translateY(0.5rem); }
-.work__item:nth-child(8) .work__card  { transform: translateY(-2.5rem); }
-.work__item:nth-child(9) .work__card  { transform: translateY(2rem); }
-.work__item:nth-child(10) .work__card { transform: translateY(-1.5rem); }
-.work__item:nth-child(11) .work__card { transform: translateY(3.5rem); }
-.work__item:nth-child(12) .work__card { transform: translateY(-2rem); }
+   así no forman una línea recta y unas sobresalen sobre otras. El mismo
+   desplazamiento se aplica a la imagen Y a su texto (ver .work__card y
+   .work__caption), de modo que la separación entre foto y texto es idéntica
+   en todos los proyectos. */
+.work__item:nth-child(1)  { --stack-offset: 1.5rem; }
+.work__item:nth-child(2)  { --stack-offset: -2rem; }
+.work__item:nth-child(3)  { --stack-offset: 3rem; }
+.work__item:nth-child(4)  { --stack-offset: -1rem; }
+.work__item:nth-child(5)  { --stack-offset: 2.5rem; }
+.work__item:nth-child(6)  { --stack-offset: -3rem; }
+.work__item:nth-child(7)  { --stack-offset: 0.5rem; }
+.work__item:nth-child(8)  { --stack-offset: -2.5rem; }
+.work__item:nth-child(9)  { --stack-offset: 2rem; }
+.work__item:nth-child(10) { --stack-offset: -1.5rem; }
+.work__item:nth-child(11) { --stack-offset: 3.5rem; }
+.work__item:nth-child(12) { --stack-offset: -2rem; }
 
 .work__card {
   display: block;
@@ -154,6 +157,8 @@
   color: inherit;
   /* Las imágenes de proyecto no son pulsables: cursor normal, no la "manita". */
   cursor: default;
+  /* Desplazamiento del montón (lo define cada .work__item). */
+  transform: translateY(var(--stack-offset, 0));
 }
 
 .work__card:focus-visible {
@@ -170,9 +175,15 @@
 .work__caption {
   display: flex;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: var(--space-3);
-  margin-top: var(--space-3);
+  /* Se mueve junto a su imagen para que la separación foto-texto sea idéntica
+     en todos los proyectos. */
+  transform: translateY(var(--stack-offset, 0));
+  /* Va pegado a la imagen para que el degradado parezca una continuación de ella.
+     Sin sangría a izquierda/derecha: el texto queda a ras del borde de la imagen. */
+  margin-top: 0;
+  padding: var(--space-4) 0 var(--space-5);
 }
 
 .work__meta {
@@ -215,6 +226,18 @@
   /* Sin giros ni desplazamientos en móvil: columna limpia. */
   .work__item[class][class] .work__card {
     transform: none;
+  }
+
+  /* El degradado solo se usa en móvil: aquí las imágenes van más juntas y el
+     texto puede quedar sobre la siguiente, así que el telón oscuro ayuda a
+     leerlo. En desktop no hace falta y se queda sin fondo. */
+  .work__caption {
+    background: linear-gradient(
+      to bottom,
+      var(--bg) 0%,
+      rgba(0, 0, 0, 0.85) 45%,
+      rgba(0, 0, 0, 0) 100%
+    );
   }
 }
 
