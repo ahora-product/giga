@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>giga109 × ykwmi — 2 variantes de estilo (Selina · ronda 2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<!-- Grotesca ancha y neutra para titulares (neo-grotesque tipo Helvetica/Suisse) + sans legible de cuerpo -->
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+/* =========================================================
+   BASE COMPARTIDA ykwmi — paleta crema/azul/morado + RUIDO
+   Las 2 variantes comparten TODO esto. Solo cambia el ACENTO.
+   ========================================================= */
+:root{
+  /* --- claros --- */
+  --crema:#F4EFE6;          /* fondo claro / hueso */
+  --tinta:#1A1A1A;          /* texto sobre crema */
+  --tinta-soft:#5a554c;     /* texto secundario sobre crema */
+
+  /* --- oscuros (secciones azules) --- */
+  --azul-900:#16294E;       /* azul profundo base */
+  --azul-600:#2E5BA6;       /* azul más claro del degradado */
+  --azul-halo:#5b8fd6;      /* brillo/halo azul claro */
+  --crema-soft:rgba(244,239,230,.72); /* texto secundario sobre azul */
+
+  /* --- hero cálido --- */
+  --indigo:#3B2D7E;
+  --malva:#A87089;
+  --melocoton:#C98F73;
+
+  /* --- líneas --- */
+  --line-dark:rgba(26,26,26,.16);   /* líneas sobre crema */
+  --line-light:rgba(244,239,230,.20);/* líneas sobre azul */
+
+  /* --- acento: lo redefine cada variante --- */
+  --acento:#1A1A1A;             /* FIEL: neutro */
+  --acento-text:#F4EFE6;        /* texto sobre el acento */
+  --acento-on-dark:#F4EFE6;     /* acento usado sobre azul */
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--azul-900);
+  color:var(--tinta);
+  font-family:"Inter",system-ui,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* -------- Barra superior de control (no es parte del diseño) -------- */
+.controlbar{
+  position:fixed;inset:0 0 auto 0;z-index:100;
+  display:flex;gap:.4rem;align-items:center;flex-wrap:wrap;
+  padding:.55rem .9rem;
+  background:rgba(10,16,30,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(255,255,255,.12);
+  font-family:"Inter",system-ui,sans-serif;color:#fff;
+}
+.controlbar .brand{font-weight:700;letter-spacing:.04em;margin-right:.6rem;font-size:.85rem}
+.controlbar .brand b{color:#b6ee69}
+.controlbar .hint{color:rgba(255,255,255,.6);font-size:.74rem;margin-left:auto}
+.tabbtn{
+  appearance:none;cursor:pointer;
+  border:1px solid rgba(255,255,255,.3);background:transparent;color:#fff;
+  border-radius:999px;padding:.4rem .95rem;font-size:.8rem;font-weight:600;
+  transition:all .18s ease;
+}
+.tabbtn:hover{border-color:#fff}
+.tabbtn.active{background:#F4EFE6;color:#1A1A1A;border-color:#F4EFE6}
+
+.stage{padding-top:3rem}
+.proposal{display:none}
+.proposal.active{display:block}
+
+/* -------- Mancha mesh que sigue al cursor (firma, común) --------
+   El color de la mancha lo fija cada SECCIÓN para ser coherente
+   con su fondo. Aquí solo geometría y blur. */
+.blob{
+  position:fixed;top:0;left:0;width:50vmax;height:50vmax;
+  border-radius:50%;pointer-events:none;z-index:0;
+  transform:translate(-50%,-50%);
+  filter:blur(70px);opacity:.6;
+  transition:opacity .4s ease;
+  will-change:transform;mix-blend-mode:soft-light;
+}
+@media (prefers-reduced-motion:reduce){.blob{display:none}}
+@media (hover:none),(pointer:coarse){.blob{display:none}}
+
+/* Capa de RUIDO reutilizable — intensidad SUBIDA (estilo BIOMA, +) */
+.noise{
+  position:absolute;inset:0;pointer-events:none;z-index:1;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* ruido sobre claro: multiplicado; sobre oscuro: aclara un poco */
+.sec-light .noise{opacity:.20;mix-blend-mode:multiply}
+.sec-dark  .noise{opacity:.16;mix-blend-mode:overlay}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.4rem}
+section{position:relative;overflow:hidden}
+.sec-inner{position:relative;z-index:2}
+
+/* ---------- TIPOGRAFÍA (común a las 2 variantes) ----------
+   Titulares: Archivo (neo-grotesque ancha, neutra) en MAYÚSCULAS, bold,
+   tamaños GRANDES y FIJOS (sin clamp, sin media-query de tamaño). */
+.d-title{
+  font-family:"Archivo",sans-serif;font-weight:800;
+  text-transform:uppercase;letter-spacing:-.01em;line-height:.94;
+  font-size:5rem;
+}
+.sectitle{
+  font-family:"Archivo",sans-serif;font-weight:800;
+  text-transform:uppercase;letter-spacing:-.005em;line-height:.98;
+  font-size:3rem;
+}
+.big-quote{
+  font-family:"Archivo",sans-serif;font-weight:700;
+  text-transform:uppercase;line-height:1.04;font-size:2.4rem;max-width:18ch;
+}
+.d-sub{font-size:1.18rem;max-width:40ch;margin:1.6rem 0 2rem;line-height:1.6}
+
+/* ---------- PASTILLAS (stadium con borde, común) ---------- */
+.pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid currentColor;border-radius:999px;
+  padding:.55rem 1.1rem;font-size:.74rem;font-weight:600;
+  letter-spacing:.06em;text-transform:uppercase;
+  background:transparent;
+}
+.dot{width:.5rem;height:.5rem;border-radius:50%;background:currentColor}
+
+/* botón base (cada variante define el acento) */
+.btn{
+  display:inline-flex;align-items:center;gap:.55rem;cursor:pointer;
+  border-radius:999px;padding:.85rem 1.6rem;font-weight:700;
+  font-size:.95rem;transition:transform .18s ease;text-decoration:none;
+  border:1px solid var(--acento);background:var(--acento);color:var(--acento-text);
+}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;border-color:currentColor;color:inherit}
+
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  margin-bottom:1.2rem;font-weight:600;
+}
+.eyebrow::before{content:"";width:1.8rem;height:1px;background:currentColor}
+
+/* header pastillado tipo ykwmi */
+.topnav{display:flex;align-items:center;justify-content:space-between;
+  padding:1.4rem 0;flex-wrap:wrap;gap:.8rem;position:relative;z-index:2}
+.topnav .logo{font-family:"Archivo",sans-serif;font-weight:800;letter-spacing:-.02em;
+  text-transform:uppercase;font-size:1.05rem;
+  border:1px solid currentColor;border-radius:999px;padding:.45rem 1rem}
+.topnav nav{display:flex;gap:.5rem;flex-wrap:wrap}
+.topnav nav a{font-size:.74rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  border:1px solid currentColor;border-radius:999px;padding:.5rem 1rem;text-decoration:none;color:inherit;
+  transition:all .18s ease}
+
+/* SECCIONES claro / oscuro */
+.sec-light{background:var(--crema);color:var(--tinta)}
+.sec-dark{color:var(--crema);
+  background:
+    radial-gradient(80% 120% at 80% 0%, var(--azul-600), rgba(46,91,166,0) 60%),
+    radial-gradient(60% 90% at 15% 100%, var(--azul-halo), rgba(91,143,214,0) 55%),
+    linear-gradient(160deg, var(--azul-900), #0f1d3a);
+}
+.hero{color:var(--crema);
+  background:
+    radial-gradient(70% 90% at 25% 10%, var(--indigo), rgba(59,45,126,0) 60%),
+    radial-gradient(60% 80% at 80% 30%, var(--malva), rgba(168,112,137,0) 55%),
+    radial-gradient(70% 90% at 60% 100%, var(--melocoton), rgba(201,143,115,0) 55%),
+    linear-gradient(160deg, #2a2160, #6a3f63 60%, #b07a64);
+}
+
+.hero .sec-pad{padding:2.5rem 0 4.5rem}
+.sec-pad{padding:4.2rem 0}
+
+/* servicios en columnas con líneas finas */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:2.5rem;
+  border-top:1px solid var(--line-dark)}
+.sec-dark .svc-grid{border-top:1px solid var(--line-light)}
+.svc{padding:1.6rem 1.2rem;border-right:1px solid var(--line-dark)}
+.sec-dark .svc{border-right:1px solid var(--line-light)}
+.svc:last-child{border-right:none}
+.svc h4{font-family:"Archivo",sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:-.01em;font-size:1.1rem;margin-bottom:.6rem}
+.svc p{font-size:.92rem;opacity:.8}
+.svc .num{font-size:.74rem;letter-spacing:.12em;margin-bottom:.9rem;display:block;font-weight:700}
+
+.two-col{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center}
+.hero-pills{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.8rem}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap}
+
+/* proyectos (sección clara) en bloques asimétricos */
+.proj-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.4rem;margin-top:2.4rem}
+.proj{border:1px solid var(--line-dark);border-radius:18px;overflow:hidden;
+  display:flex;flex-direction:column;min-height:230px;justify-content:space-between;
+  background:rgba(26,26,26,.02)}
+.proj .ph{flex:1;background:
+  radial-gradient(120% 120% at 20% 10%, var(--malva), rgba(168,112,137,0) 60%),
+  linear-gradient(160deg,#dfd6c6,#c9beac)}
+.proj.b .ph{background:
+  radial-gradient(120% 120% at 80% 10%, var(--azul-600), rgba(46,91,166,0) 60%),
+  linear-gradient(160deg,#d6ccbb,#bcb09c)}
+.proj .meta{padding:1.1rem 1.2rem;display:flex;align-items:center;justify-content:space-between}
+.proj .meta b{font-family:"Archivo",sans-serif;text-transform:uppercase;letter-spacing:-.01em;font-size:1.05rem}
+
+.precio{font-family:"Archivo",sans-serif;font-weight:800;font-size:2.6rem;letter-spacing:-.01em}
+
+/* nota explicativa de la variante */
+.note{position:relative;z-index:2;border:1px dashed currentColor;border-radius:14px;
+  padding:1.2rem 1.4rem;max-width:820px;margin:0 auto;opacity:.92}
+.note h5{font-family:"Archivo",sans-serif;text-transform:uppercase;letter-spacing:.04em;
+  font-size:.82rem;margin-bottom:.55rem}
+.note p{font-size:.92rem}
+footer.studio{padding:3rem 0 5rem;text-align:center;font-size:.85rem;position:relative;z-index:2}
+
+/* =========================================================
+   VARIANTE A — "FIEL"  (acento neutro, lo más ykwmi)
+   ========================================================= */
+#vA{--acento:#1A1A1A;--acento-text:#F4EFE6;--acento-on-dark:#F4EFE6;}
+#vA .sec-dark .btn{border-color:var(--crema);background:var(--crema);color:var(--azul-900)}
+#vA .precio{color:var(--tinta)}
+#vA .sec-dark .precio{color:var(--crema)}
+#vA .topnav nav a:hover{background:currentColor}
+
+/* =========================================================
+   VARIANTE B — "CON TU SELLO" (lima #b6ee69 como acento puntual)
+   ========================================================= */
+#vB{--lima:#b6ee69;--acento:#b6ee69;--acento-text:#15240a;--acento-on-dark:#b6ee69;}
+#vB .btn{border-color:var(--lima);background:var(--lima);color:#15240a}
+#vB .sec-dark .btn{border-color:var(--lima);background:var(--lima);color:#15240a}
+#vB .precio{color:#3a5a12}
+#vB .sec-dark .precio{color:var(--lima)}
+#vB .svc .num{color:#3a5a12}
+#vB .sec-dark .svc .num{color:var(--lima)}
+#vB .dot{background:#6a9a1f}
+#vB .sec-dark .dot{background:var(--lima)}
+#vB .eyebrow::before{background:#6a9a1f}
+#vB .sec-dark .eyebrow::before{background:var(--lima)}
+#vB .pill.acc{border-color:#6a9a1f;color:#3a5a12;background:rgba(182,238,105,.22)}
+#vB .sec-dark .pill.acc{border-color:var(--lima);color:var(--lima);background:rgba(182,238,105,.12)}
+#vB .topnav nav a:hover{background:var(--lima);color:#15240a;border-color:var(--lima)}
+
+/* responsive de LAYOUT (no de tamaño de fuente; los títulos sí bajan por legibilidad mínima) */
+@media(max-width:820px){
+  .two-col{grid-template-columns:1fr;gap:1.6rem}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .svc{border-bottom:1px solid var(--line-dark)}
+  .sec-dark .svc{border-bottom:1px solid var(--line-light)}
+  .proj-grid{grid-template-columns:1fr}
+  .d-title{font-size:2.9rem}
+  .sectitle{font-size:2rem}
+  .big-quote{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<div class="controlbar">
+  <span class="brand"><b>giga109 × ykwmi</b> · ronda 2 · 2 variantes</span>
+  <button class="tabbtn active" data-target="vA">A · FIEL</button>
+  <button class="tabbtn" data-target="vB">B · CON TU SELLO (lima)</button>
+  <span class="hint">Mueve el ratón: la mancha te sigue. Pulsa A o B (o teclas 1 / 2).</span>
+</div>
+
+<div class="stage">
+
+<!-- ===================== VARIANTE A : FIEL ===================== -->
+<div class="proposal active" id="vA">
+  <div class="blob" data-blob></div>
+
+  <!-- HERO cálido índigo→malva→melocotón -->
+  <section class="hero">
+    <div class="noise" style="opacity:.18;mix-blend-mode:overlay"></div>
+    <div class="wrap sec-inner">
+      <div class="topnav">
+        <span class="logo">giga109</span>
+        <nav>
+          <a href="#">Proyectos</a><a href="#">Estudio</a><a href="#">Tarifas</a><a href="#">Contacto</a>
+        </nav>
+      </div>
+      <div class="sec-pad">
+        <span class="eyebrow">Estudio de diseño y desarrollo</span>
+        <h1 class="d-title">Diseño y<br>desarrollo de<br>webs y apps</h1>
+        <p class="d-sub">Bien hechas, fáciles de usar. Herramientas digitales pensadas para tu negocio y para las personas que lo usan.</p>
+        <div class="hero-cta">
+          <a class="btn">Cuéntanos tu idea</a>
+          <a class="btn ghost">Ver proyectos</a>
+        </div>
+        <div class="hero-pills">
+          <span class="pill"><span class="dot"></span>Hecho con criterio</span>
+          <span class="pill">Diseño que se entiende</span>
+          <span class="pill">Pensado para durar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CLARA crema: proyectos -->
+  <section class="sec-light">
+    <div class="noise"></div>
+    <div class="wrap sec-inner sec-pad">
+      <span class="eyebrow">Trabajo seleccionado</span>
+      <h2 class="sectitle">Proyectos</h2>
+      <div class="proj-grid">
+        <div class="proj"><div class="ph"></div><div class="meta"><b>Tienda online · Mara</b><span class="pill acc">E-commerce</span></div></div>
+        <div class="proj b"><div class="ph"></div><div class="meta"><b>Web · Norte Estudio</b><span class="pill acc">Web</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN OSCURA azul: servicios -->
+  <section class="sec-dark">
+    <div class="noise"></div>
+    <div class="wrap sec-inner sec-pad">
+      <span class="eyebrow">Lo que hacemos</span>
+      <h2 class="sectitle">Servicios</h2>
+      <div class="svc-grid">
+        <div class="svc"><span class="num">01</span><h4>Webs</h4><p>Diseñadas con intención. Para que se entiendan y funcionen.</p></div>
+        <div class="svc"><span class="num">02</span><h4>Tiendas online</h4><p>Pensadas para vender sin complicaciones. Todo en su sitio.</p></div>
+        <div class="svc"><span class="num">03</span><h4>Apps</h4><p>Cuando necesitas algo más específico, a medida.</p></div>
+        <div class="svc"><span class="num">04</span><h4>Mantenimiento</h4><p>Seguimos contigo después del lanzamiento.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CLARA: tarifas / cierre -->
+  <section class="sec-light">
+    <div class="noise"></div>
+    <div class="wrap sec-inner sec-pad two-col">
+      <div>
+        <span class="eyebrow">Tarifas</span>
+        <p class="big-quote">Proyectos a medida, presupuesto claro desde el principio.</p>
+      </div>
+      <div>
+        <span class="num" style="font-weight:700;letter-spacing:.12em;font-size:.74rem">DESDE</span>
+        <div class="precio">990€</div>
+        <p style="margin:.6rem 0 1.4rem;opacity:.8">Web profesional, diseño propio y puesta en marcha incluida.</p>
+        <a class="btn">Cuéntanos tu idea</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="studio sec-dark">
+    <div class="noise"></div>
+    <div class="wrap sec-inner sec-pad">
+      <div class="note">
+        <h5>Variante A · FIEL</h5>
+        <p>Lo más pegado a ykwmi: crema + azul alternando, hero cálido índigo→malva→melocotón, ruido marcado y la mancha que te sigue. El acento es <b>neutro</b> (botones y detalles en tinta/crema/azul). Sin verde lima. Elegante, editorial y atemporal.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ===================== VARIANTE B : CON TU SELLO ===================== -->
+<div class="proposal" id="vB">
+  <div class="blob" data-blob></div>
+
+  <section class="hero">
+    <div class="noise" style="opacity:.18;mix-blend-mode:overlay"></div>
+    <div class="wrap sec-inner">
+      <div class="topnav">
+        <span class="logo">giga109</span>
+        <nav>
+          <a href="#">Proyectos</a><a href="#">Estudio</a><a href="#">Tarifas</a><a href="#">Contacto</a>
+        </nav>
+      </div>
+      <div class="sec-pad">
+        <span class="eyebrow">Estudio de diseño y desarrollo</span>
+        <h1 class="d-title">Diseño y<br>desarrollo de<br>webs y apps</h1>
+        <p class="d-sub">Bien hechas, fáciles de usar. Herramientas digitales pensadas para tu negocio y para las personas que lo usan.</p>
+        <div class="hero-cta">
+          <a class="btn">Cuéntanos tu idea</a>
+          <a class="btn ghost">Ver proyectos</a>
+        </div>
+        <div class="hero-pills">
+          <span class="pill acc"><span class="dot"></span>Hecho con criterio</span>
+          <span class="pill">Diseño que se entiende</span>
+          <span class="pill">Pensado para durar</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-light">
+    <div class="noise"></div>
+    <div class="wrap sec-inner sec-pad">
+      <span class="eyebrow">Trabajo seleccionado</span>
+      <h2 class="sectitle">Proyectos</h2>
+      <div class="proj-grid">
+        <div class="proj"><div class="ph"></div><div class="meta"><b>Tienda online · Mara</b><span class="pill acc">E-commerce</span></div></div>
+        <div class="proj b"><div class="ph"></div><div class="meta"><b>Web · Norte Estudio</b><span class="pill acc">Web</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-dark">
+    <div class="noise"></div>
+    <div class="wrap sec-inner sec-pad">
+      <span class="eyebrow">Lo que hacemos</span>
+      <h2 class="sectitle">Servicios</h2>
+      <div class="svc-grid">
+        <div class="svc"><span class="num">01</span><h4>Webs</h4><p>Diseñadas con intención. Para que se entiendan y funcionen.</p></div>
+        <div class="svc"><span class="num">02</span><h4>Tiendas online</h4><p>Pensadas para vender sin complicaciones. Todo en su sitio.</p></div>
+        <div class="svc"><span class="num">03</span><h4>Apps</h4><p>Cuando necesitas algo más específico, a medida.</p></div>
+        <div class="svc"><span class="num">04</span><h4>Mantenimiento</h4><p>Seguimos contigo después del lanzamiento.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-light">
+    <div class="noise"></div>
+    <div class="wrap sec-inner sec-pad two-col">
+      <div>
+        <span class="eyebrow">Tarifas</span>
+        <p class="big-quote">Proyectos a medida, presupuesto claro desde el principio.</p>
+      </div>
+      <div>
+        <span class="num" style="font-weight:700;letter-spacing:.12em;font-size:.74rem">DESDE</span>
+        <div class="precio">990€</div>
+        <p style="margin:.6rem 0 1.4rem;opacity:.8">Web profesional, diseño propio y puesta en marcha incluida.</p>
+        <a class="btn">Cuéntanos tu idea</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="studio sec-dark">
+    <div class="noise"></div>
+    <div class="wrap sec-inner sec-pad">
+      <div class="note">
+        <h5>Variante B · CON TU SELLO</h5>
+        <p>La misma base ykwmi exacta (crema + azul, hero cálido, ruido, mancha al cursor), pero conservando tu <b>verde lima #b6ee69</b> como acento puntual: botones, precios, números de servicio y algún detalle. Mantiene la personalidad de giga109 sin romper el aire editorial.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+</div>
+
+<script>
+/* Cambio de variante */
+const tabs=document.querySelectorAll('.tabbtn');
+const proposals=document.querySelectorAll('.proposal');
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active'));
+  proposals.forEach(p=>p.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById(t.dataset.target).classList.add('active');
+  window.scrollTo({top:0,behavior:'auto'});
+}));
+
+/* Mancha mesh que sigue al cursor con lag — color coherente por sección.
+   Detectamos la sección bajo el cursor y teñimos la mancha. */
+const fine = window.matchMedia('(pointer:fine)').matches;
+const reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+if(fine && !reduce){
+  let mx=innerWidth/2, my=innerHeight/2, bx=mx, by=my;
+  const tintLight='radial-gradient(circle, rgba(168,112,137,.9) 0%, rgba(201,143,115,.5) 40%, rgba(168,112,137,0) 70%)';
+  const tintDark ='radial-gradient(circle, rgba(91,143,214,.95) 0%, rgba(46,91,166,.5) 40%, rgba(91,143,214,0) 70%)';
+  const tintHero ='radial-gradient(circle, rgba(168,112,137,1) 0%, rgba(201,143,115,.55) 38%, rgba(59,45,126,0) 70%)';
+  addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  function activeBlob(){
+    const p=document.querySelector('.proposal.active');
+    return p?p.querySelector('[data-blob]'):null;
+  }
+  function tick(){
+    bx+=(mx-bx)*0.08; by+=(my-by)*0.08;
+    const b=activeBlob();
+    if(b){
+      b.style.transform=`translate(${bx}px,${by}px) translate(-50%,-50%)`;
+      const el=document.elementFromPoint(mx,my);
+      const sec=el?el.closest('section'):null;
+      if(sec){
+        if(sec.classList.contains('hero')) b.style.background=tintHero;
+        else if(sec.classList.contains('sec-dark')) b.style.background=tintDark;
+        else b.style.background=tintLight;
+      }
+    }
+    requestAnimationFrame(tick);
+  }
+  document.querySelectorAll('[data-blob]').forEach(b=>b.style.background=tintHero);
+  tick();
+}
+
+/* Atajos 1 / 2 y A / B */
+addEventListener('keydown',e=>{
+  const k=e.key.toLowerCase();
+  if(k==='1'||k==='a')tabs[0].click();
+  if(k==='2'||k==='b')tabs[1].click();
+});
+</script>
+</body>
+</html>

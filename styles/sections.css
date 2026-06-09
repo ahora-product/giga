@@ -81,95 +81,126 @@
   margin: 0;
 }
 
-.project-carousel {
-  --project-carousel-gap: var(--space-3);
-  /* Un ciclo completo del bucle; muy largo = casi imperceptible pero no se detiene */
-  --project-marquee-dur: 55s;
-  /* 4:3 (alto ≈ 3/4 del ancho); ancho máx. ~534px → alto ~400px como antes */
-  --project-slide-w: min(534px, calc((100vw - var(--project-carousel-gap)) / 2));
-
+.work {
   background: var(--bg);
   color: var(--text);
 }
 
-.project-carousel__viewport {
-  width: 100vw;
-  max-width: 100%;
-  margin-inline: calc(50% - 50vw);
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-.project-carousel__strip {
+/* Imágenes esparcidas a lo largo de una columna alta. Cada una arranca en una
+   posición horizontal distinta (margin-left variable) y el parallax (JS) les da
+   una velocidad propia, de modo que al hacer scroll se solapan unas con otras. */
+.work__grid {
+  position: relative;
   display: flex;
-  flex-wrap: nowrap;
-  width: max-content;
-}
-
-.project-carousel__track {
-  display: flex;
-  flex: 0 0 auto;
-  flex-wrap: nowrap;
-  gap: var(--project-carousel-gap);
+  flex-direction: column;
+  gap: clamp(1rem, 3vh, 3rem);
   margin: 0;
-  padding: 0 0 2px;
+  padding-inline: clamp(1rem, 3vw, 3.5rem);
+  padding-block: var(--space-9);
   list-style: none;
 }
 
-.project-carousel__slide {
-  flex: 0 0 auto;
-  width: var(--project-slide-w);
+.work__item {
+  /* Imágenes ×1,25 respecto a antes (27rem → ~34rem) */
+  --w: min(100%, 34rem);
+  width: var(--w);
+  align-self: flex-start;
+  /* Apilado: al subir, cada imagen se "pega" justo debajo del encabezado y se
+     queda ahí mientras las siguientes llegan y se amontonan encima. El orden
+     del HTML hace que las nuevas tapen a las anteriores. */
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-4));
+  /* El zoom de profundidad (JS) se ancla arriba para que los bordes superiores
+     de las imágenes apiladas queden alineados. */
+  transform-origin: top center;
 }
 
-.project-carousel__card {
+/* Posición horizontal esparcida (aleatoria a la vista). El min() evita que
+   una imagen se salga por la derecha aunque la pantalla sea estrecha. */
+.work__item:nth-child(1) { margin-left: min(2vw, calc(100% - var(--w))); }
+.work__item:nth-child(2) { margin-left: min(44vw, calc(100% - var(--w))); }
+.work__item:nth-child(3) { margin-left: min(20vw, calc(100% - var(--w))); }
+.work__item:nth-child(4) { margin-left: min(52vw, calc(100% - var(--w))); }
+.work__item:nth-child(5) { margin-left: min(8vw, calc(100% - var(--w))); }
+.work__item:nth-child(6) { margin-left: min(34vw, calc(100% - var(--w))); }
+.work__item:nth-child(7) { margin-left: min(48vw, calc(100% - var(--w))); }
+.work__item:nth-child(8) { margin-left: min(14vw, calc(100% - var(--w))); }
+.work__item:nth-child(9) { margin-left: min(28vw, calc(100% - var(--w))); }
+.work__item:nth-child(10) { margin-left: min(40vw, calc(100% - var(--w))); }
+.work__item:nth-child(11) { margin-left: min(4vw, calc(100% - var(--w))); }
+.work__item:nth-child(12) { margin-left: min(36vw, calc(100% - var(--w))); }
+
+.work__card {
   display: block;
-  aspect-ratio: 4 / 3;
   overflow: hidden;
-  border-radius: var(--radius-md);
-  border: 1px solid var(--border-strong);
-  background: var(--surface);
+  border-radius: var(--radius-sm);
   text-decoration: none;
   color: inherit;
-  box-shadow: var(--shadow-sm);
 }
 
-.project-carousel__card:focus-visible {
+.work__card:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
-.project-carousel__img {
+.work__img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+}
+
+.work__caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.work__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.work__name {
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+}
+
+.work__desc {
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.work__arrow {
+  font-size: var(--type-sm);
+  line-height: 1;
 }
 
 @media (max-width: 40rem) {
-  .project-carousel {
-    --project-slide-w: calc((100vw - var(--project-carousel-gap)) / 2);
+  /* En móvil: una columna centrada y más juntas, sin esparcido. */
+  .work__grid {
+    gap: clamp(4rem, 12vh, 8rem);
+    padding-inline: var(--space-5);
+  }
+
+  .work__item[class][class] {
+    align-self: center;
+    width: 100%;
+    margin-left: 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-carousel__viewport {
-    overflow-x: auto;
-    scroll-behavior: auto;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  .project-carousel__viewport::-webkit-scrollbar {
-    display: none;
-  }
-
-  .project-carousel__strip {
-    transform: none;
-  }
-
-  .project-carousel__slide {
-    scroll-snap-align: start;
+  /* Sin apilado ni movimiento: columna estática normal. */
+  .work__item {
+    position: static;
+    transform: none !important;
+    filter: none !important;
   }
 }
 
@@ -605,7 +636,7 @@
 
 .site-footer__top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 1.2fr);
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 1.25rem;
   align-items: start;
 }

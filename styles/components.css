@@ -76,6 +76,11 @@
   letter-spacing: 0;
   text-transform: none;
   border-width: 1px;
+  gap: 0.4rem;
+}
+
+.btn--header-cta .work__arrow {
+  font-size: var(--type-md);
 }
 
 .btn--header-cta:hover,

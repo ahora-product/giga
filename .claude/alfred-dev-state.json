@@ -1,0 +1,40 @@
+{
+  "comando": "feature",
+  "modo": "autopilot",
+  "feature": "Rediseño visual giga109 × ykwmi (mix)",
+  "fase_actual": "estilo_visual",
+  "fases": {
+    "producto": "completed",
+    "estilo_visual": "in_progress",
+    "arquitectura": "pending",
+    "desarrollo": "pending",
+    "calidad": "pending",
+    "documentacion": "pending",
+    "entrega": "pending"
+  },
+  "plan_fases_implementacion": [
+    "F0 receta visual / tokens",
+    "F1 tipografía de impacto",
+    "F2 etiquetas pastilla",
+    "F3 fondos de color por sección",
+    "F4 efecto mancha que sigue al cursor (mesh gradient + noise)",
+    "F5 secciones nuevas de contenido",
+    "F6 repaso final (responsive, contraste, rendimiento, reduced-motion)"
+  ],
+  "decisiones": {
+    "alcance": "lavado de cara visual + secciones nuevas de contenido, sin rehacer arquitectura",
+    "stack": "HTML + CSS + JS sin frameworks",
+    "acento": "verde lima se mantiene como color de acento sobre nueva paleta crema/azul/morado",
+    "tipografia_fija": "tamaños tipográficos fijos (sin clamp ni media queries de tamaño)",
+    "validacion": "usuaria valida fase a fase pese a autopilot (gates visuales no se auto-aprueban)",
+    "paleta": "verde oscuro monocromo (varios matices) + verde lima #b6ee69 como acento; sin crema/azul/morado",
+    "mancha_cursor": "en todas las secciones; solo desktop; respeta prefers-reduced-motion",
+    "tipografia_titulares": "pendiente: la usuaria elige en fase de estilo visual viendo pruebas",
+    "tarjeta_contacto": "descartada; se mantiene contacto del pie actual",
+    "analitica": "no se instala",
+    "dependencia_f5": "usuaria debe aportar categoría de cada proyecto para los filtros (HU-08)"
+  },
+  "referencia": "https://ykwmi.studio/",
+  "equipo_sesion": null,
+  "actualizado": "2026-06-08"
+}

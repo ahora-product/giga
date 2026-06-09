@@ -2,7 +2,8 @@ import { initNav } from "./nav.js";
 import { initMagnetic } from "./magnetic.js";
 import { initRipple } from "./ripple.js";
 import { initCursor } from "./cursor.js";
-import { initProjectCarousel } from "./projectCarousel.js";
+import { initProjectScatter } from "./projectScatter.js";
+import { initScrollReveal } from "./scrollReveal.js";
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -17,7 +18,8 @@ initNav();
 initMagnetic();
 initRipple();
 initCursor();
-initProjectCarousel();
+initProjectScatter();
+initScrollReveal();
 
 const year = document.getElementById("year");
 if (year) year.textContent = String(new Date().getFullYear());

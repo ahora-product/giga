@@ -55,29 +55,37 @@ html:not(.motion-safe) .hero__actions {
   animation: none;
 }
 
-@keyframes project-marquee {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-/* El carrusel no depende de `html.motion-safe` (solo la pone main.js al cargar):
-   sin servidor o con JS tardío, antes quedaba congelado. */
+/* Apilado de proyectos: el encogido y oscurecido por profundidad lo aplica
+   js/projectScatter.js con transform y filter. Aquí solo preparamos la pista
+   de composición para que el navegador lo dibuje con fluidez. */
 @media (prefers-reduced-motion: no-preference) {
-  .project-carousel__strip {
-    animation: project-marquee var(--project-marquee-dur) linear infinite;
-    will-change: transform;
+  .work__item[data-parallax] {
+    will-change: transform, filter;
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .project-carousel__strip {
-    animation: none;
-    will-change: auto;
-    transform: none;
-  }
+/* Aparición al hacer scroll ---------------------------------------------
+   Cada bloque arranca bajado y transparente, y sube fundiéndose cuando
+   js/scrollReveal.js le pone la clase .is-revealed. El --reveal-delay lo
+   fija el JS para las cascadas (logos, tarjetas). */
+html.motion-safe [data-reveal] {
+  opacity: 0;
+  transform: translateY(48px) scale(0.985);
+  transition:
+    opacity 820ms var(--ease-out-expo),
+    transform 820ms var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+html.motion-safe [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Sin motion-safe (reduce movimiento o JS no cargado): todo visible y
+   en su sitio, sin transición. */
+html:not(.motion-safe) [data-reveal] {
+  opacity: 1;
+  transform: none;
 }
