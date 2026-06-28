@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["scripts/devserver.py"],
       "port": 4321
+    },
+    {
+      "name": "giga-node",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "http-server", "-p", "4321", "-c-1"],
+      "port": 4321
     }
   ]
 }
