@@ -1,16 +1,9 @@
 /* ============================================================
-   Hub — landing puente de los tres proyectos (giga109.es/hub)
-   Pantalla dividida: una zona por proyecto. Mobile-first.
-   Reutiliza los tokens de la web (../styles/tokens.css).
+   Hub — Giga Studio (giga109.es/hub)
+   Pantalla dividida en 3 con estética editorial de estudio:
+   sobria, tipográfica, acento con cuentagotas. Mobile-first.
+   Sin build. Reutiliza ../styles/tokens.css.
    ============================================================ */
-
-:root {
-  /* Acentos por proyecto. giga109 = lima corporativo (tokens).
-     menu0 y tap-and-book son provisionales hasta tener marca real. */
-  --acc-giga: var(--brand-lime, #b6ee69);
-  --acc-menu: #ff9a3d;
-  --acc-tab: #5bc8ff;
-}
 
 * {
   box-sizing: border-box;
@@ -25,10 +18,11 @@ body {
 body {
   min-height: 100dvh;
   font-family: var(--font-body, "Inter Tight", system-ui, sans-serif);
-  color: var(--text, #fff);
-  background: var(--bg, #000);
+  color: #f3f2ec; /* off-white cálido */
+  background: #0a0a0a;
   -webkit-font-smoothing: antialiased;
-  overflow: hidden; /* el hub ocupa exactamente una pantalla */
+  letter-spacing: 0.01em;
+  overflow: hidden; /* una sola pantalla */
 }
 
 a {
@@ -36,225 +30,344 @@ a {
   text-decoration: none;
 }
 
-/* --- Cabecera mínima sobre los paneles --- */
-.hub__intro {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  padding: clamp(0.9rem, 3vw, 1.6rem);
-  pointer-events: none;
-}
-
-.hub__eyebrow {
-  font-family: var(--font-display, "Inter Tight", system-ui, sans-serif);
-  font-weight: 600;
-  font-size: clamp(0.72rem, 2.6vw, 0.85rem);
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.75);
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  padding: 0.5em 1.1em;
-  backdrop-filter: blur(6px);
-}
-
-/* --- Contenedor split --- */
-.hub {
+.page {
   display: flex;
   flex-direction: column;
   height: 100dvh;
-  width: 100%;
 }
 
-/* --- Cada panel = un proyecto --- */
-.panel {
+/* etiqueta tracking-uppercase reutilizable */
+.mast__label,
+.mast__btn,
+.panel__tag,
+.panel__cta {
+  font-size: clamp(0.66rem, 2vw, 0.74rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ---------- Masthead ---------- */
+.mast {
   position: relative;
-  flex: 1 1 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: clamp(1.1rem, 5vw, 3rem);
-  overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(0.95rem, 3vw, 1.5rem) clamp(1.1rem, 5vw, 3.2rem);
+  border-bottom: 1px solid rgba(243, 242, 236, 0.14);
+}
+
+.mast__label {
+  color: rgba(243, 242, 236, 0.7);
+}
+
+.mast__btn {
+  color: #f3f2ec;
+  border: 1px solid rgba(243, 242, 236, 0.28);
+  border-radius: 999px;
+  padding: 0.6em 1.15em;
   transition:
-    flex-grow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-    background-color 0.45s ease;
-  will-change: flex-grow;
+    background-color 0.35s ease,
+    color 0.35s ease,
+    border-color 0.35s ease;
 }
 
-.panel:first-child {
-  border-top: 0;
-}
-
-/* En layout apilado (móvil/tablet) el primer panel deja hueco para la
-   píldora fija "Elige proyecto" y así nunca se solapan. */
-@media (max-width: 859px) {
-  .panel:first-child {
-    padding-top: calc(clamp(1.1rem, 5vw, 3rem) + 3.5rem);
+@media (hover: hover) and (pointer: fine) {
+  .mast__btn:hover {
+    background: #f3f2ec;
+    color: #0a0a0a;
+    border-color: #f3f2ec;
   }
 }
 
-/* Halo de color de marca por panel */
+.mast__btn:focus-visible {
+  outline: 2px solid var(--brand-lime, #b6ee69);
+  outline-offset: 3px;
+}
+
+/* ---------- Pantalla dividida ---------- */
+.hub {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.panel {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: clamp(1.1rem, 3.2vh, 2rem) clamp(1.2rem, 5vw, 3.2rem);
+  overflow: hidden;
+  transition:
+    flex-grow 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    padding-left 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: flex-grow;
+}
+
+.panel + .panel {
+  border-top: 1px solid rgba(243, 242, 236, 0.14);
+}
+
+/* línea de acento que crece desde arriba al pasar */
 .panel::before {
   content: "";
   position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--acc);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1;
+}
+
+/* círculo muy difuminado del color de marca que sigue al cursor
+   (la posición --mx/--my la mueve hub.js) */
+.panel::after {
+  content: "";
+  position: absolute;
   inset: 0;
-  background: radial-gradient(
-    120% 80% at 0% 50%,
-    color-mix(in srgb, var(--acc) 26%, transparent) 0%,
-    transparent 60%
-  );
-  opacity: 0.55;
-  transition: opacity 0.45s ease;
   z-index: 0;
+  background: radial-gradient(
+    circle 26vmax at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--acc) 55%, transparent) 0%,
+    color-mix(in srgb, var(--acc) 22%, transparent) 24%,
+    transparent 55%
+  );
+  filter: blur(40px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
 }
 
-.panel--giga {
-  --acc: var(--acc-giga);
-}
-.panel--menu {
-  --acc: var(--acc-menu);
-}
-.panel--tab {
-  --acc: var(--acc-tab);
+/* fila superior: índice + categoría */
+.panel__top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-/* Contenido del panel */
-.panel__inner {
+.panel__square {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  background: var(--acc);
+  border-radius: 2px;
+  transition: opacity 0.2s ease;
+}
+
+/* Con el cursor custom activo, al entrar en el panel su cuadrado-tag
+   "se convierte" en el cursor: lo ocultamos mientras pasas por encima. */
+html.is-cursor-on .panel:hover .panel__square {
+  opacity: 0;
+}
+
+.panel__tag {
+  color: rgba(243, 242, 236, 0.55);
+  border: 1px solid rgba(243, 242, 236, 0.2);
+  border-radius: 999px;
+  padding: 0.34em 0.85em;
+  transition:
+    color 0.35s ease,
+    border-color 0.35s ease;
+}
+
+/* bloque central: nombre + descripción */
+.panel__main {
   position: relative;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
-  max-width: 60ch;
-  margin: 0 auto;
-  width: 100%;
-}
-
-.panel__num {
-  font-family: var(--font-display, "Inter Tight", system-ui, sans-serif);
-  font-weight: 600;
-  font-size: clamp(0.7rem, 2.4vw, 0.8rem);
-  letter-spacing: 0.22em;
-  color: var(--acc);
-  margin-bottom: 0.4rem;
+  gap: 0.3rem;
 }
 
 .panel__name {
-  font-family: var(--font-display, "Inter Tight", system-ui, sans-serif);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-size: clamp(2.4rem, 11vw, 5.5rem);
-  color: #fff;
+  margin: 0;
+  line-height: 0;
+}
+
+/* logos: vienen en negro → los pasamos a off-white.
+   --logo-scale iguala la ALTURA VISIBLE del texto (no la de la caja),
+   compensando que cada logo tiene distinto cuerpo respecto a su lienzo. */
+.panel__logo {
+  --logo-scale: 1;
+  display: block;
+  height: calc(clamp(1.7rem, 6.5vw, 2.5rem) * var(--logo-scale));
+  width: auto;
+  max-width: 100%;
+  filter: invert(1);
+  opacity: 0.95;
+}
+
+.panel__logo--giga {
+  --logo-scale: 1.2;
+}
+.panel__logo--menu {
+  --logo-scale: 0.9;
+}
+.panel__logo--tab {
+  --logo-scale: 1.07;
+}
+
+.panel__desc {
+  font-size: clamp(0.92rem, 3vw, 1.05rem);
+  color: rgba(243, 242, 236, 0.55);
   margin: 0;
 }
 
-.panel__name b {
-  color: var(--acc);
-  font-weight: 700;
-}
-
-.panel__tagline {
-  font-size: clamp(0.95rem, 3.4vw, 1.15rem);
-  color: rgba(255, 255, 255, 0.78);
-  margin: 0.3rem 0 0;
-}
-
+/* CTA inferior */
 .panel__cta {
+  position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
-  gap: 0.5em;
-  margin-top: clamp(0.8rem, 3vw, 1.3rem);
-  font-family: var(--font-display, "Inter Tight", system-ui, sans-serif);
-  font-weight: 600;
-  font-size: clamp(0.9rem, 3vw, 1rem);
-  color: var(--acc);
+  gap: 0.6em;
+  color: rgba(243, 242, 236, 0.7);
+  transition: color 0.35s ease;
 }
 
 .panel__arrow {
-  display: inline-block;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  width: 1.5em;
+  height: 1.5em;
+  color: var(--acc);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Enlace que cubre todo el panel (toda la zona es clicable) */
+/* enlace que cubre todo el panel */
 .panel__link {
   position: absolute;
   inset: 0;
   z-index: 2;
 }
 
-/* --- Hover / foco en escritorio --- */
-@media (hover: hover) and (pointer: fine) {
-  .panel:hover {
-    flex-grow: 2.2;
-  }
-  .panel:hover::before {
-    opacity: 1;
-  }
-  .panel:hover .panel__arrow {
-    transform: translate(4px, -4px);
-  }
-}
-
 .panel__link:focus-visible {
-  outline: 3px solid var(--acc);
+  outline: 2px solid var(--acc);
   outline-offset: -6px;
 }
 
-/* --- Escritorio: tres columnas --- */
+/* ---------- Hover (escritorio) ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .panel:hover {
+    flex-grow: 1.9;
+    padding-left: clamp(1.6rem, 4vw, 4rem);
+  }
+  .panel:hover::before {
+    transform: scaleY(1);
+  }
+  .panel:hover::after {
+    opacity: 1;
+  }
+  .panel:hover .panel__cta {
+    color: #f3f2ec;
+  }
+  .panel:hover .panel__tag {
+    color: var(--acc);
+    border-color: color-mix(in srgb, var(--acc) 55%, transparent);
+  }
+  .panel:hover .panel__arrow {
+    transform: translateX(7px);
+  }
+}
+
+/* ---------- Escritorio: tres columnas ---------- */
 @media (min-width: 860px) {
   .hub {
     flex-direction: row;
   }
   .panel {
+    justify-content: space-between;
+  }
+  .panel + .panel {
     border-top: 0;
-    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-left: 1px solid rgba(243, 242, 236, 0.14);
   }
-  .panel:first-child {
-    border-left: 0;
+  .panel__name {
+    font-size: clamp(2.2rem, 3.6vw, 3.4rem);
   }
-  .panel__inner {
-    max-width: none;
-    margin: 0;
+  /* en columnas, la línea de acento crece desde la izquierda en horizontal */
+  .panel::before {
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
   }
-}
-
-/* --- Entrada suave --- */
-@keyframes hubIn {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
+  @media (hover: hover) and (pointer: fine) {
+    .panel:hover::before {
+      transform: scaleX(1);
+    }
   }
 }
 
-.panel__inner {
-  animation: hubIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-.panel:nth-child(1) .panel__inner {
-  animation-delay: 0.05s;
-}
-.panel:nth-child(2) .panel__inner {
-  animation-delay: 0.15s;
-}
-.panel:nth-child(3) .panel__inner {
-  animation-delay: 0.25s;
+/* En apilado (móvil/tablet) ocultamos el rótulo central del masthead */
+@media (max-width: 859px) {
+  .mast__center {
+    display: none;
+  }
 }
 
+/* ---------- Cursor personalizado ----------
+   Cuadrado de esquinas redondeadas que sigue al puntero. El color
+   (--cursor-acc) lo fija hub.js según el panel sobre el que esté. */
+.cursor {
+  --dot-x: -100px;
+  --dot-y: -100px;
+  --cursor-acc: #f3f2ec;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  display: none;
+}
+
+/* Solo cuando hay puntero fino (lo activa hub.js): ocultamos el del sistema. */
+html.is-cursor-on .cursor {
+  display: block;
+}
+
+html.is-cursor-on,
+html.is-cursor-on * {
+  cursor: none !important;
+}
+
+.cursor__dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--cursor-acc);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+  transform: translate3d(var(--dot-x), var(--dot-y), 0);
+  transition:
+    opacity 0.3s ease,
+    background-color 0.35s ease;
+}
+
+.cursor.is-active .cursor__dot {
+  opacity: 1;
+}
+
+/* ---------- Accesibilidad ---------- */
 @media (prefers-reduced-motion: reduce) {
   .panel,
-  .panel__arrow,
-  .panel__inner {
-    transition: none;
-    animation: none;
+  .panel::before,
+  .panel::after,
+  .panel__name,
+  .panel__arrow {
+    transition: none !important;
   }
 }
