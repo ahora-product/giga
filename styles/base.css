@@ -97,6 +97,13 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+/* El atributo `hidden` debe ganar siempre. El navegador lo aplica con
+   `display:none`, pero cualquier regla nuestra con `display` (flex, grid…)
+   lo pisa por especificidad y el elemento se vería igualmente. */
+[hidden] {
+  display: none !important;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
