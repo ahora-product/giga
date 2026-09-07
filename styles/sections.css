@@ -1258,6 +1258,103 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
   margin-top: var(--space-5);
 }
 
+/* Trampa antispam: fuera de la vista pero sin display:none, para que los
+   bots que ignoran los estilos la sigan encontrando y la rellenen. */
+.contacto__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Error bajo un campo */
+.field__error {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: #ff8f8f;
+}
+
+.field--error .field__control,
+.field--error .cselect__trigger {
+  border-color: #ff8f8f;
+}
+
+.field--error .field__control:focus,
+.field--error .cselect__trigger:focus {
+  box-shadow: 0 0 0 1px rgba(255, 143, 143, 0.55);
+}
+
+/* Aviso general del formulario (errores de envío) */
+.contacto__status {
+  margin: var(--space-4) 0 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 143, 143, 0.4);
+  border-radius: var(--radius-md);
+  background: rgba(255, 143, 143, 0.08);
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  font-weight: var(--fw-regular);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  color: #ff8f8f;
+}
+
+/* Mientras se envía */
+.contacto__form[data-estado="enviando"] {
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+/* Confirmación de envío */
+.contacto__success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.35rem, 2.8vw, 2rem);
+  border: 1px solid color-mix(in srgb, var(--brand-lime) 35%, transparent);
+  border-radius: var(--radius-md);
+  background: #000000;
+  text-align: center;
+}
+
+.contacto__success:focus-visible {
+  outline: 2px solid var(--brand-lime);
+  outline-offset: 3px;
+}
+
+.contacto__success-icon {
+  font-size: calc(var(--type-md) * 2.5);
+  line-height: 1;
+  color: var(--brand-lime);
+}
+
+.contacto__success-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: calc(var(--type-md) * 1.5);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+.contacto__success-text {
+  margin: 0;
+  max-width: 32rem;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-regular);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
 .contacto__note-link {
   color: var(--brand-lime);
   text-decoration: none;

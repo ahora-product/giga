@@ -829,8 +829,21 @@
                     </p>
                   </header>
 
-                  <!-- TODO: falta la lógica de envío (backend / servicio de correo) -->
-                  <form class="contacto__form" data-reveal novalidate>
+                  <form
+                    class="contacto__form"
+                    action="/api/contacto"
+                    method="post"
+                    data-contact-form
+                    data-reveal
+                    novalidate
+                  >
+                    <!-- Trampa antispam: invisible y fuera del recorrido de tabulación.
+                         Si un bot la rellena, el servidor descarta el envío. -->
+                    <div class="contacto__trap" aria-hidden="true">
+                      <label for="contacto-website">No rellenar</label>
+                      <input id="contacto-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+                    </div>
+
                     <div class="contacto__grid">
                       <div class="field">
                         <label class="field__label" for="contacto-nombre">Nombre</label>
@@ -909,17 +922,34 @@
                       </div>
                     </div>
 
+                    <p class="contacto__status" data-form-status role="alert" hidden></p>
+
                     <div class="contacto__actions">
                       <p class="contacto__note">
                         Te contestamos a hello@giga109.es en 24–48 h laborables. Al enviar aceptas nuestra
                         <a class="contacto__note-link" href="privacidad/">política de privacidad</a>.
                       </p>
-                      <button class="btn btn--tarifa btn--magnetic contacto__submit" type="submit" data-magnetic>
+                      <button
+                        class="btn btn--tarifa btn--magnetic contacto__submit"
+                        type="submit"
+                        data-submit
+                        data-magnetic
+                      >
                         <span class="btn__ripple" aria-hidden="true"></span>
-                        Enviar mensaje
+                        <span data-submit-label>Enviar mensaje</span>
                       </button>
                     </div>
                   </form>
+
+                  <!-- Confirmación: sustituye al formulario cuando el envío sale bien -->
+                  <div class="contacto__success" data-form-success hidden>
+                    <i class="ph ph-check-circle contacto__success-icon" aria-hidden="true"></i>
+                    <h3 class="contacto__success-title">¡Mensaje enviado!</h3>
+                    <p class="contacto__success-text">
+                      Gracias por escribirnos. Te respondemos a tu correo en 24–48 h laborables, y al otro lado habrá
+                      una persona de verdad.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
