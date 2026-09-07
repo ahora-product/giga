@@ -4,6 +4,8 @@ import { initRipple } from "./ripple.js";
 import { initCursor } from "./cursor.js";
 import { initProjectScatter } from "./projectScatter.js";
 import { initScrollReveal } from "./scrollReveal.js";
+import { initCustomSelect } from "./customSelect.js";
+import { initHubPanels } from "./hubPanels.js";
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -32,6 +34,8 @@ safe("magnetic", initMagnetic);
 safe("ripple", initRipple);
 safe("projectScatter", initProjectScatter);
 safe("scrollReveal", initScrollReveal);
+safe("customSelect", initCustomSelect);
+safe("hubPanels", initHubPanels);
 
 /* El botón "volver arriba" se carga aparte y de forma perezosa: si su archivo
    no estuviera disponible, el fallo queda contenido aquí y la página sigue

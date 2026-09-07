@@ -7,11 +7,28 @@
 }
 
 .site-header__inner {
+  position: relative;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
+}
+
+/* Icono centrado en la cabecera.
+   Va posicionado (no como tercer elemento del flex) porque el logo de la
+   izquierda y el botón de la derecha no miden lo mismo: en el flujo normal
+   quedaría descentrado respecto a la página. Así siempre cae en el centro
+   exacto, y además no empuja a los otros dos. */
+.site-header__mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: auto;
+  height: clamp(1.15rem, 2.6vw, 1.4rem);
+  pointer-events: none;
 }
 
 .brand {
@@ -284,6 +301,18 @@
 
 .studio-row__main {
   min-width: 0;
+}
+
+/* Titular de sección dentro de una studio-row (mismo cuerpo que el de tarifas) */
+.studio-title {
+  margin: 0 0 var(--space-5);
+  max-width: 40rem;
+  font-family: var(--font-display);
+  font-size: var(--type-lg);
+  font-weight: var(--fw-medium);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #ffffff;
 }
 
 .studio-prose {
@@ -646,6 +675,623 @@
     grid-template-columns: 1fr;
     max-width: 24rem;
     margin-inline: auto;
+  }
+}
+
+/* ---------- Cómo trabajamos: los cuatro pasos ---------- */
+.proceso {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6) var(--space-7);
+  margin: 0;
+  padding: 0;
+  counter-reset: paso;
+}
+
+.proceso__step {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  min-width: 0;
+}
+
+.proceso__num {
+  flex-shrink: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  color: var(--brand-lime);
+}
+
+.proceso__body {
+  min-width: 0;
+}
+
+.proceso__title {
+  margin: 0 0 0.4rem;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: #ffffff;
+}
+
+.proceso__text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-regular);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+@media (max-width: 60rem) {
+  .proceso {
+    grid-template-columns: 1fr;
+    gap: var(--space-5);
+  }
+}
+
+/* ============================================================
+   Producto propio (menu0, Tap&Book)
+   Adaptación de los paneles del hub (/hub) a la landing: se
+   conservan sus efectos —el panel que se expande, la línea de
+   acento, el resplandor que sigue al cursor y la flecha que
+   avanza— pero con los tokens de la página en vez de la paleta
+   propia del hub, y en horizontal en lugar de a pantalla completa.
+   ============================================================ */
+.productos__intro {
+  max-width: 36rem;
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.productos__title {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: var(--type-lg);
+  font-weight: var(--fw-medium);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
+.productos__lead {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-regular);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+.productos__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.hub-panel {
+  --acc: var(--brand-lime);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: clamp(2rem, 5vw, 3rem);
+  min-width: 0;
+  padding: clamp(1.75rem, 3.5vw, 2.5rem) clamp(1.35rem, 2.8vw, 2rem);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  background: #000000;
+  overflow: hidden;
+  transition:
+    border-color var(--dur-2) var(--ease-soft),
+    transform var(--dur-2) var(--ease-soft);
+}
+
+/* Línea de acento que crece de izquierda a derecha por el borde superior */
+.hub-panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 1;
+  background: var(--acc);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-2) var(--ease-out-expo);
+}
+
+/* Resplandor difuminado del color del producto; js/hubPanels.js mueve --mx/--my.
+   En el hub el panel ocupaba toda la pantalla; aquí es una tarjeta mucho más
+   pequeña, así que se aclara el color (--acc-glow) para que el resplandor se
+   note sobre el negro en vez de quedar en un gris sucio. */
+.hub-panel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    circle 14vmax at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--acc-glow, var(--acc)) 62%, transparent) 0%,
+    color-mix(in srgb, var(--acc-glow, var(--acc)) 26%, transparent) 26%,
+    transparent 58%
+  );
+  filter: blur(38px);
+  opacity: 0;
+  transition: opacity var(--dur-2) var(--ease-soft);
+  pointer-events: none;
+}
+
+.hub-panel__top,
+.hub-panel__main,
+.hub-panel__cta {
+  position: relative;
+  z-index: 1;
+}
+
+.hub-panel__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.hub-panel__square {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background: var(--acc);
+  transition: opacity var(--dur-1) var(--ease-soft);
+}
+
+/* Con el cursor propio activo, el cuadradito "se convierte" en el cursor */
+html.is-cursor-on .hub-panel:hover .hub-panel__square {
+  opacity: 0;
+}
+
+.hub-panel__tag,
+.hub-panel__cta {
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hub-panel__tag {
+  padding: 0.34em 0.85em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-pill);
+  color: var(--muted);
+  transition:
+    color var(--dur-2) var(--ease-soft),
+    border-color var(--dur-2) var(--ease-soft);
+}
+
+.hub-panel__main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.hub-panel__name {
+  margin: 0;
+  line-height: 0;
+}
+
+/* Los logos vienen en negro: se pasan a blanco. --logo-scale iguala la altura
+   VISIBLE del texto, porque cada logo ocupa distinto dentro de su lienzo. */
+.hub-panel__logo {
+  --logo-scale: 1;
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: calc(clamp(1.5rem, 3.4vw, 2rem) * var(--logo-scale));
+  filter: invert(1);
+  opacity: 0.95;
+}
+
+.hub-panel__logo--menu {
+  --logo-scale: 0.9;
+}
+
+.hub-panel__logo--tab {
+  --logo-scale: 1.07;
+}
+
+.hub-panel__desc {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-regular);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  color: #ffffff;
+}
+
+/* Explicación de qué resuelve el producto */
+.hub-panel__text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  font-weight: var(--fw-regular);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--muted);
+}
+
+.hub-panel__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  color: var(--muted);
+  transition: color var(--dur-2) var(--ease-soft);
+}
+
+.hub-panel__arrow {
+  width: 1.5em;
+  height: 1.5em;
+  color: var(--acc);
+  transition: transform var(--dur-2) var(--ease-out-expo);
+}
+
+/* Enlace que cubre todo el panel */
+.hub-panel__link {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.hub-panel__link:focus-visible {
+  outline: 2px solid var(--acc);
+  outline-offset: -6px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hub-panel:hover {
+    border-color: color-mix(in srgb, var(--acc) 45%, transparent);
+  }
+
+  .hub-panel:hover::before {
+    transform: scaleX(1);
+  }
+
+  .hub-panel:hover::after {
+    opacity: 1;
+  }
+
+  .hub-panel:hover .hub-panel__tag {
+    color: var(--acc);
+    border-color: color-mix(in srgb, var(--acc) 55%, transparent);
+  }
+
+  .hub-panel:hover .hub-panel__cta {
+    color: #ffffff;
+  }
+
+  .hub-panel:hover .hub-panel__arrow {
+    transform: translateX(7px);
+  }
+}
+
+@media (max-width: 60rem) {
+  .productos__list {
+    grid-template-columns: 1fr;
+    max-width: 24rem;
+    margin-inline: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-panel,
+  .hub-panel::before,
+  .hub-panel::after,
+  .hub-panel__arrow,
+  .hub-panel__tag,
+  .hub-panel__cta {
+    transition: none;
+  }
+}
+
+/* Formulario de contacto bajo las tarifas */
+.contacto {
+  margin-top: clamp(3rem, 7vw, 5rem);
+  /* Destino de anclaje: deja hueco para el header fijo */
+  scroll-margin-top: calc(var(--header-h) + var(--space-3));
+}
+
+.contacto__intro {
+  max-width: 36rem;
+  margin-bottom: clamp(1.5rem, 4vw, 2.25rem);
+}
+
+.contacto__title {
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: calc(var(--type-md) * 1.5);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+}
+
+.contacto__lead {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-regular);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+.contacto__form {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-md);
+  background: #000000;
+  padding: clamp(1.75rem, 3.5vw, 2.5rem) clamp(1.35rem, 2.8vw, 2rem);
+}
+
+.contacto__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-5) var(--space-4);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.field__label {
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  font-weight: var(--fw-medium);
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.field__control {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  /* Mismo redondeo que el panel del footer (--radius-md = 0.75rem) */
+  border-radius: var(--radius-md);
+  background: var(--surface-2);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-regular);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  transition:
+    border-color var(--dur-1) var(--ease-soft),
+    background var(--dur-1) var(--ease-soft),
+    box-shadow var(--dur-1) var(--ease-soft);
+}
+
+.field__control::placeholder {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.field__control:hover {
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.field__control:focus {
+  outline: none;
+  border-color: var(--brand-lime);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--brand-lime) 45%, transparent);
+}
+
+.field__control--area {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+/* Select: quitamos la flecha nativa y usamos el icono Phosphor.
+   Estos estilos son el punto de partida (y el respaldo si el JS no carga). */
+.field__select {
+  position: relative;
+  display: flex;
+  min-width: 0;
+}
+
+.field__select .field__control {
+  appearance: none;
+  padding-right: 2.75rem;
+  cursor: pointer;
+}
+
+.field__select select.field__control:invalid {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.field__select option {
+  background: var(--surface-2);
+  color: #ffffff;
+}
+
+.field__caret {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: var(--type-md);
+  line-height: 1;
+  color: var(--brand-lime);
+}
+
+/* Cuando el JS monta el desplegable propio, escondemos el nativo (sigue
+   enviando su valor) y ocultamos también su flecha, que ya dibuja el nuevo. */
+.field__select--custom > select.field__control,
+.field__select--custom > .field__caret {
+  display: none;
+}
+
+.cselect {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.cselect__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding-right: 1rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.cselect__value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Aún sin elegir: se lee como un placeholder */
+.cselect.is-placeholder .cselect__value {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.cselect__caret {
+  flex-shrink: 0;
+  font-size: var(--type-md);
+  line-height: 1;
+  color: var(--brand-lime);
+  transition: transform var(--dur-1) var(--ease-soft);
+}
+
+.cselect.is-open .cselect__caret {
+  transform: rotate(180deg);
+}
+
+.cselect.is-open .cselect__trigger {
+  border-color: var(--brand-lime);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--brand-lime) 45%, transparent);
+}
+
+.cselect__list {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  max-height: 15rem;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0.35rem;
+  list-style: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  background: var(--surface-slate);
+  box-shadow: var(--shadow-md);
+}
+
+.cselect__option {
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-regular);
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    background var(--dur-1) var(--ease-soft),
+    color var(--dur-1) var(--ease-soft);
+}
+
+/* Señalada con ratón o teclado */
+.cselect__option.is-active {
+  background: color-mix(in srgb, var(--brand-lime) 14%, transparent);
+  color: var(--brand-lime);
+}
+
+/* Ya elegida: marcada con un punto lima a la derecha */
+.cselect__option[aria-selected="true"] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  color: var(--brand-lime);
+}
+
+.cselect__option[aria-selected="true"]::after {
+  content: "";
+  flex-shrink: 0;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--brand-lime);
+}
+
+.contacto__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: var(--space-5);
+}
+
+.contacto__note {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  font-weight: var(--fw-regular);
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.contacto__submit {
+  width: auto;
+  flex-shrink: 0;
+  padding-inline: 2rem;
+}
+
+@media (max-width: 60rem) {
+  .contacto {
+    max-width: 24rem;
+    margin-inline: auto;
+  }
+
+  .contacto__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contacto__actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .contacto__submit {
+    width: 100%;
   }
 }
 

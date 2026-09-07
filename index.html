@@ -5,42 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Estudio de diseño y desarrollo: creamos webs y apps a medida, bien hechas y fáciles de usar. Desde 249€."
+      content="Estudio de diseño y desarrollo de webs y apps a medida en Valencia. Trato de tú a tú de principio a fin: hablas con personas, no con un ticket."
     />
-    <title>Giga109 — Webs y apps que funcionan, sin complicaciones</title>
+    <title>Diseño y desarrollo de webs y apps a medida | giga109</title>
     <link rel="canonical" href="https://www.giga109.es/" />
 
     <!-- Open Graph (Facebook, LinkedIn, WhatsApp, Telegram…) -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Giga109" />
+    <meta property="og:site_name" content="giga109" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:url" content="https://www.giga109.es/" />
     <meta
       property="og:title"
-      content="Giga109 — Webs y apps que funcionan, sin complicaciones"
+      content="giga109 — Webs y apps a medida, con trato de tú a tú"
     />
     <meta
       property="og:description"
-      content="Estudio de diseño y desarrollo: creamos webs y apps a medida, bien hechas y fáciles de usar. Desde 249€."
+      content="Diseñamos, desarrollamos y te acompañamos desde la idea hasta mucho después del lanzamiento."
     />
     <meta property="og:image" content="https://www.giga109.es/assets/brand/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="Logotipo de Giga109 sobre un fondo verde degradado." />
+    <meta property="og:image:alt" content="Logotipo de giga109 sobre un fondo verde degradado." />
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Giga109 — Webs y apps que funcionan, sin complicaciones"
+      content="giga109 — Webs y apps a medida, con trato de tú a tú"
     />
     <meta
       name="twitter:description"
-      content="Estudio de diseño y desarrollo: creamos webs y apps a medida, bien hechas y fáciles de usar. Desde 249€."
+      content="Diseñamos, desarrollamos y te acompañamos desde la idea hasta mucho después del lanzamiento."
     />
     <meta name="twitter:image" content="https://www.giga109.es/assets/brand/og-image.jpg" />
-    <meta name="twitter:image:alt" content="Logotipo de Giga109 sobre un fondo verde degradado." />
+    <meta name="twitter:image:alt" content="Logotipo de giga109 sobre un fondo verde degradado." />
 
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -55,6 +55,57 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="styles/main.css" />
+
+    <!-- Datos estructurados: ayudan a Google a entender que somos un negocio real -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "giga109",
+        "description": "Estudio de diseño y desarrollo de webs y apps a medida.",
+        "url": "https://www.giga109.es/",
+        "email": "hello@giga109.es",
+        "areaServed": "ES",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Valencia",
+          "addressCountry": "ES"
+        },
+        "knowsAbout": ["Diseño web", "Desarrollo de apps", "React Native", "Tiendas online"],
+        "makesOffer": [
+          {
+            "@type": "Offer",
+            "name": "Página simple",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "390",
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Web corporativa",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "599",
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Tienda online",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "price": "1299",
+              "priceCurrency": "EUR",
+              "valueAddedTaxIncluded": false
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#home">Saltar al contenido</a>
@@ -65,17 +116,27 @@
           <img
             class="brand__logo"
             src="assets/brand/giga109.svg"
-            alt="Giga109"
+            alt="giga109"
             width="140"
             height="42"
             decoding="async"
           />
         </a>
 
-        <a class="btn btn--header-cta btn--magnetic" href="mailto:hello@giga109.es" data-magnetic>
+        <img
+          class="site-header__mark"
+          src="assets/logo-icon.svg"
+          alt=""
+          width="703"
+          height="694"
+          decoding="async"
+          aria-hidden="true"
+        />
+
+        <a class="btn btn--header-cta btn--magnetic" href="#formulario" data-magnetic>
           <span class="btn__ripple" aria-hidden="true"></span>
           Contacta
-          <span class="work__arrow" aria-hidden="true">&#8599;</span>
+          <span class="work__arrow" aria-hidden="true">&#8600;</span>
         </a>
       </div>
     </header>
@@ -86,18 +147,23 @@
           <div class="hero__copy">
             <h1 class="hero__title" id="hero-title">
               <span class="hero__motion">
-                <span class="hero__line">Desarrollamos webs y apps a medida</span>
-                <span class="hero__line">para impulsar tu negocio.</span>
+                <span class="hero__line">Detrás de tu web siempre hay una</span>
+                <span class="hero__line">persona, no un ticket de soporte.</span>
               </span>
             </h1>
             <p class="hero__sub">
-              Te acompañamos desde la idea hasta el lanzamiento: diseñamos y desarrollamos un producto sólido, rápido de
-              poner en marcha y pensado para crecer contigo.
+              Diseñamos y desarrollamos webs y apps a medida, y te acompañamos de tú a tú desde la primera idea hasta
+              mucho después del lanzamiento. Cuando necesites algo, hablas con nosotros. Con personas de verdad.
             </p>
             <div class="hero__actions">
-              <a class="btn btn--nav-pill btn--magnetic" href="mailto:hello@giga109.es" data-magnetic>
+              <a class="btn btn--nav-pill btn--magnetic" href="#formulario" data-magnetic>
                 <span class="btn__ripple" aria-hidden="true"></span>
                 Cuéntanos tu idea
+              </a>
+              <a class="btn btn--header-cta btn--magnetic" href="#productos" data-magnetic>
+                <span class="btn__ripple" aria-hidden="true"></span>
+                Nuestros productos
+                <span class="work__arrow" aria-hidden="true">&#8600;</span>
               </a>
             </div>
           </div>
@@ -248,12 +314,12 @@
               <p class="studio-row__label" id="studio-lbl-clientes" data-reveal>Clientes</p>
               <div class="studio-row__main">
                 <p class="studio-prose" data-reveal>
-                  Cuéntanos qué tienes entre manos —un producto, un servicio o una idea— y nos encargamos de hacerlo
-                  realidad.
+                  Cuéntanos qué tienes entre manos —un producto, un servicio o solo una idea suelta— y lo convertimos en
+                  algo real. Sin tecnicismos, sin que te sientas perdido, sin dejarte solo frente a una pantalla.
                 </p>
                 <p class="studio-prose" data-reveal>
-                  Da igual tu sector: hemos trabajado con moda, salud, hostelería, energía, educación, turismo, seguros
-                  y muchos más. Nos adaptamos a lo que necesitas.
+                  Da igual tu sector: nos adaptamos a lo que necesitas y te lo explicamos todo de forma que lo
+                  entiendas. La tecnología es cosa nuestra; tu negocio sigue siendo tuyo.
                 </p>
                 <ul class="client-logo-grid" aria-label="Marcas y proyectos recientes" data-reveal-group>
                   <li class="client-logo-grid__item" data-reveal>
@@ -371,13 +437,16 @@
             <div class="studio-row">
               <p class="studio-row__label" id="studio-lbl-estudio" data-reveal>El estudio</p>
               <div class="studio-row__main">
+                <h2 class="studio-title" data-reveal>Un estudio pequeño, a propósito.</h2>
                 <p class="studio-prose" data-reveal>
-                  Giga109 es un estudio de diseño y desarrollo de webs y apps. Cercano, con criterio y centrado en crear
-                  producto digital que funcione de verdad.
+                  giga109 es un estudio de diseño y desarrollo de webs y apps en Valencia, trabajando para toda España. Y
+                  ese «pequeño» es intencionado: significa que trabajas siempre con las mismas personas, que conocen tu
+                  proyecto por su nombre y no por un número de expediente.
                 </p>
                 <p class="studio-prose" data-reveal>
-                  Combinamos diseño y desarrollo en un mismo equipo, para que cada proyecto salga coherente, sólido y a
-                  tiempo.
+                  Combinamos diseño y desarrollo en un mismo equipo para que cada proyecto salga coherente, sólido y a
+                  tiempo. Y no desaparecemos el día de la entrega: seguimos ahí cuando tu negocio crece y necesita
+                  cambios.
                 </p>
                 <div class="studio-stats" role="list" data-reveal-group>
                   <div class="studio-stat" role="listitem" data-reveal aria-label="Más de 5 años de experiencia">
@@ -394,13 +463,185 @@
                     </p>
                     <p class="studio-stat__label">webs creadas</p>
                   </div>
-                  <div class="studio-stat" role="listitem" data-reveal aria-label="100 por ciento de clientes satisfechos">
+                  <div
+                    class="studio-stat"
+                    role="listitem"
+                    data-reveal
+                    aria-label="100 por ciento de trato directo, sin intermediarios"
+                  >
                     <p class="studio-stat__value" aria-hidden="true">
                       <span class="studio-stat__num" data-counter-target="100" data-counter-duration="1800">0</span
                       ><span class="studio-stat__affix studio-stat__affix--suffix">%</span>
                     </p>
-                    <p class="studio-stat__label">clientes satisfechos</p>
+                    <p class="studio-stat__label">trato directo, sin intermediarios</p>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="studio-panel" id="proceso" aria-labelledby="studio-lbl-proceso">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-proceso" data-reveal>Cómo trabajamos</p>
+              <div class="studio-row__main">
+                <h2 class="studio-title" data-reveal>Así trabajamos contigo, paso a paso.</h2>
+
+                <ol class="proceso" data-reveal-group>
+                  <li class="proceso__step" data-reveal>
+                    <span class="proceso__num" aria-hidden="true">01</span>
+                    <div class="proceso__body">
+                      <h3 class="proceso__title">Nos cuentas tu problema.</h3>
+                      <p class="proceso__text">
+                        Tú hablas, nosotros escuchamos. No hace falta que sepas de tecnología.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="proceso__step" data-reveal>
+                    <span class="proceso__num" aria-hidden="true">02</span>
+                    <div class="proceso__body">
+                      <h3 class="proceso__title">Te proponemos un camino claro.</h3>
+                      <p class="proceso__text">
+                        Sin letra pequeña, sin sorpresas. Sabrás qué hacemos, cuándo y por cuánto antes de empezar.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="proceso__step" data-reveal>
+                    <span class="proceso__num" aria-hidden="true">03</span>
+                    <div class="proceso__body">
+                      <h3 class="proceso__title">Lo construimos juntos.</h3>
+                      <p class="proceso__text">
+                        Vas viendo cómo avanza y opinas por el camino. Tu proyecto, no el nuestro.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="proceso__step" data-reveal>
+                    <span class="proceso__num" aria-hidden="true">04</span>
+                    <div class="proceso__body">
+                      <h3 class="proceso__title">Seguimos aquí.</h3>
+                      <p class="proceso__text">
+                        El lanzamiento no es una despedida. Cuando necesites algo, ya sabes con quién hablar.
+                      </p>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="studio-panel" id="trato" aria-labelledby="studio-lbl-trato">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-trato" data-reveal>El trato</p>
+              <div class="studio-row__main">
+                <h2 class="studio-title" data-reveal>No somos una centralita.</h2>
+                <p class="studio-prose" data-reveal>
+                  Aquí no hay tickets, ni chatbots, ni «su llamada es importante para nosotros». Cuando escribes, te
+                  contesta la misma persona que conoce tu proyecto.
+                </p>
+                <p class="studio-prose" data-reveal>
+                  Puedes ponerte en contacto con nosotros siempre que lo necesites. Esa es toda la promesa. Y es la que
+                  más nos costaría romper.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="studio-panel productos" id="productos" aria-labelledby="studio-lbl-productos">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-productos" data-reveal>Producto propio</p>
+              <div class="studio-row__main">
+                <header class="productos__intro">
+                  <h2 class="productos__title" data-reveal>También creamos lo nuestro.</h2>
+                  <p class="productos__lead" data-reveal>
+                    No solo trabajamos por encargo. Estas son las herramientas que hemos creado, usamos y mantenemos
+                    nosotros mismos. La mejor prueba de cómo trabajamos: si lo hacemos para nuestro propio negocio,
+                    imagina lo que hacemos para el tuyo.
+                  </p>
+                </header>
+
+                <div class="productos__list" data-reveal-group data-hub-panels>
+                  <article class="hub-panel" data-reveal style="--acc: #28574b; --acc-glow: #4e9c85">
+                    <a
+                      class="hub-panel__link"
+                      href="https://menu0.es/?utm_source=landing&utm_medium=productos"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Ver menu0 — cartas digitales con QR (se abre en otra pestaña)"
+                    ></a>
+                    <div class="hub-panel__top">
+                      <span class="hub-panel__square" aria-hidden="true"></span>
+                      <span class="hub-panel__tag">Hostelería</span>
+                    </div>
+                    <div class="hub-panel__main">
+                      <h3 class="hub-panel__name">
+                        <img class="hub-panel__logo hub-panel__logo--menu" src="assets/logo_menu0.svg" alt="menu0" />
+                      </h3>
+                      <p class="hub-panel__desc">Cartas digitales con QR</p>
+                      <p class="hub-panel__text">
+                        La carta de tu restaurante en el móvil del cliente, en el segundo en que escanea el QR. Cambias
+                        precios, quitas un plato agotado o subes el menú del día sin imprimir nada y sin depender de
+                        nadie.
+                      </p>
+                    </div>
+                    <span class="hub-panel__cta">
+                      Ver proyecto
+                      <svg class="hub-panel__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                          d="M5 12h14M13 6l6 6-6 6"
+                          stroke="currentColor"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </article>
+
+                  <article class="hub-panel" data-reveal style="--acc: #892734; --acc-glow: #d1495b">
+                    <a
+                      class="hub-panel__link"
+                      href="https://www.tap-and-book.com/?utm_source=landing&utm_medium=productos"
+                      target="_blank"
+                      rel="noopener"
+                      aria-label="Ver Tap and Book — reservas online para tu negocio (se abre en otra pestaña)"
+                    ></a>
+                    <div class="hub-panel__top">
+                      <span class="hub-panel__square" aria-hidden="true"></span>
+                      <span class="hub-panel__tag">Reservas</span>
+                    </div>
+                    <div class="hub-panel__main">
+                      <h3 class="hub-panel__name">
+                        <img
+                          class="hub-panel__logo hub-panel__logo--tab"
+                          src="assets/logo_Tap%26Book.svg"
+                          alt="Tap &amp; Book"
+                        />
+                      </h3>
+                      <p class="hub-panel__desc">Reservas online para tu negocio</p>
+                      <p class="hub-panel__text">
+                        La agenda de tu negocio se llena sola, sin que tengas que coger el teléfono. Tus clientes
+                        reservan cita desde el móvil a cualquier hora y tú ves tu día de un vistazo: se acabaron las
+                        llamadas a deshoras y las citas apuntadas en papel.
+                      </p>
+                    </div>
+                    <span class="hub-panel__cta">
+                      Ver proyecto
+                      <svg class="hub-panel__arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                          d="M5 12h14M13 6l6 6-6 6"
+                          stroke="currentColor"
+                          stroke-width="1.6"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </svg>
+                    </span>
+                  </article>
                 </div>
               </div>
             </div>
@@ -458,11 +699,16 @@
                     </div>
                   </li>
                 </ul>
-                <a class="btn btn--tarifa btn--magnetic" href="mailto:hello@giga109.es" data-magnetic>
+                <a
+                  class="btn btn--tarifa btn--magnetic"
+                  href="#formulario"
+                  aria-label="Página simple: me interesa"
+                  data-magnetic
+                >
                   <span class="btn__ripple" aria-hidden="true"></span>
                   ¡Me interesa!
                 </a>
-                <p class="tarifa-card__price">Desde <strong>290€</strong></p>
+                <p class="tarifa-card__price">Desde <strong>390€</strong></p>
               </div>
             </article>
 
@@ -503,11 +749,16 @@
                     </div>
                   </li>
                 </ul>
-                <a class="btn btn--tarifa btn--magnetic" href="mailto:hello@giga109.es" data-magnetic>
+                <a
+                  class="btn btn--tarifa btn--magnetic"
+                  href="#formulario"
+                  aria-label="Web corporativa: me interesa"
+                  data-magnetic
+                >
                   <span class="btn__ripple" aria-hidden="true"></span>
                   ¡Me interesa!
                 </a>
-                <p class="tarifa-card__price">Desde <strong>390€</strong></p>
+                <p class="tarifa-card__price">Desde <strong>599€</strong></p>
               </div>
             </article>
 
@@ -555,13 +806,117 @@
                     </div>
                   </li>
                 </ul>
-                <a class="btn btn--tarifa btn--magnetic" href="mailto:hello@giga109.es" data-magnetic>
+                <a
+                  class="btn btn--tarifa btn--magnetic"
+                  href="#formulario"
+                  aria-label="Tienda online: me interesa"
+                  data-magnetic
+                >
                   <span class="btn__ripple" aria-hidden="true"></span>
                   ¡Me interesa!
                 </a>
-                <p class="tarifa-card__price">Desde <strong>490€</strong></p>
+                <p class="tarifa-card__price">Desde <strong>1299€</strong></p>
               </div>
             </article>
+                </div>
+
+                <div class="contacto" id="formulario">
+                  <header class="contacto__intro">
+                    <h2 class="contacto__title" data-reveal>¿Tienes una idea entre manos? Hablemos.</h2>
+                    <p class="contacto__lead" data-reveal>
+                      Cuéntanos qué necesitas y te decimos con claridad cómo lo haríamos, cuánto y en cuánto tiempo. Sin
+                      compromiso y hablando con una persona de verdad desde el minuto uno.
+                    </p>
+                  </header>
+
+                  <!-- TODO: falta la lógica de envío (backend / servicio de correo) -->
+                  <form class="contacto__form" data-reveal novalidate>
+                    <div class="contacto__grid">
+                      <div class="field">
+                        <label class="field__label" for="contacto-nombre">Nombre</label>
+                        <input
+                          class="field__control"
+                          id="contacto-nombre"
+                          name="nombre"
+                          type="text"
+                          autocomplete="given-name"
+                          placeholder="Tu nombre"
+                          required
+                        />
+                      </div>
+
+                      <div class="field">
+                        <label class="field__label" for="contacto-apellidos">Apellidos</label>
+                        <input
+                          class="field__control"
+                          id="contacto-apellidos"
+                          name="apellidos"
+                          type="text"
+                          autocomplete="family-name"
+                          placeholder="Tus apellidos"
+                          required
+                        />
+                      </div>
+
+                      <div class="field">
+                        <label class="field__label" for="contacto-email">Correo</label>
+                        <input
+                          class="field__control"
+                          id="contacto-email"
+                          name="email"
+                          type="email"
+                          autocomplete="email"
+                          placeholder="tucorreo@ejemplo.com"
+                          required
+                        />
+                      </div>
+
+                      <div class="field">
+                        <label class="field__label" for="contacto-telefono">Número de teléfono</label>
+                        <input
+                          class="field__control"
+                          id="contacto-telefono"
+                          name="telefono"
+                          type="tel"
+                          autocomplete="tel"
+                          placeholder="600 000 000"
+                        />
+                      </div>
+
+                      <div class="field field--full">
+                        <label class="field__label" for="contacto-motivo">¿Sobre qué quieres hablar?</label>
+                        <div class="field__select">
+                          <select class="field__control" id="contacto-motivo" name="motivo" required>
+                            <option value="" selected disabled>Elige una opción</option>
+                            <option value="pagina-simple">Página simple</option>
+                            <option value="web-corporativa">Web corporativa</option>
+                            <option value="tienda-online">Tienda online</option>
+                            <option value="otros">Otra cosa</option>
+                          </select>
+                          <i class="ph ph-caret-down field__caret" aria-hidden="true"></i>
+                        </div>
+                      </div>
+
+                      <div class="field field--full">
+                        <label class="field__label" for="contacto-descripcion">Descripción</label>
+                        <textarea
+                          class="field__control field__control--area"
+                          id="contacto-descripcion"
+                          name="descripcion"
+                          rows="5"
+                          placeholder="Cuéntanos qué necesitas, para cuándo y cualquier detalle que nos ayude."
+                        ></textarea>
+                      </div>
+                    </div>
+
+                    <div class="contacto__actions">
+                      <p class="contacto__note">Te contestamos a hello@giga109.es en 24–48 h laborables.</p>
+                      <button class="btn btn--tarifa btn--magnetic contacto__submit" type="submit" data-magnetic>
+                        <span class="btn__ripple" aria-hidden="true"></span>
+                        Enviar mensaje
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -592,7 +947,8 @@
 
           <div class="site-footer__bottom">
             <div class="site-footer__legal">
-              <p class="site-footer__legal-item">GIGA109 © <span id="year"></span></p>
+              <p class="site-footer__legal-item">giga109 © <span id="year"></span></p>
+              <a class="site-footer__legal-item site-footer__legal-link" href="hub/">Nuestros proyectos</a>
               <a class="site-footer__legal-item site-footer__legal-link" href="#legal">Legal y cookies</a>
               <a class="site-footer__legal-item site-footer__legal-link" href="#privacidad">Privacidad</a>
             </div>
