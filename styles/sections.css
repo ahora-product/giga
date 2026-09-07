@@ -1258,6 +1258,18 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
   margin-top: var(--space-5);
 }
 
+.contacto__note-link {
+  color: var(--brand-lime);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--brand-lime) 40%, transparent);
+  transition: border-color var(--dur-1) var(--ease-soft);
+}
+
+.contacto__note-link:hover,
+.contacto__note-link:focus-visible {
+  border-bottom-color: var(--brand-lime);
+}
+
 .contacto__note {
   margin: 0;
   font-family: var(--font-body);
