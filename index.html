@@ -142,6 +142,37 @@
     </header>
 
     <main>
+      <!-- Primera pantalla: los tres logos flotando suavemente, con giga109 en
+           el centro. Es puramente decorativa (aria-hidden en las marcas) porque
+           el nombre del estudio ya está en la cabecera y en el <h1> siguiente. -->
+      <section class="intro" id="intro" aria-label="Nuestras marcas">
+        <!-- Curvas de nivel animadas de fondo (js/introContours.js). Es
+             decoración pura, por eso queda fuera del árbol de accesibilidad. -->
+        <canvas class="intro__contours" data-intro-contours aria-hidden="true"></canvas>
+        <div class="intro__stage">
+          <!-- Los tres van en <span>, no en <img>: se pintan con su color
+               usando el SVG como máscara (§ sections.css). Un <img> dibujaría
+               además su propio SVG negro por encima del color, y sobre el
+               fondo oscuro no se vería nada. -->
+          <span
+            class="intro__logo intro__logo--giga"
+            role="img"
+            aria-label="giga109"
+          ></span>
+          <span
+            class="intro__logo intro__logo--menu0"
+            role="img"
+            aria-label="menu0"
+          ></span>
+          <span
+            class="intro__logo intro__logo--tapbook"
+            role="img"
+            aria-label="Tap&amp;Book"
+          ></span>
+        </div>
+        <p class="intro__claim">Desarrollo de webs y apps a medida</p>
+      </section>
+
       <section class="hero section section--airy" id="home" aria-labelledby="hero-title">
         <div class="shell hero__inner">
           <div class="hero__copy">
