@@ -20,6 +20,109 @@
   }
 }
 
+/* Intro: los tres logos flotando -----------------------------------------
+   Dos capas de movimiento sobre el mismo elemento:
+   1) la entrada (intro-logo-in), que los revela al cargar;
+   2) el flotado en bucle (intro-float-*), muy corto y muy lento, para que se
+      note como respiración y nunca como un rebote.
+   Cada logo lleva su propio keyframe y duración —números primos entre sí— de
+   modo que nunca vuelven a coincidir y el conjunto no parece sincronizado. */
+/* Nota: la posición de cada logo la fijan left/top (§ sections.css), así que
+   aquí el transform solo tiene que re-centrar (-50%, -50%) y añadir el
+   desplazamiento del flotado. Los % del translate3d son relativos al propio
+   logo, por eso los satélites usan valores mayores: son más pequeños y con
+   cifras iguales apenas se moverían. */
+@keyframes intro-logo-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.94);
+  }
+  to {
+    opacity: var(--intro-opacity, 1);
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes intro-float-giga {
+  0% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translate3d(0, -9%, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes intro-float-menu0 {
+  0% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-50%, -50%) translate3d(5%, -16%, 0) rotate(0.6deg);
+  }
+  66% {
+    transform: translate(-50%, -50%) translate3d(-4%, 12%, 0) rotate(-0.5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+@keyframes intro-float-tapbook {
+  0% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate(-50%, -50%) translate3d(-5%, 14%, 0) rotate(-0.6deg);
+  }
+  66% {
+    transform: translate(-50%, -50%) translate3d(4%, -11%, 0) rotate(0.5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+html.motion-safe .intro__logo {
+  opacity: 0;
+  will-change: transform, opacity;
+  /* La entrada corre primero y deja el logo fijado (forwards); cuando termina,
+     el retardo del flotado ya ha pasado y toma el relevo sin salto. */
+  animation:
+    intro-logo-in 900ms var(--ease-out-expo) forwards,
+    var(--intro-float, intro-float-giga) var(--intro-float-dur, 9s) var(--ease-soft) infinite;
+  animation-delay: var(--intro-in-delay, 0ms), var(--intro-float-delay, 900ms);
+}
+
+html.motion-safe .intro__logo--giga {
+  --intro-in-delay: 120ms;
+  --intro-float: intro-float-giga;
+  --intro-float-dur: 9s;
+  --intro-float-delay: 1020ms;
+}
+
+html.motion-safe .intro__logo--menu0 {
+  --intro-in-delay: 380ms;
+  --intro-float: intro-float-menu0;
+  --intro-float-dur: 11s;
+  --intro-float-delay: 1280ms;
+}
+
+html.motion-safe .intro__logo--tapbook {
+  --intro-in-delay: 560ms;
+  --intro-float: intro-float-tapbook;
+  --intro-float-dur: 13s;
+  --intro-float-delay: 1460ms;
+}
+
+/* Sin motion-safe: los logos se ven quietos, en su sitio y con su opacidad. */
+html:not(.motion-safe) .intro__logo {
+  animation: none;
+  opacity: var(--intro-opacity, 1);
+}
+
 .hero__motion .hero__line {
   opacity: 0;
   transform: translateY(20px);

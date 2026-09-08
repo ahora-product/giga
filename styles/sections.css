@@ -45,6 +45,197 @@
   filter: invert(1);
 }
 
+/* Intro: primera pantalla ------------------------------------------------
+   Ocupa el alto de la ventana menos la cabecera, así lo primero que se ve al
+   entrar son los tres logos flotando. giga109 va en el centro y más grande;
+   debajo, uno a cada lado, menu0 (izquierda) y Tap&Book (derecha), cada uno
+   en su color corporativo. El flotar es una animación CSS (§ motion.css). */
+.intro {
+  position: relative;
+  min-height: calc(100svh - var(--header-h));
+  /* Dos filas: los logos arriba (en la fila que crece) y el claim abajo.
+     La fila 1r del claim lo mantiene pegado a la parte inferior, y el
+     align-content de la primera fila sube el grupo de logos hacia arriba
+     en lugar de dejarlo centrado en toda la pantalla. */
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  background: var(--bg);
+  color: var(--text);
+  overflow: clip;
+  padding-inline: var(--gutter);
+  /* El padding de abajo separa el claim del borde inferior; el de arriba
+     deja algo de aire bajo la cabecera. */
+  padding-block: clamp(1rem, 4vh, 3rem) clamp(1.5rem, 5vh, 3.5rem);
+}
+
+/* Curvas de nivel de fondo. Va detrás de todo (z-index 0 frente al 1 del
+   escenario) y muy tenue: debe leerse como textura, no como ilustración.
+   El degradado de máscara la apaga hacia los bordes y, sobre todo, hacia
+   abajo, para que se funda con el negro del hero en lugar de cortarse. */
+.intro__contours {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0.55;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 42%, #000 45%, transparent 100%);
+  mask-image: radial-gradient(120% 100% at 50% 42%, #000 45%, transparent 100%);
+}
+
+.intro__stage {
+  position: relative;
+  /* Por encima del fondo de curvas. */
+  z-index: 1;
+  /* Se coloca en la fila que crece, pegado ARRIBA: así el grupo de logos
+     queda en la parte alta de la pantalla y no centrado en toda ella. */
+  align-self: start;
+  width: min(100%, 64rem);
+  /* Aspecto fijo para que las posiciones en % de cada logo se mantengan
+     proporcionadas al redimensionar, sin saltos. Es ancho y bajo (21/9) para
+     que el grupo de logos quede compacto: con una caja más alta sobraba
+     mucho hueco muerto entre los satélites y el claim de abajo. */
+  aspect-ratio: 21 / 9;
+  /* Techo de altura: deja sitio para el claim de abajo en pantallas apaisadas
+     y bajas, donde el escenario se comería toda la ventana. */
+  max-height: min(46svh, 26rem);
+  margin-inline: auto;
+}
+
+/* Claim al pie de la primera pantalla. Minimalista: una línea, en gris suave
+   y con algo de tracking, para que acompañe sin competir con los logos. */
+.intro__claim {
+  position: relative;
+  z-index: 1;
+  align-self: end;
+  margin: 0;
+  max-width: 34rem;
+  text-align: center;
+  text-wrap: balance;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-regular);
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+}
+
+.intro__logo {
+  position: absolute;
+  /* --x/--y son la posición del CENTRO del logo dentro del escenario, en % de
+     este. Van en left/top (no en translate) precisamente para que el % se
+     resuelva contra el escenario y no contra el propio ancho del logo, que es
+     mucho más pequeño y los amontonaría en el centro. */
+  --x: 50%;
+  --y: 50%;
+  left: var(--x);
+  top: var(--y);
+  display: block;
+  width: auto;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+/* giga109 manda: va en el verde lima corporativo, a tamaño grande y por encima
+   de los demás. Como es un <img> de un SVG negro, no se puede recolorear con
+   `color`: se usa la misma técnica de máscara que los satélites. */
+.intro__logo--giga {
+  --brand: var(--brand-lime);
+  --logo-src: url("../assets/logo_giga109.svg");
+  width: clamp(13rem, 30vw, 24rem);
+  aspect-ratio: 1657 / 494;
+  z-index: 2;
+}
+
+/* Logos pintados por máscara -----------------------------------------------
+   Un <img> no se puede recolorear con `color`, y estos SVG son negros planos.
+   Se usa el propio archivo como MÁSCARA: recorta la silueta exacta del logo y
+   el color lo pone el background.
+   Como el elemento enmascarado ya no muestra el bitmap, necesita altura
+   propia: la da el aspect-ratio de cada logo (su viewBox). */
+.intro__logo--giga,
+.intro__logo--menu0,
+.intro__logo--tapbook {
+  background-color: var(--brand);
+  -webkit-mask-image: var(--logo-src);
+  mask-image: var(--logo-src);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+/* Satélites: los dos en blanco y AL MISMO TAMAÑO.
+   El tamaño se fija por ALTURA (--sat-h), no por anchura: cada logo tiene una
+   proporción distinta (menu0 es 1648×390, Tap&Book 2538×466), así que igualar
+   el ancho dejaría a Tap&Book visiblemente más bajo. Dando la misma altura,
+   el ancho lo deduce cada uno de su aspect-ratio y se leen igual de grandes. */
+.intro__logo--menu0,
+.intro__logo--tapbook {
+  --sat-h: clamp(1.55rem, 3.3vw, 2.5rem);
+  --brand: #ffffff;
+  --intro-opacity: 1;
+  /* El ancho lo calcula el aspect-ratio a partir de la altura; el `auto`
+     anula explícitamente el width de .intro__logo. */
+  width: auto;
+  height: var(--sat-h);
+  opacity: var(--intro-opacity);
+}
+
+/* menu0: abajo, a la izquierda de giga109. */
+.intro__logo--menu0 {
+  --x: 30%;
+  --y: 82%;
+  --logo-src: url("../assets/logo_menu0.svg");
+  aspect-ratio: 1648 / 390;
+}
+
+/* Tap&Book: abajo, a la derecha de giga109. */
+.intro__logo--tapbook {
+  --x: 70%;
+  --y: 82%;
+  --logo-src: url("../assets/logo_Tap&Book.svg");
+  aspect-ratio: 2538 / 466;
+}
+
+/* En móvil hay menos ancho: los dos satélites siguen abajo y a cada lado,
+   pero más juntos al eje y algo más bajos, para que quepan sin salirse. */
+@media (max-width: 40rem) {
+  /* En móvil el escenario es algo más alto (cabe menos en horizontal), pero
+     sigue siendo compacto para no dejar hueco muerto sobre el claim. */
+  .intro__stage {
+    aspect-ratio: 5 / 4;
+    max-height: min(42svh, 20rem);
+  }
+
+  .intro__logo--giga {
+    width: min(66vw, 17rem);
+  }
+
+  /* Los dos comparten altura, así que basta con ajustarla una vez. */
+  .intro__logo--menu0,
+  .intro__logo--tapbook {
+    --sat-h: min(4.4vw, 1.5rem);
+  }
+
+  .intro__logo--menu0 {
+    --x: 26%;
+    --y: 86%;
+  }
+
+  .intro__logo--tapbook {
+    --x: 73%;
+    --y: 86%;
+  }
+}
+
 .hero {
   position: relative;
   padding-block: clamp(3.5rem, 10vw, 6.5rem) clamp(3rem, 8vw, 5rem);
