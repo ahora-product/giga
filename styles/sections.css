@@ -31,6 +31,7 @@
   pointer-events: none;
 }
 
+
 .brand {
   display: inline-flex;
   align-items: center;
@@ -187,21 +188,51 @@
   width: auto;
   height: var(--sat-h);
   opacity: var(--intro-opacity);
+  /* Estos dos son enlaces: hay que devolverles el puntero que .intro__logo
+     quita (el resto del escenario sigue siendo decoración no clicable). */
+  pointer-events: auto;
+  cursor: pointer;
+  transition: background-color 180ms var(--ease-soft);
 }
 
-/* menu0: abajo, a la izquierda de giga109. */
+/* Al pasar por encima o al enfocar con teclado, cada logo se tiñe del color de
+   SU marca (--hover-acc, definido más abajo en cada uno), el mismo de su panel
+   en "Producto propio". Así el hover ya anticipa a dónde lleva el enlace. */
+.intro__logo--menu0:hover,
+.intro__logo--tapbook:hover,
+.intro__logo--menu0:focus-visible,
+.intro__logo--tapbook:focus-visible {
+  --brand: var(--hover-acc);
+}
+
+/* El foco necesita marco propio: el cambio de color solo no basta. Va con
+   offset para que no se pegue a la silueta del logo. */
+.intro__logo--menu0:focus-visible,
+.intro__logo--tapbook:focus-visible {
+  outline: 2px solid var(--hover-acc);
+  outline-offset: 6px;
+  border-radius: 2px;
+}
+
+/* menu0: abajo, a la izquierda de giga109.
+   El verde de marca es el `--acc-glow` de su panel (#4e9c85), no el `--acc`
+   base (#28574b): aquí el logo va sobre negro puro y el tono oscuro del panel
+   —que allí funciona porque es un borde sobre fondo claro— se perdería. */
 .intro__logo--menu0 {
   --x: 30%;
   --y: 82%;
   --logo-src: url("../assets/logo_menu0.svg");
+  --hover-acc: #4e9c85;
   aspect-ratio: 1648 / 390;
 }
 
-/* Tap&Book: abajo, a la derecha de giga109. */
+/* Tap&Book: abajo, a la derecha de giga109. Mismo criterio: el rojo claro
+   (--acc-glow del panel) en vez del granate base. */
 .intro__logo--tapbook {
   --x: 70%;
   --y: 82%;
   --logo-src: url("../assets/logo_Tap&Book.svg");
+  --hover-acc: #d1495b;
   aspect-ratio: 2538 / 466;
 }
 
