@@ -159,16 +159,23 @@
             role="img"
             aria-label="giga109"
           ></span>
-          <span
+          <!-- Los dos satélites sí son enlace: llevan a la web de cada producto.
+               Se mantiene el aria-label como nombre accesible (el elemento no
+               tiene texto: la marca la pinta la máscara CSS). -->
+          <a
             class="intro__logo intro__logo--menu0"
-            role="img"
-            aria-label="menu0"
-          ></span>
-          <span
+            href="https://www.menu0.es/?utm_source=landing&utm_medium=intro"
+            target="_blank"
+            rel="noopener"
+            aria-label="Ir a menu0 (se abre en otra pestaña)"
+          ></a>
+          <a
             class="intro__logo intro__logo--tapbook"
-            role="img"
-            aria-label="Tap&amp;Book"
-          ></span>
+            href="https://www.tap-and-book.com/?utm_source=landing&utm_medium=intro"
+            target="_blank"
+            rel="noopener"
+            aria-label="Ir a Tap&amp;Book (se abre en otra pestaña)"
+          ></a>
         </div>
         <p class="intro__claim">Desarrollo de webs y apps a medida</p>
       </section>
@@ -668,7 +675,7 @@
                           stroke="currentColor"
                           stroke-width="1.6"
                           stroke-linecap="round"
-                          stroke-linejoin="round"
+                          stroke-linejoin="round" 
                         />
                       </svg>
                     </span>
