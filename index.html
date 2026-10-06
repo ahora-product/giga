@@ -142,77 +142,154 @@
     </header>
 
     <main>
-      <!-- Primera pantalla: los tres logos flotando suavemente, con giga109 en
-           el centro. Es puramente decorativa (aria-hidden en las marcas) porque
-           el nombre del estudio ya está en la cabecera y en el <h1> siguiente. -->
-      <section class="intro" id="intro" aria-label="Nuestras marcas">
-        <!-- Curvas de nivel animadas de fondo (js/introContours.js). Es
-             decoración pura, por eso queda fuera del árbol de accesibilidad. -->
-        <canvas class="intro__contours" data-intro-contours aria-hidden="true"></canvas>
-        <div class="intro__stage">
-          <!-- Los tres van en <span>, no en <img>: se pintan con su color
-               usando el SVG como máscara (§ sections.css). Un <img> dibujaría
-               además su propio SVG negro por encima del color, y sobre el
-               fondo oscuro no se vería nada. -->
-          <span
-            class="intro__logo intro__logo--giga"
-            role="img"
-            aria-label="giga109"
-          ></span>
-          <!-- Los dos satélites sí son enlace: llevan a la web de cada producto.
-               Se mantiene el aria-label como nombre accesible (el elemento no
-               tiene texto: la marca la pinta la máscara CSS). -->
-          <a
-            class="intro__logo intro__logo--menu0"
-            href="https://www.menu0.es/?utm_source=landing&utm_medium=intro"
-            target="_blank"
-            rel="noopener"
-            aria-label="Ir a menu0 (se abre en otra pestaña)"
-          ></a>
-          <a
-            class="intro__logo intro__logo--tapbook"
-            href="https://www.tap-and-book.com/?utm_source=landing&utm_medium=intro"
-            target="_blank"
-            rel="noopener"
-            aria-label="Ir a Tap&amp;Book (se abre en otra pestaña)"
-          ></a>
-        </div>
-        <p class="intro__claim">Desarrollo de webs y apps a medida</p>
-      </section>
+      <!-- Primera pantalla: claim en el centro y un rastro de capturas de
+           proyectos que sigue al ratón (o se dibuja solo en táctil). Las
+           capturas son decoración: la capa va fuera del árbol de accesibilidad. -->
+      <section class="trail-hero" id="home" aria-labelledby="hero-title" data-hero-trail>
+        <div class="trail-hero__trail" data-trail-layer aria-hidden="true"></div>
 
-      <section class="hero section section--airy" id="home" aria-labelledby="hero-title">
-        <div class="shell hero__inner">
-          <div class="hero__copy">
-            <h1 class="hero__title" id="hero-title">
-              <span class="hero__motion">
-                <span class="hero__line">Detrás de tu web siempre hay una</span>
-                <span class="hero__line">persona, no un ticket de soporte.</span>
-              </span>
-            </h1>
-            <p class="hero__sub">
-              Diseñamos y desarrollamos webs y apps a medida, y te acompañamos de tú a tú desde la primera idea hasta
-              mucho después del lanzamiento. Cuando necesites algo, hablas con nosotros. Con personas de verdad.
-            </p>
-            <div class="hero__actions">
-              <a class="btn btn--nav-pill btn--magnetic" href="#formulario" data-magnetic>
-                <span class="btn__ripple" aria-hidden="true"></span>
-                Cuéntanos tu idea
-              </a>
-              <a class="btn btn--header-cta btn--magnetic" href="#productos" data-magnetic>
-                <span class="btn__ripple" aria-hidden="true"></span>
-                Nuestros productos
-                <span class="work__arrow" aria-hidden="true">&#8600;</span>
-              </a>
-            </div>
+        <div class="trail-hero__center">
+          <h1 class="trail-hero__title" id="hero-title">Webs y apps a medida, <em>de tú a tú</em></h1>
+          <p class="trail-hero__sub">
+            Diseñamos, desarrollamos y te acompañamos desde la idea hasta mucho después del lanzamiento.
+          </p>
+          <div class="trail-hero__actions">
+            <a class="btn btn--nav-pill btn--magnetic" href="#formulario" data-magnetic>
+              <span class="btn__ripple" aria-hidden="true"></span>
+              Cuéntanos tu idea
+            </a>
           </div>
         </div>
+
+        <p class="trail-hero__hint" data-trail-hint aria-hidden="true">Mueve el ratón</p>
+        <p class="trail-hero__now" aria-hidden="true">Proyecto<strong data-trail-now>—</strong></p>
       </section>
+
+      <div class="studio-sheet">
+        <section class="studio-panel" id="estudio" aria-labelledby="studio-lbl-estudio">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-estudio" data-reveal>El estudio</p>
+              <div class="studio-row__main">
+                <h2 class="studio-title" data-reveal>Un estudio pequeño, a propósito.</h2>
+                <p class="studio-prose" data-reveal>
+                  giga109 es un estudio de diseño y desarrollo de webs y apps en Valencia, trabajando para toda España. Y
+                  ese «pequeño» es intencionado: significa que trabajas siempre con las mismas personas, que conocen tu
+                  proyecto por su nombre y no por un número de expediente.
+                </p>
+                <p class="studio-prose" data-reveal>
+                  Combinamos diseño y desarrollo en un mismo equipo para que cada proyecto salga coherente, sólido y a
+                  tiempo. Y no desaparecemos el día de la entrega: seguimos ahí cuando tu negocio crece y necesita
+                  cambios.
+                </p>
+                <div class="studio-stats" role="list" data-reveal-group>
+                  <div class="studio-stat" role="listitem" data-reveal aria-label="Más de 5 años de experiencia">
+                    <p class="studio-stat__value" aria-hidden="true">
+                      <span class="studio-stat__affix">+</span
+                      ><span class="studio-stat__num" data-counter-target="5" data-counter-duration="1400">0</span>
+                    </p>
+                    <p class="studio-stat__label">años de experiencia</p>
+                  </div>
+                  <div class="studio-stat" role="listitem" data-reveal aria-label="Más de 50 webs creadas">
+                    <p class="studio-stat__value" aria-hidden="true">
+                      <span class="studio-stat__affix">+</span
+                      ><span class="studio-stat__num" data-counter-target="50" data-counter-duration="1600">0</span>
+                    </p>
+                    <p class="studio-stat__label">webs creadas</p>
+                  </div>
+                  <div
+                    class="studio-stat"
+                    role="listitem"
+                    data-reveal
+                    aria-label="100 por ciento de trato directo, sin intermediarios"
+                  >
+                    <p class="studio-stat__value" aria-hidden="true">
+                      <span class="studio-stat__num" data-counter-target="100" data-counter-duration="1800">0</span
+                      ><span class="studio-stat__affix studio-stat__affix--suffix">%</span>
+                    </p>
+                    <p class="studio-stat__label">trato directo, sin intermediarios</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="studio-panel" id="proceso" aria-labelledby="studio-lbl-proceso">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-proceso" data-reveal>Cómo trabajamos</p>
+              <div class="studio-row__main">
+                <h2 class="studio-title" data-reveal>Así trabajamos contigo, paso a paso.</h2>
+
+                <ol class="proceso" data-reveal-group>
+                  <li class="proceso__step" data-reveal>
+                    <span class="proceso__num" aria-hidden="true">01</span>
+                    <div class="proceso__body">
+                      <h3 class="proceso__title">Nos cuentas tu problema.</h3>
+                      <p class="proceso__text">
+                        Tú hablas, nosotros escuchamos. No hace falta que sepas de tecnología.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="proceso__step" data-reveal>
+                    <span class="proceso__num" aria-hidden="true">02</span>
+                    <div class="proceso__body">
+                      <h3 class="proceso__title">Te proponemos un camino claro.</h3>
+                      <p class="proceso__text">
+                        Sin letra pequeña, sin sorpresas. Sabrás qué hacemos, cuándo y por cuánto antes de empezar.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="proceso__step" data-reveal>
+                    <span class="proceso__num" aria-hidden="true">03</span>
+                    <div class="proceso__body">
+                      <h3 class="proceso__title">Lo construimos juntos.</h3>
+                      <p class="proceso__text">
+                        Vas viendo cómo avanza y opinas por el camino. Tu proyecto, no el nuestro.
+                      </p>
+                    </div>
+                  </li>
+                  <li class="proceso__step" data-reveal>
+                    <span class="proceso__num" aria-hidden="true">04</span>
+                    <div class="proceso__body">
+                      <h3 class="proceso__title">Seguimos aquí.</h3>
+                      <p class="proceso__text">
+                        El lanzamiento no es una despedida. Cuando necesites algo, ya sabes con quién hablar.
+                      </p>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="studio-panel" id="trato" aria-labelledby="studio-lbl-trato">
+          <div class="shell">
+            <div class="studio-row">
+              <p class="studio-row__label" id="studio-lbl-trato" data-reveal>El trato</p>
+              <div class="studio-row__main">
+                <h2 class="studio-title" data-reveal>No somos una centralita.</h2>
+                <p class="studio-prose" data-reveal>
+                  Aquí no hay tickets, ni chatbots, ni «su llamada es importante para nosotros». Cuando escribes, te
+                  contesta la misma persona que conoce tu proyecto.
+                </p>
+                <p class="studio-prose" data-reveal>
+                  Puedes ponerte en contacto con nosotros siempre que lo necesites. Esa es toda la promesa. Y es la que
+                  más nos costaría romper.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
 
       <section class="work section section--tight" id="proyectos" aria-label="Selección de trabajos">
         <ul class="work__grid" data-project-scatter>
           <li class="work__item" data-parallax data-speed="0.06">
             <a class="work__card" href="#" aria-label="Proyecto: Beeme">
-              <img class="work__img" src="assets/projects/beeme.png" alt="" width="1440" height="1080" fetchpriority="high" loading="eager" decoding="async" draggable="false" />
+              <img class="work__img" src="assets/projects/beeme.png" alt="" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
             </a>
             <div class="work__caption">
               <span class="work__meta">
@@ -223,7 +300,7 @@
           </li>
           <li class="work__item" data-parallax data-speed="0.13">
             <a class="work__card" href="#" aria-label="Proyecto: Aguas Internacionales">
-              <img class="work__img" src="assets/projects/aguas-internacionales.png" alt="" width="1080" height="1350" loading="eager" decoding="async" draggable="false" />
+              <img class="work__img" src="assets/projects/aguas-internacionales.png" alt="" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
             </a>
             <div class="work__caption">
               <span class="work__meta">
@@ -465,124 +542,6 @@
                     </div>
                   </li>
                 </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="studio-panel" id="estudio" aria-labelledby="studio-lbl-estudio">
-          <div class="shell">
-            <div class="studio-row">
-              <p class="studio-row__label" id="studio-lbl-estudio" data-reveal>El estudio</p>
-              <div class="studio-row__main">
-                <h2 class="studio-title" data-reveal>Un estudio pequeño, a propósito.</h2>
-                <p class="studio-prose" data-reveal>
-                  giga109 es un estudio de diseño y desarrollo de webs y apps en Valencia, trabajando para toda España. Y
-                  ese «pequeño» es intencionado: significa que trabajas siempre con las mismas personas, que conocen tu
-                  proyecto por su nombre y no por un número de expediente.
-                </p>
-                <p class="studio-prose" data-reveal>
-                  Combinamos diseño y desarrollo en un mismo equipo para que cada proyecto salga coherente, sólido y a
-                  tiempo. Y no desaparecemos el día de la entrega: seguimos ahí cuando tu negocio crece y necesita
-                  cambios.
-                </p>
-                <div class="studio-stats" role="list" data-reveal-group>
-                  <div class="studio-stat" role="listitem" data-reveal aria-label="Más de 5 años de experiencia">
-                    <p class="studio-stat__value" aria-hidden="true">
-                      <span class="studio-stat__affix">+</span
-                      ><span class="studio-stat__num" data-counter-target="5" data-counter-duration="1400">0</span>
-                    </p>
-                    <p class="studio-stat__label">años de experiencia</p>
-                  </div>
-                  <div class="studio-stat" role="listitem" data-reveal aria-label="Más de 50 webs creadas">
-                    <p class="studio-stat__value" aria-hidden="true">
-                      <span class="studio-stat__affix">+</span
-                      ><span class="studio-stat__num" data-counter-target="50" data-counter-duration="1600">0</span>
-                    </p>
-                    <p class="studio-stat__label">webs creadas</p>
-                  </div>
-                  <div
-                    class="studio-stat"
-                    role="listitem"
-                    data-reveal
-                    aria-label="100 por ciento de trato directo, sin intermediarios"
-                  >
-                    <p class="studio-stat__value" aria-hidden="true">
-                      <span class="studio-stat__num" data-counter-target="100" data-counter-duration="1800">0</span
-                      ><span class="studio-stat__affix studio-stat__affix--suffix">%</span>
-                    </p>
-                    <p class="studio-stat__label">trato directo, sin intermediarios</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="studio-panel" id="proceso" aria-labelledby="studio-lbl-proceso">
-          <div class="shell">
-            <div class="studio-row">
-              <p class="studio-row__label" id="studio-lbl-proceso" data-reveal>Cómo trabajamos</p>
-              <div class="studio-row__main">
-                <h2 class="studio-title" data-reveal>Así trabajamos contigo, paso a paso.</h2>
-
-                <ol class="proceso" data-reveal-group>
-                  <li class="proceso__step" data-reveal>
-                    <span class="proceso__num" aria-hidden="true">01</span>
-                    <div class="proceso__body">
-                      <h3 class="proceso__title">Nos cuentas tu problema.</h3>
-                      <p class="proceso__text">
-                        Tú hablas, nosotros escuchamos. No hace falta que sepas de tecnología.
-                      </p>
-                    </div>
-                  </li>
-                  <li class="proceso__step" data-reveal>
-                    <span class="proceso__num" aria-hidden="true">02</span>
-                    <div class="proceso__body">
-                      <h3 class="proceso__title">Te proponemos un camino claro.</h3>
-                      <p class="proceso__text">
-                        Sin letra pequeña, sin sorpresas. Sabrás qué hacemos, cuándo y por cuánto antes de empezar.
-                      </p>
-                    </div>
-                  </li>
-                  <li class="proceso__step" data-reveal>
-                    <span class="proceso__num" aria-hidden="true">03</span>
-                    <div class="proceso__body">
-                      <h3 class="proceso__title">Lo construimos juntos.</h3>
-                      <p class="proceso__text">
-                        Vas viendo cómo avanza y opinas por el camino. Tu proyecto, no el nuestro.
-                      </p>
-                    </div>
-                  </li>
-                  <li class="proceso__step" data-reveal>
-                    <span class="proceso__num" aria-hidden="true">04</span>
-                    <div class="proceso__body">
-                      <h3 class="proceso__title">Seguimos aquí.</h3>
-                      <p class="proceso__text">
-                        El lanzamiento no es una despedida. Cuando necesites algo, ya sabes con quién hablar.
-                      </p>
-                    </div>
-                  </li>
-                </ol>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="studio-panel" id="trato" aria-labelledby="studio-lbl-trato">
-          <div class="shell">
-            <div class="studio-row">
-              <p class="studio-row__label" id="studio-lbl-trato" data-reveal>El trato</p>
-              <div class="studio-row__main">
-                <h2 class="studio-title" data-reveal>No somos una centralita.</h2>
-                <p class="studio-prose" data-reveal>
-                  Aquí no hay tickets, ni chatbots, ni «su llamada es importante para nosotros». Cuando escribes, te
-                  contesta la misma persona que conoce tu proyecto.
-                </p>
-                <p class="studio-prose" data-reveal>
-                  Puedes ponerte en contacto con nosotros siempre que lo necesites. Esa es toda la promesa. Y es la que
-                  más nos costaría romper.
-                </p>
               </div>
             </div>
           </div>
@@ -1023,6 +982,16 @@
               <a class="site-footer__legal-item site-footer__legal-link" href="legal/">Aviso legal</a>
               <a class="site-footer__legal-item site-footer__legal-link" href="privacidad/">Privacidad y cookies</a>
             </div>
+
+            <a
+              class="site-footer__legal-item site-footer__legal-link site-footer__ig"
+              href="https://www.instagram.com/giga109.co/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="ph ph-instagram-logo" aria-hidden="true"></i>
+              <span class="sr-only">Instagram (se abre en una pestaña nueva)</span>
+            </a>
 
             <!-- TODO: iconos de redes sociales ocultos temporalmente (recuperar cuando se quieran mostrar de nuevo) -->
             <!--
