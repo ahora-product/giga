@@ -1,0 +1,164 @@
+/* Hero "rastro de proyectos" ------------------------------------------------
+   Primera pantalla casi vacía: claim en el centro y, al mover el ratón, van
+   apareciendo capturas de proyectos que se quedan un momento y se desvanecen
+   (js/heroTrail.js). En táctil, o si nadie mueve el ratón, el rastro se dibuja
+   solo siguiendo un ocho lento, para que la pantalla nunca quede muerta. */
+/* La hero sube por detrás de la cabecera (que es sticky) para que el rastro
+   también se vea bajo el menú. Mientras la hero está detrás, la cabecera va
+   sin fondo (clase que pone js/heroTrail.js); al pasar a otra sección recupera
+   el fondo para que el menú siga siendo legible. */
+.trail-hero {
+  position: relative;
+  height: 100svh;
+  min-height: 32rem;
+  margin-top: calc(-1 * var(--header-h));
+  overflow: clip;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.site-header {
+  transition: background-color 300ms var(--ease-soft);
+}
+
+.site-header.is-over-hero {
+  background: transparent;
+}
+
+/* Capa de capturas: decoración pura, por debajo del texto y sin eventos. */
+.trail-hero__trail {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.trail-hero__shot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 11rem;
+  aspect-ratio: var(--ratio, 4 / 3);
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  animation: trail-life 1400ms var(--ease-out-expo) forwards;
+}
+
+@keyframes trail-life {
+  0% {
+    opacity: 0;
+    scale: 0.6;
+  }
+
+  15%,
+  70% {
+    opacity: 1;
+    scale: 1;
+  }
+
+  100% {
+    opacity: 0;
+    scale: 0.9;
+  }
+}
+
+.trail-hero__center {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-6);
+  padding-inline: var(--gutter);
+  text-align: center;
+  pointer-events: none;
+}
+
+.trail-hero__center > * {
+  pointer-events: auto;
+}
+
+/* `difference` mantiene el titular legible cuando una captura pasa detrás. */
+.trail-hero__title {
+  max-width: 46rem;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-lg);
+  font-weight: var(--fw-regular);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  mix-blend-mode: difference;
+}
+
+.trail-hero__title em {
+  font-style: normal;
+  color: var(--brand-lime);
+}
+
+.trail-hero__sub {
+  max-width: 30rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: var(--type-md);
+  line-height: 1.4;
+  mix-blend-mode: difference;
+}
+
+.trail-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+.trail-hero__hint,
+.trail-hero__now {
+  position: absolute;
+  bottom: var(--space-6);
+  z-index: 3;
+  margin: 0;
+  font-size: var(--type-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.trail-hero__hint {
+  left: 50%;
+  transform: translateX(-50%);
+  transition: opacity 600ms var(--ease-soft);
+}
+
+/* La pista de "mueve el ratón" solo tiene sentido con ratón. */
+@media (pointer: coarse) {
+  .trail-hero__hint {
+    display: none;
+  }
+}
+
+.trail-hero__now {
+  right: var(--gutter);
+  text-align: right;
+}
+
+.trail-hero__now strong {
+  display: block;
+  color: var(--text);
+  font-weight: var(--fw-medium);
+}
+
+@media (max-width: 40rem) {
+  .trail-hero__shot {
+    width: 7.5rem;
+  }
+
+  .trail-hero__now {
+    left: var(--gutter);
+    right: auto;
+    text-align: left;
+  }
+}

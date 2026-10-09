@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Página no encontrada — giga109</title>
+    <!-- Rutas absolutas: esta página se sirve en cualquier URL que no exista (/lo-que-sea/…). -->
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles/tokens.css" />
+    <style>
+      /* Página 404: anillo lima que se vacía y devuelve al inicio a los 3 s.
+         Siempre se puede cancelar (accesibilidad: límite de tiempo ajustable). */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-body);
+        font-size: var(--type-md);
+        font-weight: var(--fw-regular);
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      :focus-visible {
+        outline: 2px solid var(--brand-lime);
+        outline-offset: 3px;
+      }
+
+      .nf-header {
+        position: fixed;
+        inset: 0 0 auto;
+        z-index: var(--z-header);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--header-h);
+        padding-inline: var(--gutter);
+      }
+
+      .nf-header img {
+        display: block;
+        height: 1.25rem;
+        width: auto;
+        filter: invert(1);
+      }
+
+      .nf-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 2.5rem;
+        padding: 0 var(--space-5);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-pill);
+        background: rgba(10, 10, 10, 0.7);
+        color: var(--text);
+        font-size: var(--type-sm);
+        font-weight: var(--fw-medium);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background-color var(--dur-1) var(--ease-soft), color var(--dur-1) var(--ease-soft);
+      }
+
+      .nf-pill:hover,
+      .nf-pill:focus-visible,
+      .nf-pill--lime {
+        background: var(--brand-lime);
+        border-color: var(--brand-lime);
+        color: #000;
+      }
+
+      .nf-page {
+        display: grid;
+        place-items: center;
+        min-height: 100svh;
+        padding: calc(var(--header-h) + var(--space-9)) var(--gutter) var(--space-9);
+      }
+
+      .nf-stack {
+        display: grid;
+        justify-items: center;
+        gap: var(--space-5);
+        max-width: 36rem;
+        text-align: center;
+      }
+
+      .nf-title {
+        margin: 0;
+        font-size: var(--type-lg);
+        font-weight: var(--fw-strong);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+      }
+
+      .nf-text {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .nf-path {
+        display: inline-block;
+        padding: 0 var(--space-2);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-sm);
+        background: var(--surface-2);
+        color: var(--text);
+        font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+        font-size: var(--type-sm);
+        line-height: 1.6;
+        word-break: break-all;
+      }
+
+      .nf-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2) var(--space-4);
+      }
+
+      .nf-ring {
+        position: relative;
+        display: grid;
+        place-items: center;
+        width: 9rem;
+        height: 9rem;
+      }
+
+      .nf-ring svg {
+        position: absolute;
+        inset: 0;
+        transform: rotate(-90deg);
+      }
+
+      .nf-ring circle {
+        fill: none;
+        stroke-width: 3;
+      }
+
+      .nf-track {
+        stroke: var(--border-strong);
+      }
+
+      .nf-bar {
+        stroke: var(--brand-lime);
+        stroke-linecap: round;
+        transition: stroke-dashoffset 1s linear;
+      }
+
+      .nf-ring.is-paused .nf-bar {
+        stroke: var(--muted);
+      }
+
+      .nf-num {
+        font-size: var(--type-lg);
+        font-weight: var(--fw-strong);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.03em;
+      }
+
+      .nf-cancel {
+        border: 0;
+        padding: 0;
+        background: none;
+        color: var(--muted);
+        font: inherit;
+        font-size: var(--type-sm);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        cursor: pointer;
+      }
+
+      .nf-cancel:hover {
+        color: var(--text);
+      }
+
+      /* Entrada escalonada. */
+      .nf-in {
+        opacity: 0;
+        transform: translateY(16px);
+        animation: nf-in 800ms var(--ease-out-expo) forwards;
+        animation-delay: calc(var(--i, 0) * 90ms + 120ms);
+      }
+
+      @keyframes nf-in {
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .nf-in {
+          opacity: 1;
+          transform: none;
+          animation: none;
+        }
+
+        .nf-bar {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nf-header">
+      <a href="/" aria-label="giga109 — inicio">
+        <img src="/assets/brand/giga109.svg" alt="giga109" width="140" height="42" />
+      </a>
+      <a class="nf-pill" href="/#formulario">Contacta ↘</a>
+    </header>
+
+    <main class="nf-page">
+      <div class="nf-stack">
+        <div class="nf-ring nf-in" style="--i: 0" id="nf-ring">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <circle class="nf-track" cx="50" cy="50" r="46" />
+            <circle class="nf-bar" id="nf-bar" cx="50" cy="50" r="46" />
+          </svg>
+          <span class="nf-num" id="nf-num" aria-hidden="true">3</span>
+        </div>
+        <h1 class="nf-title nf-in" style="--i: 1">Ups. Esta página no existe.</h1>
+        <p class="nf-text nf-in" style="--i: 2" id="nf-msg">
+          <code class="nf-path" id="nf-path"></code> no está disponible. Te llevamos al inicio en
+          <span id="nf-sec">3</span> segundos.
+        </p>
+        <div class="nf-actions nf-in" style="--i: 3">
+          <a class="nf-pill nf-pill--lime" href="/">Ir ahora</a>
+          <button class="nf-cancel" type="button" id="nf-cancel">Prefiero quedarme</button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        var total = 3;
+        var left = total;
+        var len = 2 * Math.PI * 46;
+        var bar = document.getElementById("nf-bar");
+        var num = document.getElementById("nf-num");
+        var sec = document.getElementById("nf-sec");
+
+        document.getElementById("nf-path").textContent = location.pathname;
+        bar.style.strokeDasharray = len;
+        bar.style.strokeDashoffset = 0;
+
+        var timer = setInterval(function () {
+          left--;
+          num.textContent = left;
+          sec.textContent = left;
+          bar.style.strokeDashoffset = len * (1 - left / total);
+          if (left <= 0) {
+            clearInterval(timer);
+            location.replace("/");
+          }
+        }, 1000);
+
+        document.getElementById("nf-cancel").addEventListener("click", function () {
+          clearInterval(timer);
+          document.getElementById("nf-ring").classList.add("is-paused");
+          document.getElementById("nf-msg").textContent = "Vale, nos quedamos. Cuando quieras, vuelve al inicio.";
+          this.remove();
+        });
+      })();
+    </script>
+  </body>
+</html>

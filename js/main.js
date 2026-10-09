@@ -1,9 +1,9 @@
 import { initNav } from "./nav.js";
+import { initHeroTrail } from "./heroTrail.js";
 import { initMagnetic } from "./magnetic.js";
 import { initRipple } from "./ripple.js";
 import { initCursor } from "./cursor.js";
 import { initProjectScatter } from "./projectScatter.js";
-import { initIntroContours } from "./introContours.js";
 import { initScrollReveal } from "./scrollReveal.js";
 import { initCustomSelect } from "./customSelect.js";
 import { initHubPanels } from "./hubPanels.js";
@@ -34,7 +34,7 @@ safe("cursor", initCursor);
 safe("nav", initNav);
 safe("magnetic", initMagnetic);
 safe("ripple", initRipple);
-safe("introContours", initIntroContours);
+safe("heroTrail", initHeroTrail);
 safe("projectScatter", initProjectScatter);
 safe("scrollReveal", initScrollReveal);
 safe("customSelect", initCustomSelect);
@@ -51,7 +51,3 @@ import("./backToTop.js")
 const year = document.getElementById("year");
 if (year) year.textContent = String(new Date().getFullYear());
 
-const hero = document.querySelector(".hero");
-if (hero) {
-  window.requestAnimationFrame(() => hero.classList.add("is-booted"));
-}
