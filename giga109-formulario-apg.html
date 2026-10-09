@@ -126,8 +126,7 @@ var Q = [
   blocks:[{k:'multi',label:'Qué hacéis',opts:['Bienvenida personal','Eventos periódicos','Mentoring','Encuesta de satisfacción','Aviso antes de renovar','Resumen anual de beneficios','Nada especial'],other:true}]}
 ];
 var EXTRA = [
- {id:'ex',n:'+',ico:'user',title:'Una petición, si fuera posible',hint:'Nos encantaría poder hablar con dos antiguos socios. Nos ayudaría muchísimo a entender qué les hizo irse y qué les haría volver.',kind:'ex'},
- {id:'ju',n:'+',ico:'q',title:'Una última cosa sobre el jurado',hint:'Opcional, pero nos ayuda a enfocar la propuesta.',kind:'ju'}
+ {id:'ex',n:'+',ico:'user',title:'Una petición, si fuera posible',hint:'Nos encantaría poder hablar con dos antiguos socios. Nos ayudaría muchísimo a entender qué les hizo irse y qué les haría volver.',kind:'ex'}
 ];
 
 /* ===== ESTADO ===== */
@@ -172,15 +171,11 @@ function render(){
       h='<div class="screen on"><div class="tag">Duda '+('0'+q.n).slice(-2)+' de 07</div><div class="num"><span>'+('0'+q.n).slice(-2)+'</span><span class="ico"><svg viewBox="0 0 48 48">'+ICON[q.ico]+'</svg></span></div><h2>'+esc(q.title)+'</h2><p class="hint">'+esc(q.hint)+'</p>';
       q.blocks.forEach(function(b,i){h+=blockHTML(q,b,i)});
       h+='<label class="f">¿Algo más que quieras añadir? (opcional)</label><textarea data-text="'+q.id+'_c" placeholder="Escribe aquí lo que quieras…">'+esc(g(q.id+'_c',''))+'</textarea></div>';
-    } else if(e.kind==='ex'){
+    } else {
       h='<div class="screen on"><div class="tag">Petición</div><div class="num"><span class="ico"><svg viewBox="0 0 48 48">'+ICON.user+'</svg></span></div><h2>'+esc(e.title)+'</h2><p class="hint">'+esc(e.hint)+'</p><div class="opts">'+
         ['Sí, os ponemos en contacto','Lo consultamos y os decimos','Preferimos que no'].map(function(o){return optHTML('ex_ok','single',o,g('ex_ok','')===o)}).join('')+'</div>'+
         '<div id="exf" style="display:'+(g('ex_ok','')==='Sí, os ponemos en contacto'?'block':'none')+'"><div class="card"><h3>Antiguo socio 1</h3><div class="two"><input type="text" data-text="ex1n" placeholder="Nombre" value="'+esc(g('ex1n',''))+'"><input type="text" data-text="ex1c" placeholder="Email o teléfono" value="'+esc(g('ex1c',''))+'"></div></div><div class="card"><h3>Antiguo socio 2</h3><div class="two"><input type="text" data-text="ex2n" placeholder="Nombre" value="'+esc(g('ex2n',''))+'"><input type="text" data-text="ex2c" placeholder="Email o teléfono" value="'+esc(g('ex2c',''))+'"></div></div><p class="note">Si lo prefieres, escribe aquí cómo contactarles o si hace falta avisarles antes.</p></div>'+
         '<textarea data-text="ex_c" placeholder="Comentarios (opcional)">'+esc(g('ex_c',''))+'</textarea></div>';
-    } else {
-      h='<div class="screen on"><div class="tag">Opcional</div><div class="num"><span class="ico"><svg viewBox="0 0 48 48">'+ICON.q+'</svg></span></div><h2>'+esc(e.title)+'</h2><p class="hint">'+esc(e.hint)+'</p>'+
-        '<label class="f">¿Qué pesa más al valorar la propuesta?</label><div class="opts">'+['La idea creativa','La ejecución','Un equilibrio entre ambas','No lo sabemos'].map(function(o){return optHTML('ju_peso','single',o,g('ju_peso','')===o)}).join('')+'</div>'+
-        '<label class="f">¿Qué resultado queréis medir? (altas, reactivaciones…)</label><textarea data-text="ju_c" placeholder="Opcional">'+esc(g('ju_c',''))+'</textarea></div>';
     }
   }
   app.innerHTML=h;
@@ -255,7 +250,6 @@ function build(){
   [1,2].forEach(function(n){ var a=g('ex'+n+'n','').trim(), b=g('ex'+n+'c','').trim(); if(a||b) L.push('   Socio '+n+': '+[a,b].filter(Boolean).join(' · ')); });
   if(g('ex_c','').trim()) L.push('   Comentario: '+g('ex_c','').trim());
   L.push('');
-  if(g('ju_peso','')||g('ju_c','').trim()){ L.push('JURADO'); if(g('ju_peso','')) L.push('   Pesa más: '+g('ju_peso','')); if(g('ju_c','').trim()) L.push('   Resultados a medir: '+g('ju_c','').trim()); L.push(''); }
   L.push('— Enviado desde el formulario de GiGa109');
   return L.join('\n');
 }
