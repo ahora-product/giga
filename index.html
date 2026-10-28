@@ -175,6 +175,11 @@
         ]
       }
     </script>
+    <!-- Vercel Web Analytics: sin cookies; cuenta visitas y los clics en WhatsApp (js/whatsapp.js) -->
+    <script>
+      window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
     <a class="skip-link" href="#home">Saltar al contenido</a>
@@ -209,6 +214,7 @@
           rel="noopener"
           aria-label="Contacta por WhatsApp (se abre en una pestaña nueva)"
           data-wa
+          data-wa-origen="header"
           data-magnetic
         >
           <span class="btn__ripple" aria-hidden="true"></span>
@@ -365,9 +371,9 @@
       <section class="work section section--tight" id="proyectos" aria-label="Selección de trabajos">
         <ul class="work__grid" data-project-scatter>
           <li class="work__item" data-parallax data-speed="0.06">
-            <a class="work__card" href="#" aria-label="Proyecto: Beeme">
-              <img class="work__img" src="assets/projects/beeme.png" alt="" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/beeme.webp" srcset="assets/projects/beeme-544.webp 544w, assets/projects/beeme.webp 1088w" sizes="(max-width: 34rem) 100vw, 34rem" alt="Beeme: app para alcanzar tus metas" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">Beeme</span>
@@ -376,9 +382,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.13">
-            <a class="work__card" href="#" aria-label="Proyecto: Aguas Internacionales">
-              <img class="work__img" src="assets/projects/aguas-internacionales.png" alt="" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/aguas-internacionales.webp" srcset="assets/projects/aguas-internacionales-544.webp 544w, assets/projects/aguas-internacionales.webp 1080w" sizes="(max-width: 34rem) 100vw, 34rem" alt="Aguas Internacionales: espacio de creación artística" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">Aguas Internacionales</span>
@@ -387,9 +393,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.09">
-            <a class="work__card" href="#" aria-label="Proyecto: Donut">
-              <img class="work__img" src="assets/projects/donut.png" alt="" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/donut.webp" srcset="assets/projects/donut-544.webp 544w, assets/projects/donut.webp 1088w" sizes="(max-width: 34rem) 100vw, 34rem" alt="Donut: app para evitar las colas en eventos" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">Donut</span>
@@ -398,9 +404,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.16">
-            <a class="work__card" href="#" aria-label="Proyecto: CrewFive">
-              <img class="work__img" src="assets/projects/crewfive-web.png" alt="" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/crewfive-web.webp" srcset="assets/projects/crewfive-web-544.webp 544w, assets/projects/crewfive-web.webp 1080w" sizes="(max-width: 34rem) 100vw, 34rem" alt="CrewFive: entrenamiento para atletas híbridos" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">CrewFive</span>
@@ -409,9 +415,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.07">
-            <a class="work__card" href="#" aria-label="Proyecto: Pakana">
-              <img class="work__img" src="assets/projects/pakana.jpg" alt="" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/pakana.webp" srcset="assets/projects/pakana-544.webp 544w, assets/projects/pakana.webp 1088w" sizes="(max-width: 34rem) 100vw, 34rem" alt="Pakana: consultoría para empresas digitales" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">Pakana</span>
@@ -420,9 +426,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.12">
-            <a class="work__card" href="#" aria-label="Proyecto: MA365">
-              <img class="work__img" src="assets/projects/ma365.png" alt="" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/ma365.webp" srcset="assets/projects/ma365-544.webp 544w, assets/projects/ma365.webp 1080w" sizes="(max-width: 34rem) 100vw, 34rem" alt="MA365: app de meditación diaria" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">MA365</span>
@@ -431,9 +437,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.17">
-            <a class="work__card" href="#" aria-label="Proyecto: Focus">
-              <img class="work__img" src="assets/projects/focus.png" alt="" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/focus.webp" srcset="assets/projects/focus-544.webp 544w, assets/projects/focus.webp 1088w" sizes="(max-width: 34rem) 100vw, 34rem" alt="Focus: app para concentrarte sin distracciones" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">Focus</span>
@@ -442,9 +448,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.08">
-            <a class="work__card" href="#" aria-label="Proyecto: Adriana Microblading">
-              <img class="work__img" src="assets/projects/adriana-microblading.png" alt="" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/adriana-microblading.webp" srcset="assets/projects/adriana-microblading-544.webp 544w, assets/projects/adriana-microblading.webp 1080w" sizes="(max-width: 34rem) 100vw, 34rem" alt="Adriana Microblading: web de micropigmentación" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">Adriana Microblading</span>
@@ -453,9 +459,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.14">
-            <a class="work__card" href="#" aria-label="Proyecto: Kasa">
-              <img class="work__img" src="assets/projects/kasa.png" alt="" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/kasa.webp" srcset="assets/projects/kasa-544.webp 544w, assets/projects/kasa.webp 1088w" sizes="(max-width: 34rem) 100vw, 34rem" alt="Kasa: portal inmobiliario" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">Kasa</span>
@@ -464,9 +470,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.10">
-            <a class="work__card" href="#" aria-label="Proyecto: Susana Luján Seguros">
-              <img class="work__img" src="assets/projects/susana-lujan-seguros.png" alt="" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/susana-lujan-seguros.webp" srcset="assets/projects/susana-lujan-seguros-544.webp 544w, assets/projects/susana-lujan-seguros.webp 1080w" sizes="(max-width: 34rem) 100vw, 34rem" alt="Susana Luján Seguros: correduría de seguros" width="1080" height="1350" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">Susana Luján Seguros</span>
@@ -475,9 +481,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.15">
-            <a class="work__card" href="#" aria-label="Proyecto: CrewFive">
-              <img class="work__img" src="assets/projects/crewfive-app.png" alt="" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/crewfive-app.webp" srcset="assets/projects/crewfive-app-544.webp 544w, assets/projects/crewfive-app.webp 1088w" sizes="(max-width: 34rem) 100vw, 34rem" alt="CrewFive: entrenamiento para atletas híbridos" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">CrewFive</span>
@@ -486,9 +492,9 @@
             </div>
           </li>
           <li class="work__item" data-parallax data-speed="0.11">
-            <a class="work__card" href="#" aria-label="Proyecto: Kowork">
-              <img class="work__img" src="assets/projects/pakana-2.png" alt="" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
-            </a>
+            <div class="work__card">
+              <img class="work__img" src="assets/projects/pakana-2.webp" srcset="assets/projects/pakana-2-544.webp 544w, assets/projects/pakana-2.webp 1088w" sizes="(max-width: 34rem) 100vw, 34rem" alt="Kowork: consultoría para la creación de productos" width="1440" height="1080" loading="lazy" decoding="async" draggable="false" />
+            </div>
             <div class="work__caption">
               <span class="work__meta">
                 <span class="work__name">Kowork</span>
@@ -784,6 +790,7 @@
                   rel="noopener"
                   aria-label="Página simple: me interesa (escribir por WhatsApp)"
                   data-wa="¡Hola! Me interesa la Página simple"
+                  data-wa-origen="tarifa-pagina-simple"
                   data-magnetic
                 >
                   <span class="btn__ripple" aria-hidden="true"></span>
@@ -838,6 +845,7 @@
                   rel="noopener"
                   aria-label="Web corporativa: me interesa (escribir por WhatsApp)"
                   data-wa="¡Hola! Me interesa la Web corporativa"
+                  data-wa-origen="tarifa-web-corporativa"
                   data-magnetic
                 >
                   <span class="btn__ripple" aria-hidden="true"></span>
@@ -899,6 +907,7 @@
                   rel="noopener"
                   aria-label="Tienda online: me interesa (escribir por WhatsApp)"
                   data-wa="¡Hola! Me interesa la Tienda online"
+                  data-wa-origen="tarifa-tienda-online"
                   data-magnetic
                 >
                   <span class="btn__ripple" aria-hidden="true"></span>
@@ -924,6 +933,7 @@
                         target="_blank"
                         rel="noopener"
                         data-wa
+                        data-wa-origen="contacto"
                       >
                         <i class="icon-wa" aria-hidden="true"></i>
                         Escríbenos por WhatsApp
@@ -1129,6 +1139,7 @@
                         target="_blank"
                         rel="noopener"
                         data-wa
+                        data-wa-origen="faq"
                         >+34&nbsp;681&nbsp;13&nbsp;87&nbsp;82</a
                       >. También puedes escribirnos a <a href="mailto:hello@giga109.es">hello@giga109.es</a> o usar el
                       <a href="#formulario">formulario</a>. Siempre te contesta la misma persona que lleva tu proyecto.
@@ -1166,6 +1177,7 @@
                 target="_blank"
                 rel="noopener"
                 data-wa
+                data-wa-origen="footer"
               >
                 <i class="icon-wa site-footer__icon" aria-hidden="true"></i>
                 +34 681 13 87 82
@@ -1221,6 +1233,7 @@
       rel="noopener"
       aria-label="Escríbenos por WhatsApp (se abre en una pestaña nueva)"
       data-wa
+      data-wa-origen="flotante"
     >
       <i class="icon-wa" aria-hidden="true"></i>
     </a>

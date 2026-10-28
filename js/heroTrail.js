@@ -10,16 +10,16 @@
  *   primer proyecto.
  */
 const PROJECTS = [
-  ["Beeme", "beeme.png", "4/3"],
-  ["Aguas Internacionales", "aguas-internacionales.png", "4/5"],
-  ["Donut", "donut.png", "4/3"],
-  ["CrewFive", "crewfive-web.png", "4/5"],
-  ["Pakana", "pakana.jpg", "4/3"],
-  ["MA365", "ma365.png", "4/5"],
-  ["Focus", "focus.png", "4/3"],
-  ["Adriana Microblading", "adriana-microblading.png", "4/5"],
-  ["Kowork", "kasa.png", "4/3"],
-  ["Susana Luján Seguros", "susana-lujan-seguros.png", "4/5"],
+  ["Beeme", "beeme-352.webp", "4/3"],
+  ["Aguas Internacionales", "aguas-internacionales-352.webp", "4/5"],
+  ["Donut", "donut-352.webp", "4/3"],
+  ["CrewFive", "crewfive-web-352.webp", "4/5"],
+  ["Pakana", "pakana-352.webp", "4/3"],
+  ["MA365", "ma365-352.webp", "4/5"],
+  ["Focus", "focus-352.webp", "4/3"],
+  ["Adriana Microblading", "adriana-microblading-352.webp", "4/5"],
+  ["Kowork", "kasa-352.webp", "4/3"],
+  ["Susana Luján Seguros", "susana-lujan-seguros-352.webp", "4/5"],
 ];
 
 const GAP = 90; // px de recorrido entre una captura y la siguiente
