@@ -8,6 +8,7 @@ import { initScrollReveal } from "./scrollReveal.js";
 import { initCustomSelect } from "./customSelect.js";
 import { initHubPanels } from "./hubPanels.js";
 import { initContactForm } from "./contactForm.js";
+import { initWhatsApp } from "./whatsapp.js";
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -40,6 +41,7 @@ safe("scrollReveal", initScrollReveal);
 safe("customSelect", initCustomSelect);
 safe("hubPanels", initHubPanels);
 safe("contactForm", initContactForm);
+safe("whatsapp", initWhatsApp);
 
 /* El botón "volver arriba" se carga aparte y de forma perezosa: si su archivo
    no estuviera disponible, el fallo queda contenido aquí y la página sigue

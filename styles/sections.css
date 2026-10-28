@@ -984,6 +984,53 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
   color: var(--muted);
 }
 
+/* Atajo a WhatsApp encima del formulario: píldora lima como el resto de
+   CTAs, con el formulario como alternativa en texto apagado. */
+.contacto__alt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1.25rem;
+}
+
+.contacto__wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--radius-pill);
+  background: var(--brand-lime);
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
+  line-height: 1.3;
+  color: #000000;
+  text-decoration: none;
+  transition: background var(--dur-1) var(--ease-soft);
+}
+
+.contacto__wa .icon-wa {
+  font-size: 1.25em;
+}
+
+.contacto__wa:hover,
+.contacto__wa:focus-visible {
+  background: color-mix(in srgb, var(--brand-lime) 88%, #000000);
+}
+
+.contacto__wa:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.contacto__alt-note {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  color: var(--muted);
+}
+
 .contacto__form {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-md);
@@ -1402,6 +1449,10 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
 
 .site-footer__col--contact {
   justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
   text-align: right;
 }
 
@@ -1467,7 +1518,7 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
 .site-footer__mailpill {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.45rem;
   margin-top: 0.1rem;
   padding: 0.6rem 0.95rem;
   border-radius: var(--radius-pill);
@@ -1487,6 +1538,12 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
 
 .site-footer__mailpill .site-footer__icon {
   opacity: 0.88;
+}
+
+.site-footer__mailpill .icon-wa,
+.site-footer__mailpill .icon-mail {
+  font-size: 1.2em;
+  opacity: 1;
 }
 
 .site-footer__mailpill:hover,
@@ -1585,6 +1642,7 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
 
   .site-footer__col--contact {
     justify-self: start;
+    align-items: flex-start;
     text-align: left;
   }
 }
@@ -1608,4 +1666,70 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
   .site-footer__legal {
     gap: 0.4rem 0.9rem;
   }
+}
+
+/* FAQ ------------------------------------------------------------------
+   Acordeón con <details>/<summary> nativos: accesible con teclado y lector
+   de pantalla, y el texto está en el HTML para buscadores e IA. La apertura
+   animada (alto + chevron) vive en motion.css. */
+.faq__list {
+  max-width: 44rem;
+  border-top: 1px solid var(--border-strong);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--border-strong);
+}
+
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 0;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  color: #ffffff;
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq__q::-webkit-details-marker {
+  display: none;
+}
+
+.faq__q:hover {
+  color: var(--brand-lime);
+}
+
+.faq__q:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.faq__chevron {
+  flex-shrink: 0;
+  font-size: 1.15em;
+  color: var(--muted);
+}
+
+.faq__item[open] .faq__chevron {
+  transform: rotate(180deg);
+}
+
+.faq__a {
+  margin: 0;
+  padding: 0 2.5rem 1.35rem 0;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+.faq__a a {
+  color: var(--brand-lime);
+  text-underline-offset: 0.2em;
 }

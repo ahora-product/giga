@@ -46,3 +46,13 @@ No hay paso de compilación.
 1. Mantener tipografía de **tamaño fijo** (ver VISION y reglas CSS): no reescalar `font-size` por viewport.
 2. Las animaciones deben respetar **accesibilidad** y `prefers-reduced-motion`.
 3. El cursor personalizado es opcional en runtime: ver README para desactivarlo.
+
+## Contenido para buscadores e IA (obligatorio)
+
+Cada vez que cambie el contenido de la web (servicios, precios, plazos, qué incluye cada tarifa, FAQ, contacto, zona, redes o páginas nuevas), actualiza en el **mismo cambio**:
+
+1. **[llms.txt](llms.txt)**: resumen del estudio que leen las IA. Tiene que decir lo mismo que la web.
+2. **JSON-LD de `index.html`**: el bloque `ProfessionalService` (precios, contacto, `sameAs`) y el bloque `FAQPage`, que repite el texto de la sección `#faq`.
+3. **`sitemap.xml`** si se añade o se quita una página.
+
+El número de WhatsApp vive en `js/whatsapp.js`; si cambia, actualiza también los `href` de respaldo del HTML, el JSON-LD y `llms.txt`.

@@ -79,8 +79,13 @@
   gap: 0.4rem;
 }
 
-.btn--header-cta .work__arrow {
+.btn--header-cta .work__arrow,
+.btn--header-cta .ph {
   font-size: var(--type-md);
+}
+
+.btn--header-cta .icon-wa {
+  font-size: 1.2em;
 }
 
 .btn--header-cta:hover,
@@ -317,8 +322,9 @@ html.is-cursor-on .cursor {
    pone js/backToTop.js. */
 .to-top {
   position: fixed;
-  right: clamp(1rem, 3vw, 2rem);
-  bottom: clamp(1rem, 3vw, 2rem);
+  /* Centrado sobre el botón de WhatsApp (3.5rem), apilado encima. */
+  right: calc(clamp(1rem, 3vw, 2rem) + 0.25rem);
+  bottom: calc(clamp(1rem, 3vw, 2rem) + 3.5rem + 0.75rem);
   z-index: 90;
   display: grid;
   place-items: center;
@@ -369,4 +375,68 @@ html.is-cursor-on .cursor {
 
 .to-top .ph {
   transition: transform var(--dur-1) var(--ease-soft);
+}
+
+/* Botón flotante de WhatsApp ----------------------------------------------
+   Siempre visible abajo a la derecha: es la vía de contacto más rápida.
+   El "volver arriba" se apila justo encima. La entrada animada vive en
+   motion.css (solo con motion-safe). */
+.wa-float {
+  position: fixed;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: clamp(1rem, 3vw, 2rem);
+  z-index: 91;
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: var(--radius-pill);
+  background: var(--brand-lime);
+  color: #000000;
+  font-size: 1.75rem;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition:
+    transform var(--dur-1) var(--ease-soft),
+    background var(--dur-1) var(--ease-soft);
+}
+
+.wa-float:hover {
+  transform: scale(1.06);
+  background: color-mix(in srgb, var(--brand-lime) 88%, #ffffff);
+}
+
+.wa-float:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Icono de WhatsApp en los "¡Me interesa!" de tarifas: avisa de que el
+   botón abre WhatsApp. */
+.btn--tarifa .icon-wa {
+  font-size: 1.2em;
+}
+
+/* Iconos de contacto (Phosphor, versión fill) como máscara SVG: se ven más
+   nítidos que la fuente y la de WhatsApp conserva el teléfono relleno del
+   centro. Toman el color del texto y el tamaño de su font-size, igual que
+   un icono .ph. SVG oficiales en assets/icons/. */
+.icon-wa,
+.icon-mail {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+.icon-wa {
+  --icon: url("../assets/icons/whatsapp-fill.svg");
+}
+
+.icon-mail {
+  --icon: url("../assets/icons/envelope-fill.svg");
 }

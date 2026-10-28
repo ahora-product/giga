@@ -141,7 +141,8 @@
 }
 
 .trail-hero__now {
-  right: var(--gutter);
+  /* Se aparta a la izquierda del botón flotante de WhatsApp (.wa-float). */
+  right: calc(clamp(1rem, 3vw, 2rem) + 3.5rem + var(--space-4));
   text-align: right;
 }
 

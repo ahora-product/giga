@@ -1,0 +1,26 @@
+# giga109
+
+> giga109 es un estudio pequeño de diseño y desarrollo de webs y apps a medida con sede en Valencia (España). Trabaja con clientes de toda España con trato directo: siempre te atiende la misma persona que conoce tu proyecto, desde la idea hasta después del lanzamiento.
+
+## Servicios y precios
+
+- Página simple: desde 390 €. Toda la información en una sola página. Entrega desde 10 días laborables. Incluye hosting, correo profesional, página de inicio y avisos legales.
+- Web corporativa: desde 599 €. Entrega en 2–4 semanas.
+- Tienda online: desde 1299 €. Entrega en 3–6 semanas. Incluye catálogo, pasarelas de pago y hosting.
+- Apps móviles a medida para iOS y Android con React Native (presupuesto según proyecto).
+
+Todas las webs tienen diseño a medida, adaptado al móvil y con una estructura pensada para buscadores. El precio y el plazo se cierran por escrito antes de empezar.
+
+## Contacto
+
+- WhatsApp (la vía más rápida): +34 681 13 87 82 — https://wa.me/34681138782
+- Email: hello@giga109.es
+- Formulario: https://www.giga109.es/#formulario
+- Instagram: https://www.instagram.com/giga109.co/
+
+## Páginas
+
+- [Inicio](https://www.giga109.es/): servicios, proceso de trabajo, proyectos, tarifas, preguntas frecuentes y contacto.
+- [Preguntas frecuentes](https://www.giga109.es/#faq)
+- [Aviso legal](https://www.giga109.es/legal/)
+- [Privacidad y cookies](https://www.giga109.es/privacidad/)

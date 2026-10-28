@@ -13,3 +13,4 @@ alwaysApply: true
 - **Accesibilidad**: foco visible, teclado, contraste AA sobre fondo oscuro; marquee solo decorativo (no única fuente de información crítica).
 - Imágenes: `loading="lazy"` fuera del hero; hero/LCP **sin** lazy, con dimensiones y prioridad adecuadas cuando aplique.
 - Contenido y marcas: placeholders **originales**; no copiar textos ni assets de sitios de referencia.
+- **Contenido sincronizado**: al cambiar contenido de la web (servicios, precios, plazos, FAQ, contacto, redes, páginas), actualizar en el mismo cambio `llms.txt`, el JSON-LD de `index.html` (`ProfessionalService` y `FAQPage`) y, si cambian las páginas, `sitemap.xml`. Ver `AGENTS.md` § Contenido para buscadores e IA.

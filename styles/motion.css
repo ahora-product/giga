@@ -43,3 +43,49 @@ html:not(.motion-safe) [data-reveal] {
   opacity: 1;
   transform: none;
 }
+
+/* Botón flotante de WhatsApp: entra desde abajo con un pequeño retraso para
+   no competir con la carga de la hero. Sin motion-safe aparece ya en su
+   sitio y no crece al pasar por encima. */
+@keyframes wa-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+html.motion-safe .wa-float {
+  animation: wa-float-in 600ms var(--ease-out-expo) 900ms backwards;
+}
+
+html:not(.motion-safe) .wa-float:hover {
+  transform: none;
+}
+
+/* FAQ: el panel crece en alto al abrirse y el chevron gira 180°. Donde el
+   navegador no soporta ::details-content se abre sin animación. */
+html.motion-safe .faq__chevron {
+  transition: transform var(--dur-2) var(--ease-out-expo);
+}
+
+@supports selector(::details-content) {
+  html.motion-safe .faq__list {
+    interpolate-size: allow-keywords;
+  }
+
+  html.motion-safe .faq__item::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size var(--dur-2) var(--ease-out-expo),
+      content-visibility var(--dur-2) allow-discrete;
+  }
+
+  html.motion-safe .faq__item[open]::details-content {
+    block-size: auto;
+  }
+}
