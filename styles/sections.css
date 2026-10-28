@@ -1761,3 +1761,123 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
 .contacto-panel .contacto {
   margin-top: 0;
 }
+
+/* Tarjeta de contacto bajo la FAQ: cara visible, WhatsApp y llamada. */
+/* FAQ a la izquierda y tarjeta a la derecha, que acompaña al bajar.
+   En pantallas estrechas la tarjeta pasa debajo. */
+.faq__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 21rem);
+  gap: var(--space-7);
+  align-items: start;
+}
+
+.faq__layout .faq__list {
+  max-width: none;
+}
+
+@media (max-width: 64rem) {
+  .faq__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.faq-contact {
+  position: sticky;
+  top: calc(var(--header-h) + var(--space-4));
+  display: grid;
+  gap: 0.75rem;
+  max-width: 26rem;
+  padding: 1.5rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+}
+
+.faq-contact__head {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.faq-contact__avatar {
+  flex-shrink: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--brand-lime);
+  object-fit: cover;
+}
+
+.faq-contact__title {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: calc(var(--type-md) * 1.25);
+  font-weight: var(--fw-medium);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+.faq-contact__text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.faq-contact__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
+  text-decoration: none;
+  transition:
+    background var(--dur-1) var(--ease-soft),
+    border-color var(--dur-1) var(--ease-soft);
+}
+
+.faq-contact__btn .icon-wa,
+.faq-contact__btn .ph {
+  font-size: 1.2em;
+}
+
+.faq-contact__btn--wa {
+  background: var(--brand-lime);
+  color: #000000;
+}
+
+.faq-contact__btn--wa:hover,
+.faq-contact__btn--wa:focus-visible {
+  background: color-mix(in srgb, var(--brand-lime) 88%, #000000);
+}
+
+.faq-contact__btn--tel {
+  border: 1px solid var(--border-strong);
+  color: #ffffff;
+}
+
+.faq-contact__btn--tel:hover,
+.faq-contact__btn--tel:focus-visible {
+  border-color: #ffffff;
+}
+
+.faq-contact__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.faq-contact__hours {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  text-align: center;
+  color: var(--muted);
+}

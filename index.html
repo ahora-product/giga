@@ -74,6 +74,7 @@
           "telephone": "+34681138782",
           "email": "hello@giga109.es",
           "url": "https://wa.me/34681138782",
+          "hoursAvailable": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] },
           "availableLanguage": ["es"]
         },
         "sameAs": ["https://www.instagram.com/giga109.co/"],
@@ -794,75 +795,112 @@
               <p class="studio-row__label" id="studio-lbl-faq" data-reveal>Preguntas</p>
               <div class="studio-row__main">
                 <h2 class="studio-title" data-reveal>Lo que suele preguntarnos la gente.</h2>
-                <div class="faq__list" data-reveal>
-                  <details class="faq__item">
-                    <summary class="faq__q">
-                      ¿Cuánto cuesta una página web a medida?
-                      <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
-                    </summary>
-                    <p class="faq__a">
-                      Una página simple cuesta desde 390&nbsp;€, una web corporativa desde 599&nbsp;€ y una tienda online
-                      desde 1299&nbsp;€. Antes de empezar te damos el precio cerrado por escrito, sin letra pequeña.
-                    </p>
-                  </details>
-                  <details class="faq__item">
-                    <summary class="faq__q">
-                      ¿Cuánto tardáis en hacer una web?
-                      <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
-                    </summary>
-                    <p class="faq__a">
-                      Una página simple está lista desde 10 días laborables, una web corporativa en 2–4 semanas y una
-                      tienda online en 3–6 semanas. El plazo exacto de tu proyecto lo dejamos fijado antes de empezar.
-                    </p>
-                  </details>
-                  <details class="faq__item">
-                    <summary class="faq__q">
-                      ¿Qué incluye el precio?
-                      <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
-                    </summary>
-                    <p class="faq__a">
-                      Diseño a medida y adaptado al móvil, hosting, correo profesional, avisos legales y una estructura
-                      pensada para que te encuentren en Google. En las tiendas online, además, catálogo y pasarelas de
-                      pago.
-                    </p>
-                  </details>
-                  <details class="faq__item">
-                    <summary class="faq__q">
-                      ¿También desarrolláis apps móviles?
-                      <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
-                    </summary>
-                    <p class="faq__a">
-                      Sí. Diseñamos y desarrollamos apps a medida para iOS y Android con React Native. Cuéntanos la idea y
-                      te decimos cómo lo haríamos, cuánto costaría y en cuánto tiempo.
-                    </p>
-                  </details>
-                  <details class="faq__item">
-                    <summary class="faq__q">
-                      ¿Trabajáis con clientes de toda España?
-                      <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
-                    </summary>
-                    <p class="faq__a">
-                      Sí. Trabajamos con empresas y autónomos de toda España. Nuestra sede está en Valencia.
-                    </p>
-                  </details>
-                  <details class="faq__item">
-                    <summary class="faq__q">
-                      ¿Cuál es la forma más rápida de contactaros?
-                      <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
-                    </summary>
-                    <p class="faq__a">
-                      Por WhatsApp al
-                      <a
-                        href="https://wa.me/34681138782?text=%C2%A1Hola!%20Necesito%20una%20web%20para%20mi%20proyecto"
-                        target="_blank"
-                        rel="noopener"
-                        data-wa
-                        data-wa-origen="faq"
-                        >+34&nbsp;681&nbsp;13&nbsp;87&nbsp;82</a
-                      >. También puedes escribirnos a <a href="mailto:hello@giga109.es">hello@giga109.es</a> o usar el
-                      <a href="#formulario">formulario</a>. Siempre te contesta la misma persona que lleva tu proyecto.
-                    </p>
-                  </details>
+                <div class="faq__layout">
+                  <div class="faq__list" data-reveal>
+                    <details class="faq__item">
+                      <summary class="faq__q">
+                        ¿Cuánto cuesta una página web a medida?
+                        <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
+                      </summary>
+                      <p class="faq__a">
+                        Una página simple cuesta desde 390&nbsp;€, una web corporativa desde 599&nbsp;€ y una tienda online
+                        desde 1299&nbsp;€. Antes de empezar te damos el precio cerrado por escrito, sin letra pequeña.
+                      </p>
+                    </details>
+                    <details class="faq__item">
+                      <summary class="faq__q">
+                        ¿Cuánto tardáis en hacer una web?
+                        <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
+                      </summary>
+                      <p class="faq__a">
+                        Una página simple está lista desde 10 días laborables, una web corporativa en 2–4 semanas y una
+                        tienda online en 3–6 semanas. El plazo exacto de tu proyecto lo dejamos fijado antes de empezar.
+                      </p>
+                    </details>
+                    <details class="faq__item">
+                      <summary class="faq__q">
+                        ¿Qué incluye el precio?
+                        <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
+                      </summary>
+                      <p class="faq__a">
+                        Diseño a medida y adaptado al móvil, hosting, correo profesional, avisos legales y una estructura
+                        pensada para que te encuentren en Google. En las tiendas online, además, catálogo y pasarelas de
+                        pago.
+                      </p>
+                    </details>
+                    <details class="faq__item">
+                      <summary class="faq__q">
+                        ¿También desarrolláis apps móviles?
+                        <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
+                      </summary>
+                      <p class="faq__a">
+                        Sí. Diseñamos y desarrollamos apps a medida para iOS y Android con React Native. Cuéntanos la idea y
+                        te decimos cómo lo haríamos, cuánto costaría y en cuánto tiempo.
+                      </p>
+                    </details>
+                    <details class="faq__item">
+                      <summary class="faq__q">
+                        ¿Trabajáis con clientes de toda España?
+                        <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
+                      </summary>
+                      <p class="faq__a">
+                        Sí. Trabajamos con empresas y autónomos de toda España. Nuestra sede está en Valencia.
+                      </p>
+                    </details>
+                    <details class="faq__item">
+                      <summary class="faq__q">
+                        ¿Cuál es la forma más rápida de contactaros?
+                        <i class="ph ph-caret-down faq__chevron" aria-hidden="true"></i>
+                      </summary>
+                      <p class="faq__a">
+                        Por WhatsApp al
+                        <a
+                          href="https://wa.me/34681138782?text=%C2%A1Hola!%20Necesito%20una%20web%20para%20mi%20proyecto"
+                          target="_blank"
+                          rel="noopener"
+                          data-wa
+                          data-wa-origen="faq"
+                          >+34&nbsp;681&nbsp;13&nbsp;87&nbsp;82</a
+                        >. También puedes escribirnos a <a href="mailto:hello@giga109.es">hello@giga109.es</a> o usar el
+                        <a href="#formulario">formulario</a>. Siempre te contesta la misma persona que lleva tu proyecto.
+                      </p>
+                    </details>
+                  </div>
+
+                  <aside class="faq-contact" aria-labelledby="faq-contact-title" data-reveal>
+                    <div class="faq-contact__head">
+                      <img
+                        class="faq-contact__avatar"
+                        src="assets/team/perfil.webp"
+                        alt=""
+                        width="72"
+                        height="72"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div>
+                        <p class="faq-contact__title" id="faq-contact-title">¿Tienes otra pregunta?</p>
+                        <p class="faq-contact__text">Pregúntanos sin compromiso. Te respondemos en el día.</p>
+                      </div>
+                    </div>
+                    <a
+                      class="faq-contact__btn faq-contact__btn--wa"
+                      href="https://wa.me/34681138782?text=%C2%A1Hola!%20Necesito%20una%20web%20para%20mi%20proyecto"
+                      target="_blank"
+                      rel="noopener"
+                      data-wa
+                      data-wa-origen="faq-tarjeta"
+                    >
+                      <i class="icon-wa" aria-hidden="true"></i>
+                      Escribir por WhatsApp
+                      <span class="sr-only">(se abre en una pestaña nueva)</span>
+                    </a>
+                    <a class="faq-contact__btn faq-contact__btn--tel" href="tel:+34681138782">
+                      <i class="ph ph-phone" aria-hidden="true"></i>
+                      Llamar · 681 13 87 82
+                    </a>
+                    <p class="faq-contact__hours">Lunes a viernes · respondemos en el día</p>
+                  </aside>
                 </div>
               </div>
             </div>
