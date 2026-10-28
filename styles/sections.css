@@ -1438,8 +1438,8 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
 
 .site-footer__top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 1.25rem clamp(2rem, 6vw, 5rem);
   align-items: start;
 }
 
@@ -1732,4 +1732,32 @@ html.is-cursor-on .hub-panel:hover .hub-panel__square {
 .faq__a a {
   color: var(--brand-lime);
   text-underline-offset: 0.2em;
+}
+
+/* Enlace de tarifas a la página de diseño web */
+.tarifas__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  font-weight: var(--fw-medium);
+  color: var(--brand-lime);
+  text-decoration: none;
+}
+
+.tarifas__more .ph {
+  transition: transform var(--dur-1) var(--ease-soft);
+}
+
+.tarifas__more:hover .ph,
+.tarifas__more:focus-visible .ph {
+  transform: translateX(3px);
+}
+
+/* Formulario en su propia sección, al final de la home: ya no necesita
+   el margen que lo separaba de las tarifas. */
+.contacto-panel .contacto {
+  margin-top: 0;
 }

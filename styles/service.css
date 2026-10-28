@@ -1,0 +1,106 @@
+/* ============================================================
+   Páginas de servicio (/diseno-web/, …)
+   Reutilizan los bloques de la home (studio-panel, tarifas, proceso,
+   faq, contacto__wa); aquí solo va lo propio: la cabecera de la
+   página, las migas de pan y la lista de lo que incluye.
+   ============================================================ */
+
+/* Cabecera de la página ----------------------------------------------- */
+.service-hero {
+  padding-block: calc(var(--header-h) + var(--space-9)) var(--space-8);
+}
+
+.service-hero__label {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  font-weight: var(--fw-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-lime);
+}
+
+.service-hero__title {
+  max-width: 48rem;
+  margin: 0 0 var(--space-5);
+  font-family: var(--font-display);
+  font-size: var(--type-lg);
+  font-weight: var(--fw-medium);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+}
+
+.service-hero__lead {
+  max-width: 38rem;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+  color: var(--muted);
+}
+
+/* Migas de pan -------------------------------------------------------- */
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0 0 var(--space-7);
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-body);
+  font-size: var(--type-sm);
+  color: var(--muted);
+}
+
+.breadcrumbs li + li::before {
+  content: "/";
+  margin-right: 0.4rem;
+  opacity: 0.5;
+}
+
+.breadcrumbs a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumbs a:hover,
+.breadcrumbs a:focus-visible {
+  color: #ffffff;
+}
+
+.breadcrumbs [aria-current="page"] {
+  color: #ffffff;
+}
+
+/* Qué incluye --------------------------------------------------------- */
+.service-list {
+  display: grid;
+  gap: 0.9rem;
+  max-width: 40rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: var(--type-md);
+  line-height: 1.55;
+  color: #ffffff;
+}
+
+.service-list .ph {
+  flex-shrink: 0;
+  color: var(--brand-lime);
+}
+
+/* CTA final ----------------------------------------------------------- */
+.service-cta .contacto__alt-note a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}

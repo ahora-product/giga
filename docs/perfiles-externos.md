@@ -11,10 +11,10 @@ Usa el mismo mensaje en todas partes: mismo nombre, misma descripción, mismos p
 - Zona: Valencia, trabajando para toda España
 
 **Frase corta (≤ 150 caracteres)**
-> Estudio de diseño y desarrollo de webs y apps a medida en Valencia. Trato de tú a tú, de la idea al lanzamiento y después.
+> Estudio de diseño y desarrollo de webs y apps a medida para toda España. Trato de tú a tú, de la idea al lanzamiento y después.
 
 **Descripción larga (≤ 750 caracteres)**
-> giga109 es un estudio pequeño de diseño y desarrollo de webs y apps a medida con sede en Valencia, que trabaja para toda España. Ese «pequeño» es intencionado: siempre hablas con las mismas personas, que conocen tu proyecto por su nombre. Diseñamos y desarrollamos en un mismo equipo páginas web, webs corporativas, tiendas online y apps para iOS y Android. Precios claros desde 390 €, y precio y plazo cerrados por escrito antes de empezar. Y no desaparecemos el día de la entrega: seguimos ahí cuando tu negocio crece. Escríbenos por WhatsApp al +34 681 13 87 82.
+> giga109 es un estudio pequeño de diseño y desarrollo de webs y apps a medida que trabaja para toda España, con sede en Valencia. Ese «pequeño» es intencionado: siempre hablas con las mismas personas, que conocen tu proyecto por su nombre. Diseñamos y desarrollamos en un mismo equipo páginas web, webs corporativas, tiendas online y apps para iOS y Android. Precios claros desde 390 €, y precio y plazo cerrados por escrito antes de empezar. Y no desaparecemos el día de la entrega: seguimos ahí cuando tu negocio crece. Escríbenos por WhatsApp al +34 681 13 87 82.
 
 ---
 
@@ -45,7 +45,7 @@ Usa el mismo mensaje en todas partes: mismo nombre, misma descripción, mismos p
 Crear desde un perfil personal: *Para empresas → Crear una página de empresa → Empresa*.
 - [ ] Nombre `giga109`, URL `linkedin.com/company/giga109`, web, sector **Servicios de diseño** (o «Desarrollo de software»), tamaño **2-10**, tipo **Empresa propia**.
 - [ ] Logo (300×300) y banner (1128×191).
-- [ ] Eslogan (≤ 120 caracteres): `Webs y apps a medida, de tú a tú. Estudio de diseño y desarrollo en Valencia.`
+- [ ] Eslogan (≤ 120 caracteres): `Webs y apps a medida, de tú a tú. Estudio de diseño y desarrollo para toda España.`
 - [ ] Descripción: pegar la descripción larga.
 - [ ] Ubicación: Valencia. Especialidades: diseño web, desarrollo web, tiendas online, apps móviles, React Native, UX/UI.
 - [ ] Botón personalizado: **Visitar sitio web**.

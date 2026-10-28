@@ -1,6 +1,6 @@
 # giga109
 
-> giga109 es un estudio pequeño de diseño y desarrollo de webs y apps a medida con sede en Valencia (España). Trabaja con clientes de toda España con trato directo: siempre te atiende la misma persona que conoce tu proyecto, desde la idea hasta después del lanzamiento.
+> giga109 es un estudio pequeño de diseño y desarrollo de webs y apps a medida que trabaja para empresas y autónomos de toda España, con sede en Valencia. Trato directo: siempre te atiende la misma persona que conoce tu proyecto, desde la idea hasta después del lanzamiento.
 
 ## Servicios y precios
 
@@ -21,6 +21,7 @@ Todas las webs tienen diseño a medida, adaptado al móvil y con una estructura 
 ## Páginas
 
 - [Inicio](https://www.giga109.es/): servicios, proceso de trabajo, proyectos, tarifas, preguntas frecuentes y contacto.
+- [Diseño web a medida](https://www.giga109.es/diseno-web/): página simple, web corporativa y tienda online, con precios, plazos, qué incluye, proyectos y preguntas frecuentes.
 - [Preguntas frecuentes](https://www.giga109.es/#faq)
 - [Aviso legal](https://www.giga109.es/legal/)
 - [Privacidad y cookies](https://www.giga109.es/privacidad/)
